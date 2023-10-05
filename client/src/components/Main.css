@@ -1,45 +1,66 @@
-.Main-container{
+.Main-container {
   height: calc(100vh - 53.6px);
   display: flex;
+  position: relative;
   flex-direction: column;
   /* border: 1px solid red; */
   justify-content: space-between;
 }
 
-.Main-line{
-  border: 1px solid black;
-  margin-bottom: 1px;
-}
-.Main-text{
+
+.Main-text {
   font-size: 54px;
   font-weight: bold;
   margin-left: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  margin-top: 40px;
+  
 }
 
+.Main-button {
+  font-size: 18px;
+  font-weight: normal;
+  
+  display: flex;
+  justify-content: right;
 
-.Main-top-wrap{
+
+}
+
+.Main-top-wrap {
   display: flex;
   justify-content: space-between;
   flex-basis: 300px;
+
+  position: relative;
+
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  margin-top: 0px;
+}
 
+.Main-circle {
+  position: absolute;
+  border: 1px solid gray;
+  border-radius: 50%;
+  width: 351.6px;
+  height: 350px;
+
+  transform: translateX(770px);
+  /* 원의 위치 조정 */
 }
 
 
-.Main-bottom-wrap{
-  border: 1px solid blue;
-  
+.Main-bottom-wrap {
+  /* border: 1px solid blue; */
 
-  
+
 }
 
-.Main-card{
+.Main-card {
   /* border: 1px solid red; */
-  height: 180px;
+  height: 160px;
 
 }

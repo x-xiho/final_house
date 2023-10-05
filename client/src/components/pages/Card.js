@@ -12,7 +12,7 @@ function Card(props) {
         {props.region}
       </div>
 
-      <hr className='Card-hr'/>
+      <hr style={{border: "1.5px solid black"}}className='Card-hr'/>
 
       <div className='Card-hash'>
         {props.hash}

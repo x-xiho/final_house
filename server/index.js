@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 const UserInfo = []; // 유저데이터 임시 저장 배열
 const recommendResult = [{
   first : "강남구",
-  second : "도봉구",
+  second : "중구",
   third : "노원구",
 }]; // 임시 추천결과 저장 배열
 let backendHeartList = []; // 유저의 관심목록 저장

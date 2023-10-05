@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
 
 function Mypage() {
 
@@ -17,23 +18,27 @@ function Mypage() {
   }, [])
 
   return (
+    <div className='mypage-container'>
+
+      <div className='mypage-'>
     <div>
-    <div>
-      나의 계정정보랑 관심목록 / 아마도 이미지 슬라이더
-      이 페이지에서도 관심목록 수정이 가능해야함 = 하트 삭제 기능
-      중복된 것은 자동으로 걸러서 보여줘야함
+나의 계정 정보 :
+    </div>
     </div>
 
     <div>
-      <h3>나의 관심목록</h3>
-    {heartdata.map((item, index) => (
-          <div key={index}>
-            {item}
-          </div>
-        ))}
-
+        <h3>나의 관심목록</h3>
+        {heartdata.length > 0 ? (
+          heartdata.map((item, index) => (
+            <div key={index}>
+              {item} <AiFillHeart />
+            </div>
+          ))
+        ) : (
+          <div>관심목록이 없습니다.</div>
+        )}
+      </div>
     </div>
-  </div>
   )
 }
 

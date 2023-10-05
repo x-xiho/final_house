@@ -2,10 +2,6 @@ li {
   list-style: none;
 }
 
-.C-button {
-  border: 1px solid black;
-  background-color: transparent;
-}
 
 .slick-slider {
   margin: 0px 30px;
@@ -15,9 +11,14 @@ li {
 /* Card Css */
 
 .Card-container {
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
   width: 200px;
 
+}
+
+.Card-container:hover{
+  background-color: black;
+  color:white;
 }
 
 .Card-title {
@@ -37,7 +38,26 @@ li {
   color: gray;
 }
 
+/* carousel Css */
 
+.carousel-btn{
+}
+
+.C-button {
+  /* border: 1px solid black; */
+  background-color: transparent;
+  border: none;
+
+}
+.carousel-wrap{
+
+}
+
+.carousel-slider{
+  border: 1px solid black;
+  display: flex;
+  /* margin-left: 50px; */
+}
 
 
 /* Page 공통 */
