@@ -1,0 +1,45 @@
+.Main-container{
+  height: calc(100vh - 53.6px);
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  justify-content: space-between;
+}
+
+.Main-line{
+  border: 1px solid black;
+  margin-bottom: 1px;
+}
+.Main-text{
+  font-size: 54px;
+  font-weight: bold;
+  margin-left: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.Main-top-wrap{
+  display: flex;
+  justify-content: space-between;
+  flex-basis: 300px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-top: 0px;
+
+}
+
+
+.Main-bottom-wrap{
+  border: 1px solid blue;
+  
+
+  
+}
+
+.Main-card{
+  /* border: 1px solid red; */
+  height: 180px;
+
+}

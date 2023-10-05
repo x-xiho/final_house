@@ -5,10 +5,9 @@ import './App.css'
 import Nav from './components/Nav'
 import Main from './components/Main'
 import Myhome from './components/Myhome'
-import Test from './Test'
-
 import Login from './components/Login'
 import Mypage from './components/Mypage'
+
 import Page1 from './components/pages/Page1'
 import Page2 from './components/pages/Page2'
 import Page3 from './components/pages/Page3'
@@ -27,8 +26,6 @@ function App() {
             <Route path="page3" element={<Page3/>} />
             <Route path="pageEnd" element={<PageEnd/>} />
           </Route>
-
-          <Route path="test" element={<Test />} />
           <Route path="login" element={<Login />} />
           <Route path="mypage" element={<Mypage />} />
 

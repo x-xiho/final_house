@@ -1,0 +1,96 @@
+li {
+  list-style: none;
+}
+
+.C-button {
+  border: 1px solid black;
+  background-color: transparent;
+}
+
+.slick-slider {
+  margin: 0px 30px;
+}
+
+
+/* Card Css */
+
+.Card-container {
+  border: 1px solid pink;
+  width: 200px;
+
+}
+
+.Card-title {
+  font-size: 22px;
+}
+
+.Card-region {
+  font-size: 34px;
+}
+
+.Card-hr {
+  margin: 0;
+
+}
+
+.Card-hash {
+  color: gray;
+}
+
+
+/* PageEnd Css */
+
+.End-container {
+  /* border: 1px solid black; */
+  height: calc(100vh - 53.6px);
+}
+
+.End-recommend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+
+}
+
+.End-recommend-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.End-recommend-result-text {
+  font-size: 28px;
+  margin: 0px 40px;
+}
+
+.End-recommend-text-1 {
+  display: flex;
+  border: 1px solid black;
+  width: 200px;
+  justify-content: space-around;
+  margin: 10px 40px;
+  padding: 10px 10px;
+
+background-color: #ECEBE7;
+
+  font-size: 22px;
+  font-weight: bold;
+
+}
+
+.End-recommend-text-1:hover {
+  background-color: #A7B5A8;
+}
+
+.End-1 {
+  color: gray;
+  font-weight: normal;
+  margin: 0px 10px;
+}
+
+
+.End-powerbi{
+  font-size: 48px;
+  margin-right: 50px;
+}

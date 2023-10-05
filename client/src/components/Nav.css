@@ -1,0 +1,36 @@
+/* 기본 스타일 제거 */
+.li__nav {
+  list-style: none;
+  transition: all 0.4s;
+  z-index: 15;
+}
+
+.li__nav:hover {
+  transform: scale(1.1);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* 네비바 꾸미기 */
+.nav-main {
+  display: flex;
+  font-weight: bold;
+  justify-content: space-between;
+  margin-right: 2em;
+}
+
+.nav-main .ul__second {
+  display: flex;
+}
+
+.nav-main .ul__second li {
+  margin-left: 2em;
+  
+}
+
+.active{
+  color: pink;
+}
