@@ -38,6 +38,94 @@ li {
 }
 
 
+
+
+/* Page 공통 */
+
+.page1-qurry{
+font-weight: bold;
+}
+
+.Nextbtn{
+  text-align: center;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+
+.radioStyle span{
+  text-align: center;
+  height:40px;
+  width:100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:1px solid #dcdcdc;
+  box-sizing: border-box;
+}
+
+.radioStyle [type="radio"]:checked + span{
+  /* border:3px solid #A7B5A8; */
+  color:white;
+  background-color: #A7B5A8;
+  font-weight: 700;}
+
+
+
+
+/* Page1 Css */
+
+
+.page1-container{
+  height: calc(100vh - 53.6px);
+
+  border: 1px solid red;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.page1-qurry{
+  margin-top: 5px;
+}
+
+.page1-form{
+  border: 1px solid black;
+  margin-top: 20px;
+  width: 500px;
+  text-align: center;
+}
+
+.page-radioStyle{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.page1-text{
+  border: 1px solid black;
+  text-align: center;
+}
+
+
+.page1-num {
+  font-weight: bold;
+  color: gray;
+}
+
+
+
+/* Page2 Css */
+
+
+
+
+
 /* PageEnd Css */
 
 .End-container {

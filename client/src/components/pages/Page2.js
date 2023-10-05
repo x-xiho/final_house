@@ -28,8 +28,20 @@ function Page2() {
 
     if (selectedOptions.length > 0) {
       localStorage.setItem('hobby', JSON.stringify(selectedOptions));
-      
 
+      const hobbyList = JSON.parse(localStorage.getItem('heartList')) || [];
+
+      axios.post('http://localhost:4000/save/UserInfo', { hobbyList })
+      .then((response) => {
+        console.log(response.data);
+      })
+
+      .catch((error) => {
+        console.error(error);
+      });
+
+
+      // 운동을 선택했다면 page3로, 선택하지 않았다면 pageEnd로 이동
       if (selectedOptions.includes('운동')) {
         navigate('/myhome/page3');
       }
@@ -41,13 +53,15 @@ function Page2() {
   }
 
   return (
-    <div>
+    <div className='page1-container'>
       <div className='page1-text'>
         <div className='page1-num'>Q.02</div>
         <div className='page1-qurry'>평소 나의 취미는?</div>
       </div>
 
-      <form onSubmit={handleSubmit}>
+
+      <form onSubmit={handleSubmit} className='page1-form'>
+        <div className='page-checkStyle'>
         <label>
           <input type="checkbox"
             name="hobby"
@@ -83,14 +97,15 @@ function Page2() {
             checked={selectedOptions.includes('산책')} />
           산책
         </label>
+        </div>
 
-        {/* <Link to="/myhome/page3"> */}
+        <div className='Nextbtn'>
         <button type='submit'
           disabled={selectedOptions.length === 0}
           className='page2-btn'>
           다음
         </button>
-        {/* </Link> */}
+        </div>
       </form>
     </div>
   )

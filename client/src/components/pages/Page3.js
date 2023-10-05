@@ -34,13 +34,14 @@ function Page3() {
   }
 
   return (
-    <div>
+    <div className='page1-container'>
       <div className='page1-text'>
         <div className='page1-num'>Q.02-1</div>
-        <div className='page1-qurry'>내가 가장 많이 하는 운동은?</div>
+        <div className='page1-qurry'>'운동' 중에 내가 가장 좋아하는 종목은?</div>
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='page1-form'>
+        <div className='page-checkStyle'>
         <label>
           <input type="checkbox"
             name="sports"
@@ -76,13 +77,15 @@ function Page3() {
             checked={selectedOptions.includes('산책')} />
           산책
         </label>
+        </div>
 
-      
+      <div  className='Nextbtn'>
           <button type='submit'
             disabled={selectedOptions.length === 0}
             className='Page3-btn'>
             다음
           </button>
+          </div>
       </form>
     </div>
   )

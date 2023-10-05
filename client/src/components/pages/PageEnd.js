@@ -25,6 +25,7 @@ function PageEnd() {
 
   const [heartClicked, setHeartClicked] = useState(false);
 
+
   // 1등 지역 관심 목록
   const handleHeart1 = (area) => {
     setHeartClicked1(!heartClicked1);
@@ -85,6 +86,7 @@ function PageEnd() {
       .then(response => {
         setData(response.data);
         setGet(!get);
+        console.log('1')
       })
 
       .catch(error => {
@@ -104,14 +106,21 @@ function PageEnd() {
 
   ////////////////////////////////////////////////////////////////////////////
 
+
+  //백엔드에 관심목록 보내기
   const saveHeartListToBackend = () => {
     const heartList = JSON.parse(localStorage.getItem('heartList')) || [];
+
     axios.post('http://localhost:4000/saveHeartList', { heartList })
       .then(response => {
         console.log('데이터를 서버에 전송했습니다.', response);
         localStorage.removeItem('heartList');
+        localStorage.removeItem('gender');
+        localStorage.removeItem('hobby');
+        localStorage.removeItem('sports');
         alert('데이터 저장성공')
       })
+
       .catch(error => {
         console.error(' list데이터를 서버에 전송하는 중 오류가 발생했습니다.', error);
       });

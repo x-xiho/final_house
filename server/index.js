@@ -1,4 +1,3 @@
-
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -31,10 +30,10 @@ app.get('/deliver/UserInfo', function (req, res) {
 });
 
 
-// 프론트에서 보낸유저 데이터 백엔드에 저장
+// 프론트에서 보낸 유저 데이터 백엔드에 저장
 app.post('/save/UserInfo', function (req, res) {
-  const { gender } = req.body;
-  const newUserInfo = { gender };
+  const { gender, hobby, sports } = req.body;
+  const newUserInfo = { gender, hobby, sports };
   
   UserInfo.push(newUserInfo);
   console.log('새로운 데이터가 추가되었습니다:', newUserInfo); // 콘솔에 데이터 출력
@@ -59,10 +58,11 @@ app.post('/saveHeartList', (req, res) => {
 });
 
 
-// app.get('/getBackendHeartList', (req, res) => {
-//   // 백엔드에 저장된 heartList를 클라이언트에 전송합니다.
-//   res.send({ backendHeartList });
-// });
+// 백엔드에 저장된 heartList를 클라이언트에 전송
+app.get('/deliver/heartList', (req, res) => {
+  res.send({ backendHeartList });
+  console.log('데이터전송')
+});
 
 
 app.listen(4000, () => console.log('켜졌다!'))
