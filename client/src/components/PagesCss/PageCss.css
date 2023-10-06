@@ -4,7 +4,8 @@ li {
 
 
 .slick-slider {
-  margin: 0px 30px;
+  margin: 0px 0px;
+  padding: 0px 100px 0px 100px;
 }
 
 
@@ -12,61 +13,119 @@ li {
 
 .Card-container {
   /* border: 1px solid pink; */
-  width: 200px;
+  width: 220px;
+  box-sizing: border-box;
+
+  position: relative;
+
+  transition: background-color 0.5s;
+  transition: color 0.6s;
 
 }
 
-.Card-container:hover{
+
+
+.Card-container:hover {
   background-color: black;
-  color:white;
+  color: white;
+
 }
+
+
+
+.Card-container:hover .Card-hash {
+  color: white;
+}
+
+.Card-container:hover .Card-hr {
+  border-color: white;
+}
+
+.Card-container:hover .Card-img {
+  display: block;
+}
+
 
 .Card-title {
-  font-size: 22px;
+  font-size: 18px;
+margin-left: auto;
+  
 }
 
 .Card-region {
-  font-size: 34px;
-}
-
-.Card-hr {
-  margin: 0;
-
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .Card-hash {
   color: gray;
+  transition: color 0.2s;
 }
+
+.Card-hr {
+  border: 1px solid black;
+  width: 100vw;
+  transition: border-color 0.6s;
+}
+
+
+/* 카드에 이미지 넣을때 사용하려고 했는데 안 예쁜듯
+.Card-img{
+  position: absolute;
+  margin: 0px;
+
+  transform: translate(0px, -200px);
+  width:220px;
+  z-index: -1;
+}
+
+.Card-img-hover {
+  width: 220px;
+  height: 500px;
+  object-fit: cover;
+  padding: 10px;
+  filter: grayscale(80%);
+} */
+
+
 
 /* carousel Css */
 
-.carousel-btn{
+.carousel-btn {
+  display: flex;
+  justify-content: center;
+
 }
 
 .C-button {
   /* border: 1px solid black; */
   background-color: transparent;
   border: none;
-
-}
-.carousel-wrap{
-
+  margin: 0px 5px;
+  cursor: pointer;
 }
 
-.carousel-slider{
-  border: 1px solid black;
+.carousel-wrap {
+  width: 100vw;
+  /* background-color: red; */
+
+}
+
+.carousel-slider {
+  /* border: 1px solid black; */
   display: flex;
+  margin: 14px 0px;
   /* margin-left: 50px; */
 }
 
 
 /* Page 공통 */
 
-.page1-qurry{
-font-weight: bold;
+.page1-qurry {
+  font-weight: bold;
 }
 
-.Nextbtn{
+.Nextbtn {
   text-align: center;
 }
 
@@ -75,22 +134,23 @@ input[type="radio"] {
 }
 
 
-.radioStyle span{
+.radioStyle span {
   text-align: center;
-  height:40px;
-  width:100px;
+  height: 40px;
+  width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border:1px solid #dcdcdc;
+  border: 1px solid #dcdcdc;
   box-sizing: border-box;
 }
 
-.radioStyle [type="radio"]:checked + span{
+.radioStyle [type="radio"]:checked+span {
   /* border:3px solid #A7B5A8; */
-  color:white;
+  color: white;
   background-color: #A7B5A8;
-  font-weight: 700;}
+  font-weight: 700;
+}
 
 
 
@@ -98,7 +158,7 @@ input[type="radio"] {
 /* Page1 Css */
 
 
-.page1-container{
+.page1-container {
   height: calc(100vh - 53.6px);
 
   border: 1px solid red;
@@ -109,25 +169,25 @@ input[type="radio"] {
   justify-content: center;
 }
 
-.page1-qurry{
+.page1-qurry {
   margin-top: 5px;
 }
 
-.page1-form{
+.page1-form {
   border: 1px solid black;
   margin-top: 20px;
   width: 500px;
   text-align: center;
 }
 
-.page-radioStyle{
+.page-radioStyle {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
 
-.page1-text{
+.page1-text {
   border: 1px solid black;
   text-align: center;
 }
@@ -180,7 +240,7 @@ input[type="radio"] {
   margin: 10px 40px;
   padding: 10px 10px;
 
-background-color: #ECEBE7;
+  background-color: #ECEBE7;
 
   font-size: 22px;
   font-weight: bold;
@@ -198,7 +258,7 @@ background-color: #ECEBE7;
 }
 
 
-.End-powerbi{
+.End-powerbi {
   font-size: 48px;
   margin-right: 50px;
 }

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import KakaoLogin from 'react-kakao-login';
 import './Login.css'
+
 import Logo from './images/logo.png'
+import window from './images/circle.png'
 
 function Login(props) {
   const [userInfo, setUserInfo] = useState(null);
@@ -57,7 +59,7 @@ function Login(props) {
   <div className='Login-middle'>
 
   <div>
-  <img className='Login-middle-logo' src={Logo} alt="로고"/>
+  <img className='Login-middle-logo' src={window} alt="로고"/>
 </div>
 
 <div className='Login-middle-click'>한 번의 클릭으로 간편하게 로그인</div>

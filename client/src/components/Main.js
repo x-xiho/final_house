@@ -11,10 +11,11 @@ function Main() {
 <div className='Main-container'>
   
 <div className='Main-top-wrap'>
-
+<div className='Main-circle-mini'></div>
+  
   <div className='Main-text'>
-<div>나를위한</div>
-<div>주거지역</div>
+<div className='Main-text=logo'>나를위한</div>
+<div className='Main-text=logo'>주거지역</div>
 
 <div className='Main-button'>
 <Link to="/myhome">바로가기</Link>
@@ -22,12 +23,9 @@ function Main() {
 </div>
 
 
-
-<div className='Main-circle'></div>
-
-
 <div>
-<img src={greenLamp} alt="초록색조명사진" style={{display:"flex", width:"600px",height: "350px",objectFit:"cover",justifyContent:"end"}}/>
+<div className='Main-circle'></div>
+<img src={greenLamp} alt="초록색조명사진" style={{display:"flex", width:"600px",height: "350px",objectFit:"cover",justifyContent:"end", transform: "translatex(50px)"}}/>
 </div>
 
 </div>

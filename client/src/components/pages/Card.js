@@ -4,6 +4,7 @@ import '../PagesCss/PageCss.css'
 function Card(props) {
   return (
     <div className='Card-container'>
+      
       <div className='Card-title'>
         {props.title}
       </div>
@@ -12,12 +13,12 @@ function Card(props) {
         {props.region}
       </div>
 
-      <hr style={{border: "1.5px solid black"}}className='Card-hr'/>
+      <hr className='Card-hr' />
 
       <div className='Card-hash'>
         {props.hash}
       </div>
-      
+
     </div>
   )
 }

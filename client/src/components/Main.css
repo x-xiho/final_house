@@ -5,6 +5,7 @@
   flex-direction: column;
   /* border: 1px solid red; */
   justify-content: space-between;
+  overflow: hidden;
 }
 
 
@@ -20,6 +21,13 @@
   
 }
 
+@media screen and (max-width: 768px) {
+  .Main-text {
+    font-size: 20px;
+  }
+}
+
+
 .Main-button {
   font-size: 18px;
   font-weight: normal;
@@ -31,24 +39,39 @@
 }
 
 .Main-top-wrap {
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  flex-basis: 300px;
+  flex-basis: 350px;
 
   position: relative;
 
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
+.Main-circle-mini{
+  position: absolute;
+  
+  background-color: #A7B5A8;
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+
+  transform: translate(-70px, 135px);
+
+  z-index: -1;
+}
 
 .Main-circle {
+  box-sizing: border-box;
   position: absolute;
   border: 1px solid gray;
   border-radius: 50%;
-  width: 351.6px;
+  width: 350px;
   height: 350px;
 
-  transform: translateX(770px);
+  z-index: 100;
+  transform: translateX(-120px);
   /* 원의 위치 조정 */
 }
 
@@ -61,6 +84,4 @@
 
 .Main-card {
   /* border: 1px solid red; */
-  height: 160px;
-
 }
