@@ -16,13 +16,13 @@ function Carousel() {
   var settings = {
     dots: false,
     infinite: true,
-    speed: 800,
+    speed: 900,
     arrows: false,
     slidesToShow: 4,
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: true,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 4000,
     pauseOnHover : true,
     responsive: [
       {

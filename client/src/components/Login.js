@@ -53,13 +53,14 @@ function Login(props) {
 <hr className='Login-top-hr'/>
 <div className='Login-top-text'>오직 나를 위한 주거지역</div>
   </div>
-  <hr style={{width:"99vw"}}/>
+  <hr style={{width:"98vw"}}/>
 
 
   <div className='Login-middle'>
 
   <div>
   <img className='Login-middle-logo' src={window} alt="로고"/>
+  <div className='Login-middle-circle'>d</div>
 </div>
 
 <div className='Login-middle-click'>한 번의 클릭으로 간편하게 로그인</div>
@@ -75,7 +76,7 @@ function Login(props) {
 </div>
 
   <div className='Login-bottom'>
-  <hr style={{width:"99vw"}}/>
+  <hr style={{width:"98vw"}}/>
 
   </div>
 </div>
