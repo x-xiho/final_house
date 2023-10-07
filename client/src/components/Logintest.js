@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import KakaoLogin from 'react-kakao-login';
 import './Login.css'
 
-import Logo from './images/logo.png';
-import window from './images/circle.png';
-
-import logo from './images/200pxLogo.png';
-import circle from './images/circle.png';
-
+import Logo from './images/logo.png'
+import window from './images/circle.png'
 
 function Login(props) {
   const [userInfo, setUserInfo] = useState(null);
@@ -50,47 +46,69 @@ function Login(props) {
       console.error('Kakao login failure:', error);
     };
 
-
-
-
-
   return (
-    <div className='Login-container'>
+<div className='Login-container'>
+  <div className='Login-top'>
+<div className='Login-top-circle'>로그인</div>
+<hr className='Login-top-hr'/>
+<div className='Login-top-text'>오직 나를 위한 주거지역</div>
+  </div>
+  <hr style={{width:"98vw"}}/>
 
-<div className='Login-arch'>
 
-<Link to='/' className='Login-link'>
-<img src={logo} alt="로고" className='Login-logo'/>
-</Link>
+  <div className='Login-middle'>
 
-<hr className='Login-hr1'/>
-
-<div className='Login-circle'>
-<div className='Login-circle-side'>
-<img src={circle} alt="창문사진" className='Login-circle-img'/>
-</div>
-</div>
-
-<div className='Login-text'>
-<hr className='Login-text-hr'/>
-<div className='Login-main-text'>나를 위한 주거지역</div>
-<hr className='Login-text-hr'/>
-<div className='Login-side-text'>한 번의 클릭으로 간편하게 로그인</div>
+  <div>
+  <img className='Login-middle-logo' src={window} alt="로고"/>
+  <div className='Login-middle-circle'>d</div>
 </div>
 
-{/* 로그인 버튼 */}
-  <div className='Login-kakao'>
+<div className='Login-middle-click'>한 번의 클릭으로 간편하게 로그인</div>
+
+  <div className='kakaoLoginButton'>
     <KakaoLogin
       token={kakaoClientId}
       onSuccess={kakaoOnSuccess}
       onFail={kakaoOnFailure}
     />
   </div>
+  
+</div>
+
+  <div className='Login-bottom'>
+  <hr style={{width:"98vw"}}/>
 
   </div>
-  </div>
-
+</div>
   )
 }
 
 export default Login
+
+
+
+// <div id={props.id}>
+// <div className='login-container'>
+// <div className='login-wrapper'>
+
+//   < img src={Logo} alt="로고"
+//   style={{width:"auto", height: "150px", margin:" 30px 20px"}}/>
+
+//   <div className='login-text'> 한 번 클릭으로 간편하게 로그인!</div>
+  
+//   <hr/>
+
+//   <div className='kakaoLoginButton'>
+//     <KakaoLogin
+//       token={kakaoClientId}
+//       onSuccess={kakaoOnSuccess}
+//       onFail={kakaoOnFailure}
+//     />
+//   </div>
+
+// </div>
+
+// </div>
+
+
+// </div>

@@ -1,78 +1,112 @@
 .Login-container {
+  /* background-image: url('./images/whitefoolhouse.jpg');
+  background-size: cover; */
+  /* height: calc(100vh - 53.6px); */
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 
-.Login-top {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* margin-bottom: 80px; */
+.Login-arch {
+  width: 300px;
+  height: 450px;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(1px);
+  border: 1px solid white;
+  border-radius: 50% 50% 0% 0% / 35% 35% 0% 0%;
+box-shadow: 0 5px 15px rgba(0,0,0,1);
+display: flex;
+flex-direction: column;
+position: relative;
+align-items: center;
+
+/* background-color: blue; */
 }
 
-.Login-top-circle {
-  border: 2px solid black;
-  border-radius: 50%;
-  text-align: center;
+.Login-link{
+width: 100px;
+display: flex;
+justify-content: center;
+}
+.Login-logo{
+  width: 50px;
+  position: absolute;
+  top: 25px;
+}
+
+.Login-hr1{
   width: 100px;
-
-  padding: 10px 0px;
-  margin: 8px 0px;
-  margin-top: 50px;
-}
-
-.Login-top-hr {
-  width: 300px;
+  position: absolute;
+  top: 56px;
   border: 1px solid black;
 }
 
-.Login-top-text {
-  font-weight: bold;
-  font-size: 24px;
-}
-
-
-
-/* middle */
-
-.Login-middle {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  width: 300px;
-  height: 300px;
-
-  border: 1px solid black;
-  border-top: none;
-  border-bottom: none;
-
+.Login-circle{
   position: relative;
+  /* background-color: red; */
+
+  top: 80px;
+
+
 }
 
-.Login-middle-logo {
-  width: 200px;
-  margin: 30px 0px;
-}
+.Login-circle-side{
+  width: 170px;
+  height: 170px;
 
-.Login-middle-circle{
   border: 1px solid black;
   border-radius: 100%;
 
-  position: absolute;
-
-  width: 300px;
-  height: 300px;
-/* 
-  transform: translate; */
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
-.Login-middle-click{
-  margin: 10px 0px 30px 0px;
+.Login-circle-img{
+  width: 150px;
+  height: 150px;
+}
+
+.Login-circle-img::after{
+  content:"메인 홈페이지";
+  position: absolute;
+  
+}
+.Login-circle-img:hover{
+   
+}
+
+.Login-text{
+  position: absolute;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Login-main-text{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.Login-side-text{
   font-size: 14px;
-  color: #999999;
+  color: gray;
+
+  margin-top: 10px;
+}
+
+.Login-text-hr{
+  width: 260px;
+  border: 1.5px solid black;
+}
+
+
+.Login-kakao{
+  position: absolute;
+  bottom: 20px;
 }

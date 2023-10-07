@@ -17,16 +17,17 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="login" element={<Login />} />
         <Route path="/" element={<Nav />}>
           <Route path="/" element={<Main />} />
 
           <Route path="myhome" element={<Myhome />}>
             <Route index element={<Page1 />} />
             <Route path="page2" element={<Page2 />} />
-            <Route path="page3" element={<Page3/>} />
-            <Route path="pageEnd" element={<PageEnd/>} />
+            <Route path="page3" element={<Page3 />} />
+            <Route path="pageEnd" element={<PageEnd />} />
           </Route>
-          <Route path="login" element={<Login />} />
+
           <Route path="mypage" element={<Mypage />} />
 
         </Route>
