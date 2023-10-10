@@ -8,21 +8,25 @@ import Myhome from './components/Myhome'
 import Login from './components/Login'
 import Mypage from './components/Mypage'
 
-import Page1 from './components/pages/Page1'
+import PageGender from './components/pages/PageGender'
 import Page2 from './components/pages/Page2'
 import Page3 from './components/pages/Page3'
 import PageEnd from './components/pages/PageEnd'
+import PageAge from './components/pages/PageAge'
+
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="login" element={<Login />} />
-        <Route path="/" element={<Nav />}>
+        
+      <Route path="login" element={<Login />} />
+        <Route element={<Nav />}>
           <Route path="/" element={<Main />} />
 
           <Route path="myhome" element={<Myhome />}>
-            <Route index element={<Page1 />} />
+            <Route index element={<PageGender/>} />
+            <Route path="pageage" element={<PageAge/>} />
             <Route path="page2" element={<Page2 />} />
             <Route path="page3" element={<Page3 />} />
             <Route path="pageEnd" element={<PageEnd />} />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-function Page1() {
+function PageGender() {
   const [selectedOption, setSelectedOption] = useState(null);
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ function Page1() {
 
     if (selectedOption !== null) {
       localStorage.setItem('gender', selectedOption);
-      navigate('page2');
+      navigate('pageage');
     }
 
     axios.post('http://localhost:4000/save/UserInfo', { gender: selectedOption })
@@ -73,4 +73,4 @@ function Page1() {
   )
 }
 
-export default Page1
+export default PageGender

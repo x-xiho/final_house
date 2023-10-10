@@ -9,8 +9,9 @@ import window from './images/circle.png';
 import logo from './images/200pxLogo.png';
 import circle from './images/circle.png';
 
+import { RiKeyLine } from "react-icons/ri"
 
-function Login(props) {
+function Login() {
   const [userInfo, setUserInfo] = useState(null);
   const navigate = useNavigate();
   const kakaoClientId = 'b535697fff731c109ba78a0f414a5d04';
@@ -33,10 +34,9 @@ function Login(props) {
         console.log(userData.properties.nickname);
         localStorage.setItem('유저아이디', userData.id);
         localStorage.setItem('유저이름', userData.properties.nickname);
-  
-        // navigate('/');
-        // navigate(-1)
-        window.location.replace('/')
+
+        // window.location.replace('/')
+        navigate('/');
   
   
   
@@ -69,13 +69,22 @@ function Login(props) {
 <div className='Login-circle-side'>
 <img src={circle} alt="창문사진" className='Login-circle-img'/>
 </div>
+
 </div>
 
+<div className='Login-key'>
+<RiKeyLine className="Login-key-icos" color="gray" rotate="80" size="30"/>
+</div>
+
+
 <div className='Login-text'>
+
+
 <hr className='Login-text-hr'/>
 <div className='Login-main-text'>나를 위한 주거지역</div>
 <hr className='Login-text-hr'/>
 <div className='Login-side-text'>한 번의 클릭으로 간편하게 로그인</div>
+
 </div>
 
 {/* 로그인 버튼 */}
@@ -84,6 +93,7 @@ function Login(props) {
       token={kakaoClientId}
       onSuccess={kakaoOnSuccess}
       onFail={kakaoOnFailure}
+      className='kakao'
     />
   </div>
 
@@ -93,4 +103,4 @@ function Login(props) {
   )
 }
 
-export default Login
+export default Login;

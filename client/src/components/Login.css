@@ -1,7 +1,10 @@
+@import url('https://webfontworld.github.io/gmarket/GmarketSans.css');
+
 .Login-container {
   /* background-image: url('./images/whitefoolhouse.jpg');
   background-size: cover; */
   /* height: calc(100vh - 53.6px); */
+  font-family: 'GmarketSans';
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -71,6 +74,16 @@ justify-content: center;
   height: 150px;
 }
 
+.Login-key{
+rotate: 90deg;
+position: relative;
+}
+
+.Login-key-icons{
+  top: 50px;
+  position: absolute;
+}
+
 .Login-circle-img::after{
   content:"메인 홈페이지";
   position: absolute;
@@ -109,4 +122,5 @@ justify-content: center;
 .Login-kakao{
   position: absolute;
   bottom: 20px;
+  font-family: 'GmarketSans';
 }

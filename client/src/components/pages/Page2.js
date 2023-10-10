@@ -55,7 +55,7 @@ function Page2() {
   return (
     <div className='page1-container'>
       <div className='page1-text'>
-        <div className='page1-num'>Q.02</div>
+        <div className='page1-num'>Q.0n</div>
         <div className='page1-qurry'>평소 나의 취미는?</div>
       </div>
 

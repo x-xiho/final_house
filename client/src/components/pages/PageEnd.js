@@ -4,7 +4,7 @@ import '../PagesCss/PageCss.css'
 import axios from 'axios';
 
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
-
+import Powerbi from './Powerbi';
 
 function PageEnd() {
 
@@ -139,9 +139,9 @@ function PageEnd() {
               <div className="End-recomend-text" key={index}>
 
 
-                {/* 1등 지역 */}
+                
                 <button className='End-recommend-text-1'
-                  onClick={() => setPower('강남구지역 자료')}>
+                  onClick={() => setPower('해당지역자료')}>
                   <div className='End-1'>1위</div>
                   {item.first}
 
@@ -157,8 +157,8 @@ function PageEnd() {
                   <div className='End-1'>2위</div>
                   {item.second}
                   {heartClicked2 ?
-                    <AiFillHeart onClick={() => handleHeart2(item.second)} size="30" />
-                    : <AiOutlineHeart onClick={() => handleHeart2(item.second)} size="30" />}
+                    <AiFillHeart onClick={() => handleHeart2(item.second)} size="30" color="red"/>
+                    : <AiOutlineHeart onClick={() => handleHeart2(item.second)} size="30" color="red"/>}
                 </button>
 
 
@@ -168,20 +168,22 @@ function PageEnd() {
                   <div className='End-1'>3위</div>
                   {item.third}
                   {heartClicked3 ?
-                    <AiFillHeart onClick={() => handleHeart3(item.third)} size="30" />
-                    : <AiOutlineHeart onClick={() => handleHeart3(item.third)} size="30" />}
+                    <AiFillHeart onClick={() => handleHeart3(item.third)} size="30" color="red"/>
+                    : <AiOutlineHeart onClick={() => handleHeart3(item.third)} size="30" color="red"/>}
                 </button>
               </div>
             ))}
           </div>
           : <div><em>데이터를 불러오는데 실패했습니다.</em></div>}
 
-<div>
+{/* <div>
 <button onClick={saveHeartListToBackend}>관심 목록 전송 후 삭제</button>
-</div>
+</div> */}
+
+
 {/* 파워비아이 적용하기 */}
         <div className='End-powerbi'>
-          {power}
+        <Powerbi/>
         </div>
 
       </div>

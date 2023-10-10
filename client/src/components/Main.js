@@ -14,8 +14,8 @@ function Main() {
 <div className='Main-circle-mini'></div>
   
   <div className='Main-text'>
-<div className='Main-text=logo'>나를위한</div>
-<div className='Main-text=logo'>주거지역</div>
+<div className='Main-text-logo'>나를위한</div>
+<div className='Main-text-logo'>주거지역</div>
 
 <div className='Main-button'>
 <Link to="/myhome">바로가기</Link>
