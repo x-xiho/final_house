@@ -13,7 +13,7 @@ import car from '../images/house2.jpg'
 function Carousel() {
   const slider = useRef(null)
 
-  var settings = {
+  const settings = {
     dots: false,
     infinite: true,
     speed: 900,
