@@ -2,20 +2,26 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
 
+import './Mypage.css'
+
 function Mypage() {
 
   const [heartdata, setHeartData] = useState([]);
 
-  useEffect(() => {
-    axios.get('http://localhost:4000/deliver/heartList')
-      .then(response => {
-        setHeartData(response.data.backendHeartList)
-      })
 
-      .catch(error => {
-        console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
-      });
-  }, [])
+  // useEffect(() => {
+  //   axios.get('http://localhost:4000/deliver/heartList')
+  //     .then(response => {
+  //       setHeartData(response.data.backendHeartList)
+  //     })
+
+  //     .catch(error => {
+  //       console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
+  //     });
+  // }, [])
+
+
+
 
   return (
     <div className='mypage-container'>

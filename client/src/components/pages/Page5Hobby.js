@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
-function Page3() {
+
+// 질문5 취미
+function Page5Hobby() {
+  // 사용자의 답변을 저장할 배열
   const [selectedOptions, setSelectedOptions] = useState([]);
   const navigate = useNavigate();
 
+  // 사용자가 체크박스를 선택하면 답변을 selectedOptions 배열에 추가
   const handleCheckboxChange = (e) => {
     const value = e.target.value;
     const isChecked = e.target.checked;
-    console.log(value);
 
     setSelectedOptions(prevOptions => {
       if (isChecked && !prevOptions.includes(value)) {
@@ -26,52 +29,60 @@ function Page3() {
     console.log('ok');
 
     if (selectedOptions.length > 0) {
-      console.log(selectedOptions);
-      console.log('값이 저장되었습니다');
-      localStorage.setItem('sports', JSON.stringify(selectedOptions));
-      navigate('/myhome/pageEnd');
+      localStorage.setItem('hobby', JSON.stringify(selectedOptions));
+
+
+      // 운동을 선택했다면 page3로, 선택하지 않았다면 pageEnd로 이동
+      if (selectedOptions.includes('운동')) {
+        navigate('/myhome/pagesports');
+      }
+      else {
+        navigate('/myhome/pagetendency');
+      }
     }
+
   }
 
   return (
     <div className='page1-container'>
       <div className='page1-text'>
-        <div className='page1-num'>Q.02-1</div>
-        <div className='page1-qurry'>'운동' 중에 내가 가장 좋아하는 종목은?</div>
+        <div className='page1-num'>Q.05</div>
+        <div className='page1-qurry'>평소 나의 취미는?</div>
       </div>
+
 
       <form onSubmit={handleSubmit} className='page1-form'>
         <div className='page-checkStyle'>
         <label>
           <input type="checkbox"
-            name="sports"
-            value="테니스"
+            name="hobby"
+            value="운동"
             onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('테니스')} />
-          테니스
+            checked={selectedOptions.includes('운동')} />
+          운동
         </label>
 
         <label>
           <input type="checkbox"
-            name="sports"
-            value="축구"
+            name="hobby"
+            value="음악"
             onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('축구')} />
-          축구
+            checked={selectedOptions.includes('음악')} />
+          음악
         </label>
 
         <label>
           <input type="checkbox"
-            name="sports"
-            value="볼링"
+            name="hobby"
+            value="미술"
             onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('볼링')} />
-          볼링
+            checked={selectedOptions.includes('미술')} />
+          미술
         </label>
 
         <label>
           <input type="checkbox"
-            name="sports"
+            name="hobby"
             value="산책"
             onChange={handleCheckboxChange}
             checked={selectedOptions.includes('산책')} />
@@ -79,16 +90,29 @@ function Page3() {
         </label>
         </div>
 
-      <div  className='Nextbtn'>
-          <button type='submit'
-            disabled={selectedOptions.length === 0}
-            className='Page3-btn'>
-            다음
-          </button>
-          </div>
+        <div className='Nextbtn'>
+        <button type='submit'
+          disabled={selectedOptions.length === 0}
+          className='page2-btn'>
+          다음
+        </button>
+        </div>
       </form>
     </div>
   )
 }
 
-export default Page3;
+export default Page5Hobby;
+
+
+
+      // const hobbyList = JSON.parse(localStorage.getItem('heartList')) || [];
+
+      // axios.post('http://localhost:4000/save/UserInfo', { hobbyList })
+      // .then((response) => {
+      //   console.log(response.data);
+      // })
+
+      // .catch((error) => {
+      //   console.error(error);
+      // });

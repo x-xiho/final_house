@@ -8,11 +8,17 @@ import Myhome from './components/Myhome'
 import Login from './components/Login'
 import Mypage from './components/Mypage'
 
-import PageGender from './components/pages/PageGender'
-import Page2 from './components/pages/Page2'
-import Page3 from './components/pages/Page3'
+import Page1Sex from './components/pages/Page1Sex'
+import Page2Age from './components/pages/Page2Age'
+import Page3Family from './components/pages/Page3Family'
+import Page4Marry from './components/pages/Page4Marry'
+import Page5Hobby from './components/pages/Page5Hobby'
+import Page6Sports from './components/pages/Page6Sports'
+import Page7Tendency from './components/pages/Page7Tendency'
 import PageEnd from './components/pages/PageEnd'
-import PageAge from './components/pages/PageAge'
+
+
+
 
 
 function App() {
@@ -25,11 +31,14 @@ function App() {
           <Route path="/" element={<Main />} />
 
           <Route path="myhome" element={<Myhome />}>
-            <Route index element={<PageGender/>} />
-            <Route path="pageage" element={<PageAge/>} />
-            <Route path="page2" element={<Page2 />} />
-            <Route path="page3" element={<Page3 />} />
-            <Route path="pageEnd" element={<PageEnd />} />
+            <Route index element={<Page1Sex/>} />
+            <Route path="pageage" element={<Page2Age/>} />
+            <Route path="pagefamily" element={<Page3Family/>} />
+            <Route path="pagemarry" element={<Page4Marry/>} />
+            <Route path="pagehobby" element={<Page5Hobby/>} />
+            <Route path="pagesports" element={<Page6Sports/>} />
+            <Route path="pagetendency" element={<Page7Tendency/>} />
+            <Route path="pageend" element={<PageEnd />} />
           </Route>
 
           <Route path="mypage" element={<Mypage />} />

@@ -18,36 +18,44 @@ const recommendResult = [{
 }]; // 임시 추천결과 저장 배열
 let backendHeartList = []; // 유저의 관심목록 저장
 
+/////////////////////////////////////////
 
 
-
-//// 데이터 이름 고치기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1002
-
-
-// 프론트에서 데이터 달라고하면 백엔드에서 보내줌
+// 프론트에서 유저 데이터 달라고하면 백엔드에서 보내줌
 app.get('/deliver/UserInfo', function (req, res) {
   res.json(UserInfo);
 });
 
 
-// 프론트에서 보낸 유저 데이터 백엔드에 저장
-app.post('/save/UserInfo', function (req, res) {
-  const { gender, hobby, sports } = req.body;
-  const newUserInfo = { gender, hobby, sports };
+
+// 프론트에서 보낸 유저의 설문조사 결과 값
+app.post('/create/userLifiStyle', (req, res) => {
+  const userInfo = req.body; // JSON 데이터 파싱
   
-  UserInfo.push(newUserInfo);
-  console.log('새로운 데이터가 추가되었습니다:', newUserInfo); // 콘솔에 데이터 출력
-  console.log('현재 저장된 데이터:', UserInfo);
-  res.json(newUserInfo);
+  console.log('Received Data:', userInfo);
+
+  // 이후 userInfo 객체를 사용하여 필요한 처리를 할 수 있습니다.
+  const sex = userInfo.sex;
+  const age = userInfo.age;
+  const hobby = userInfo.hobby;
+  const sports = userInfo.sports;
+  const tendency = userInfo.tendency;
+
+  console.log(userInfo.hobby);
+
+  res.send('데이터가 성공적으로 저장되었습니다.');
 });
 
 
-// 설문지 끝내고 보내는 지역 순위 결과
+
+// 지역추천 알로리즘 결과를 프론트에 보내줌
 app.get('/deliver/recommendResult', function (req, res) {
   res.json(recommendResult);
 });
 
-// 프론트에서 보낸 관심목록 데이터 백엔드에 저장
+
+
+// 프론트에서 보낸 관심목록을 데이터 백엔드에 저장
 app.post('/saveHeartList', (req, res) => {
   const heartList = req.body.heartList;
   backendHeartList = heartList;
@@ -61,7 +69,7 @@ app.post('/saveHeartList', (req, res) => {
 // 백엔드에 저장된 heartList를 클라이언트에 전송
 app.get('/deliver/heartList', (req, res) => {
   res.send({ backendHeartList });
-  console.log('데이터전송')
+  console.log('관심목록 데이터전송')
 });
 
 

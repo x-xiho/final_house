@@ -3,13 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import KakaoLogin from 'react-kakao-login';
 import './Login.css'
 
-import Logo from './images/logo.png';
-import window from './images/circle.png';
-
 import logo from './images/200pxLogo.png';
 import circle from './images/circle.png';
 
 import { RiKeyLine } from "react-icons/ri"
+
 
 function Login() {
   const [userInfo, setUserInfo] = useState(null);
@@ -37,8 +35,6 @@ function Login() {
 
         // window.location.replace('/')
         navigate('/');
-  
-  
   
       } catch (error) {
         console.error('Error fetching user data:', error);

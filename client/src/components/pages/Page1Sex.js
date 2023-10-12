@@ -1,37 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 
-function PageGender() {
+
+// 질문1 성별
+function Page1Sex() {
   const [selectedOption, setSelectedOption] = useState(null);
   const navigate = useNavigate();
 
-
-  
   const handleSubmit = (e) => {
     e.preventDefault(); //페이지 새로고침 방지
 
     if (selectedOption !== null) {
-      localStorage.setItem('gender', selectedOption);
+      localStorage.setItem('sex', selectedOption);
       navigate('pageage');
+      // 로컬에 저장하고 연령대 질문으로 이동
     }
-
-    axios.post('http://localhost:4000/save/UserInfo', { gender: selectedOption })
-      .then((response) => {
-        console.log(response.data);
-      })
-
-      .catch((error) => {
-        console.error(error);
-      });
   }
-
-
-
 
   const handleRadioChange = (e) => {
     setSelectedOption(e.target.value);
   }
+
 
   return (
     <div className='page1-container'>
@@ -44,7 +33,7 @@ function PageGender() {
         <div className='page-radioStyle'>
           <label className='radioStyle'>
             <input type="radio"
-              name="gender"
+              name="sex"
               value="남성"
               checked={selectedOption === "남성"}
               onChange={handleRadioChange} />
@@ -53,7 +42,7 @@ function PageGender() {
 
           <label className='radioStyle'>
             <input type="radio"
-              name="gender"
+              name="sex"
               value="여성"
               checked={selectedOption === "여성"}
               onChange={handleRadioChange} />
@@ -73,4 +62,4 @@ function PageGender() {
   )
 }
 
-export default PageGender
+export default Page1Sex;

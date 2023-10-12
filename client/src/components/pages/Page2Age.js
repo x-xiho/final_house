@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 
-function PageAge() {
+
+// 질문2 연령
+function Page2Age() {
   const [selectedOption, setSelectedOption] = useState(null);
   const navigate = useNavigate();
 
+  // 버튼을 누르면 다음 페이지로 이동하고, 값을 로컬스토리지에 저장
   const handleSubmit = (e) => {
     e.preventDefault(); //페이지 새로고침 방지
 
     if (selectedOption !== null) {
       localStorage.setItem('age', selectedOption);
-      navigate('/myhome/page2');
+      navigate('/myhome/pagefamily');
     }
-
-    // axios.post('http://localhost:4000/save/UserInfo', { age : selectedOption })
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
   }
 
 
@@ -90,8 +83,8 @@ function PageAge() {
         <label className='radioStyle'>
           <input type="radio"
             name="age"
-            value="60대"
-            checked={selectedOption === "60대"}
+            value="60대 이상"
+            checked={selectedOption === "60대 이상"}
             onChange={handleRadioChange} />
             <span>60대 이상</span>
         </label>
@@ -112,4 +105,4 @@ function PageAge() {
   )
 }
 
-export default PageAge
+export default Page2Age

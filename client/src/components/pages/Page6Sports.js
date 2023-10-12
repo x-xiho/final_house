@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 
-function Page2() {
+function Page6Sports() {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const navigate = useNavigate();
 
   const handleCheckboxChange = (e) => {
     const value = e.target.value;
     const isChecked = e.target.checked;
-    console.log(value);
 
     setSelectedOptions(prevOptions => {
       if (isChecked && !prevOptions.includes(value)) {
@@ -24,74 +22,52 @@ function Page2() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); // 페이지 새로고침 방지
-    console.log('ok');
 
     if (selectedOptions.length > 0) {
-      localStorage.setItem('hobby', JSON.stringify(selectedOptions));
-
-      const hobbyList = JSON.parse(localStorage.getItem('heartList')) || [];
-
-      axios.post('http://localhost:4000/save/UserInfo', { hobbyList })
-      .then((response) => {
-        console.log(response.data);
-      })
-
-      .catch((error) => {
-        console.error(error);
-      });
-
-
-      // 운동을 선택했다면 page3로, 선택하지 않았다면 pageEnd로 이동
-      if (selectedOptions.includes('운동')) {
-        navigate('/myhome/page3');
-      }
-      else {
-        navigate('/myhome/pageEnd');
-      }
+      localStorage.setItem('sports', JSON.stringify(selectedOptions));
+      navigate('/myhome/pagetendency');
     }
-
   }
 
   return (
     <div className='page1-container'>
       <div className='page1-text'>
-        <div className='page1-num'>Q.0n</div>
-        <div className='page1-qurry'>평소 나의 취미는?</div>
+        <div className='page1-num'>Q.05-2</div>
+        <div className='page1-qurry'>'운동' 중에 내가 가장 좋아하는 종목은?</div>
       </div>
-
 
       <form onSubmit={handleSubmit} className='page1-form'>
         <div className='page-checkStyle'>
         <label>
           <input type="checkbox"
-            name="hobby"
-            value="운동"
+            name="sports"
+            value="테니스"
             onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('운동')} />
-          운동
+            checked={selectedOptions.includes('테니스')} />
+          테니스
         </label>
 
         <label>
           <input type="checkbox"
-            name="hobby"
-            value="음악"
+            name="sports"
+            value="축구"
             onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('음악')} />
-          음악
+            checked={selectedOptions.includes('축구')} />
+          축구
         </label>
 
         <label>
           <input type="checkbox"
-            name="hobby"
-            value="미술"
+            name="sports"
+            value="볼링"
             onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('미술')} />
-          미술
+            checked={selectedOptions.includes('볼링')} />
+          볼링
         </label>
 
         <label>
           <input type="checkbox"
-            name="hobby"
+            name="sports"
             value="산책"
             onChange={handleCheckboxChange}
             checked={selectedOptions.includes('산책')} />
@@ -99,16 +75,16 @@ function Page2() {
         </label>
         </div>
 
-        <div className='Nextbtn'>
-        <button type='submit'
-          disabled={selectedOptions.length === 0}
-          className='page2-btn'>
-          다음
-        </button>
-        </div>
+      <div  className='Nextbtn'>
+          <button type='submit'
+            disabled={selectedOptions.length === 0}
+            className='Page3-btn'>
+            다음
+          </button>
+          </div>
       </form>
     </div>
   )
 }
 
-export default Page2;
+export default Page6Sports;

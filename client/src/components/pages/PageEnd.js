@@ -86,7 +86,7 @@ function PageEnd() {
       .then(response => {
         setData(response.data);
         setGet(!get);
-        console.log('1')
+        console.log(typeof response.data)
       })
 
       .catch(error => {
@@ -115,7 +115,7 @@ function PageEnd() {
       .then(response => {
         console.log('데이터를 서버에 전송했습니다.', response);
         localStorage.removeItem('heartList');
-        localStorage.removeItem('gender');
+        localStorage.removeItem('sex');
         localStorage.removeItem('hobby');
         localStorage.removeItem('sports');
         alert('데이터 저장성공')
