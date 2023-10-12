@@ -25,7 +25,8 @@ function Main() {
 
 <div>
 <div className='Main-circle'></div>
-<img src={greenLamp} alt="초록색조명사진" style={{display:"flex", width:"600px",height: "350px",objectFit:"cover",justifyContent:"end", transform: "translatex(50px)"}}/>
+<img src={greenLamp} alt="초록색조명사진" 
+style={{display:"flex", width:"600px",height: "350px",objectFit:"cover",justifyContent:"end", transform: "translatex(50px)"}}/>
 </div>
 
 </div>

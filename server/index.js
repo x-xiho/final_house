@@ -67,10 +67,10 @@ app.post('/saveHeartList', (req, res) => {
 
 
 // 백엔드에 저장된 heartList를 클라이언트에 전송
-app.get('/deliver/heartList', (req, res) => {
-  res.send({ backendHeartList });
-  console.log('관심목록 데이터전송')
-});
+// app.get('/deliver/heartList', (req, res) => {
+//   res.send({ backendHeartList });
+//   console.log('관심목록 데이터전송')
+// });
 
 
 app.listen(4000, () => console.log('켜졌다!'))

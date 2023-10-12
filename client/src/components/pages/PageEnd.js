@@ -3,8 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import '../PagesCss/PageCss.css'
 import axios from 'axios';
 
+import { PowerBIEmbed } from 'powerbi-client-react';
+import { models } from 'powerbi-client';
+
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
+
 import Powerbi from './Powerbi';
+import Powerbitest from './Powerbitest';
 
 function PageEnd() {
 
@@ -12,10 +17,11 @@ function PageEnd() {
   const [data, setData] = useState([]);
   const [get, setGet] = useState(false);
 
+
   // 로컬스토리지에 관심목록 저장
   const [heartList, setheartList] = useState([]);
 
-  // 예는 지워도 됨
+  // 얘는 지워도 됨
   const [power, setPower] = useState('시각화자료가 들어갈 자리');
 
   //관심목록 하트 클릭
@@ -25,6 +31,41 @@ function PageEnd() {
 
   const [heartClicked, setHeartClicked] = useState(false);
 
+
+  // powerbi 
+  const powerbibtn = async () => {
+    const basicFilter = {
+      $schema: "http://powerbi.com/product/schema#basic",
+      target: {
+        table: "12_04_08_E_CCTV정보_서울_20230710 - 복사본_종로구",
+        hierarchy: "관리기관명",
+        hierarchyLevel: "설치목적구분"
+      },
+      operator: "In",
+      values: ["서울특별시 서대문구청"],
+      filterType: models.FilterType.BasicFilter
+    };
+
+    console.log("실행중 실행중");
+
+    if (window.report) {
+      const pages = await window.report.getPages();
+      const page = pages[0]; // 예를 들어 첫 번째 페이지 사용
+
+      const visuals = await page.getVisuals();
+      const visual = visuals[1]; // 예를 들어 첫 번째 시각적 요소 사용
+      console.log("비주얼 로고 찍음", visual);
+      // console.log("basicFilter 찍음",basicFilter);
+
+      await visual.setSlicerState({
+        filters: [basicFilter]
+      });
+
+    }
+
+
+
+  }
 
   // 1등 지역 관심 목록
   const handleHeart1 = (area) => {
@@ -114,10 +155,10 @@ function PageEnd() {
     axios.post('http://localhost:4000/saveHeartList', { heartList })
       .then(response => {
         console.log('데이터를 서버에 전송했습니다.', response);
-        localStorage.removeItem('heartList');
-        localStorage.removeItem('sex');
-        localStorage.removeItem('hobby');
-        localStorage.removeItem('sports');
+        // localStorage.removeItem('heartList');
+        // localStorage.removeItem('sex');
+        // localStorage.removeItem('hobby');
+        // localStorage.removeItem('sports');
         alert('데이터 저장성공')
       })
 
@@ -139,9 +180,9 @@ function PageEnd() {
               <div className="End-recomend-text" key={index}>
 
 
-                
+
                 <button className='End-recommend-text-1'
-                  onClick={() => setPower('해당지역자료')}>
+                  onClick={() => { powerbibtn() }}>
                   <div className='End-1'>1위</div>
                   {item.first}
 
@@ -157,8 +198,8 @@ function PageEnd() {
                   <div className='End-1'>2위</div>
                   {item.second}
                   {heartClicked2 ?
-                    <AiFillHeart onClick={() => handleHeart2(item.second)} size="30" color="red"/>
-                    : <AiOutlineHeart onClick={() => handleHeart2(item.second)} size="30" color="red"/>}
+                    <AiFillHeart onClick={() => handleHeart2(item.second)} size="30" color="red" />
+                    : <AiOutlineHeart onClick={() => handleHeart2(item.second)} size="30" color="red" />}
                 </button>
 
 
@@ -168,22 +209,22 @@ function PageEnd() {
                   <div className='End-1'>3위</div>
                   {item.third}
                   {heartClicked3 ?
-                    <AiFillHeart onClick={() => handleHeart3(item.third)} size="30" color="red"/>
-                    : <AiOutlineHeart onClick={() => handleHeart3(item.third)} size="30" color="red"/>}
+                    <AiFillHeart onClick={() => handleHeart3(item.third)} size="30" color="red" />
+                    : <AiOutlineHeart onClick={() => handleHeart3(item.third)} size="30" color="red" />}
                 </button>
               </div>
             ))}
           </div>
           : <div><em>데이터를 불러오는데 실패했습니다.</em></div>}
 
-{/* <div>
+        {/* <div>
 <button onClick={saveHeartListToBackend}>관심 목록 전송 후 삭제</button>
 </div> */}
 
 
-{/* 파워비아이 적용하기 */}
+        {/* 파워비아이 적용하기 */}
         <div className='End-powerbi'>
-        <Powerbi/>
+          <Powerbitest />
         </div>
 
       </div>

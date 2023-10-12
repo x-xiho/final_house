@@ -1,0 +1,15 @@
+@import url('https://webfontworld.github.io/gmarket/GmarketSans.css');
+
+.Mypage-container{
+  font-family: 'GmarketSans';
+}
+.Mypage-hr{
+  width: 300px;
+}
+
+.Mypage-account{
+  display: flex;
+  justify-content: center;
+  font-weight: normal;
+}
+

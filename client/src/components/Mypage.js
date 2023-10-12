@@ -4,6 +4,9 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
 
 import './Mypage.css'
 
+import Logo from './images/200pxLogo.png'
+import kakao from './images/kakaobtn.png'
+
 function Mypage() {
 
   const [heartdata, setHeartData] = useState([]);
@@ -24,15 +27,29 @@ function Mypage() {
 
 
   return (
-    <div className='mypage-container'>
+    <div className='Mypage-container'>
+      <img src={Logo} alt="로고" style={{ width: "40px" }}></img>
+      <div className='Mypage-wrap'>
+        <hr className='Mypage-hr'/>
+        <hr className='Mypage-hr'/>
 
-      <div className='mypage-'>
-    <div>
-나의 계정 정보 :
-    </div>
-    </div>
+        <div className='Mypage-account'>
+          <div>
+            나의 계정 정보 :
+          </div>
 
-    <div>
+          <div>
+            <img src={kakao} alt="카카오계정" style={{ width: "30px" }}></img>
+          </div>
+        </div>
+
+        <hr className='Mypage-hr'/>
+        <hr className='Mypage-hr'/>
+      </div>
+
+
+
+      <div>
         <h3>나의 관심목록</h3>
         {heartdata.length > 0 ? (
           heartdata.map((item, index) => (
