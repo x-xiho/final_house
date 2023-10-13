@@ -23,6 +23,9 @@ function Page7Tendency() {
       const sports = localStorage.getItem('sports');
       const tendency = localStorage.getItem('tendency');
 
+
+
+
       // 유저데이터를 한 번에 정리
       const userInfo = {
         sex: sex,

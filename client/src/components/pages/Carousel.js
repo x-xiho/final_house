@@ -60,16 +60,16 @@ function Carousel() {
       <div className='carousel-wrap'>
         <Slider ref={slider} {...settings} className='carousel-slider'>
           <div>
-            <Card title="교통" region="서울 강북구" hash="#출근 #지하철 #여행" />
+            <Card title="교통 1위" region="서울 강북구" hash="#출근 #지하철 #여행" />
             </div>
           <div>
-            <Card title="환경" region="서울 도봉구" hash="#쉼 #산책" />
+            <Card title="환경 1위" region="서울 도봉구" hash="#쉼 #산책" />
           </div>
           <div>
-            <Card title="안전" region="서울 중구" hash="#안심 #여성 #1인가구" />
+            <Card title="안전 1위" region="서울 중구" hash="#안심 #여성 #1인가구" />
           </div>
           <div>
-            <Card title="문화" region="서울 종로구" hash="#전시 #관람" />
+            <Card title="문화 1위" region="서울 종로구" hash="#전시 #관람" />
           </div>
           <div>
             <Card title="1" region="서울 강북구" hash="#출근 #지하철 #여행" />

@@ -18,9 +18,6 @@ import Page7Tendency from './components/pages/Page7Tendency'
 import PageEnd from './components/pages/PageEnd'
 
 
-
-
-
 function App() {
   return (
     <BrowserRouter>

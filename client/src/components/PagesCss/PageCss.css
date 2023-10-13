@@ -256,31 +256,46 @@ input[type="radio"] {
   margin: 0px 40px;
 }
 
-.End-recommend-text-1 {
+.End-recommend-btn {
   display: flex;
   border: 1px solid black;
-  width: 200px;
-  justify-content: space-around;
+  width: 300px;
+  justify-content: space-between;
   margin: 10px 40px;
-  padding: 10px 10px;
+  padding: 10px 5px;
 
   background-color: #ECEBE7;
 
   font-size: 22px;
   font-weight: bold;
-
 }
 
-.End-recommend-text-1:hover {
+.End-recommend-btn:hover {
   background-color: #A7B5A8;
 }
 
-.End-1 {
+.End-text-btn{
+  display: flex;
+  justify-content: space-between;
+
+  width: 250px;
+}
+
+.End-rank {
   color: gray;
   font-weight: normal;
+  font-size: 18px;
   margin: 0px 10px;
 }
 
+.End-first{
+  font-size:18px;
+}
+
+/* .End-heart{
+  flex: none;
+  margin: 0px 3px;
+} */
 
 .End-powerbi {
   font-size: 48px;

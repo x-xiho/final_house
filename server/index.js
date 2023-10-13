@@ -12,11 +12,12 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 
 const UserInfo = []; // 유저데이터 임시 저장 배열
 const recommendResult = [{
-  first : "강남구",
-  second : "중구",
-  third : "노원구",
+  first : "서울특별시 강남구청",
+  second : "서울특별시 서대문구청",
+  third : "서울특별시 종로구청",
 }]; // 임시 추천결과 저장 배열
-let backendHeartList = []; // 유저의 관심목록 저장
+
+const backendHeartList = []; // 유저의 관심목록 저장
 
 /////////////////////////////////////////
 
@@ -34,7 +35,6 @@ app.post('/create/userLifiStyle', (req, res) => {
   
   console.log('Received Data:', userInfo);
 
-  // 이후 userInfo 객체를 사용하여 필요한 처리를 할 수 있습니다.
   const sex = userInfo.sex;
   const age = userInfo.age;
   const hobby = userInfo.hobby;
@@ -54,7 +54,6 @@ app.get('/deliver/recommendResult', function (req, res) {
 });
 
 
-
 // 프론트에서 보낸 관심목록을 데이터 백엔드에 저장
 app.post('/saveHeartList', (req, res) => {
   const heartList = req.body.heartList;
@@ -67,10 +66,10 @@ app.post('/saveHeartList', (req, res) => {
 
 
 // 백엔드에 저장된 heartList를 클라이언트에 전송
-// app.get('/deliver/heartList', (req, res) => {
-//   res.send({ backendHeartList });
-//   console.log('관심목록 데이터전송')
-// });
+app.get('/deliver/heartList', (req, res) => {
+  res.send({ backendHeartList });
+  console.log('관심목록 데이터전송')
+});
 
 
 app.listen(4000, () => console.log('켜졌다!'))
