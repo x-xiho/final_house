@@ -58,6 +58,14 @@
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
+
+/* @media screen and (max-height: 768px) {
+  .Main-top-wrap {
+    height: 30vh;
+  }
+} */
+
+
 .Main-circle-mini{
   position: absolute;
   

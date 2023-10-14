@@ -27,17 +27,17 @@ function Mypage() {
 
   return (
     <div className='Mypage-container'>
-      <img src={Logo} alt="로고" style={{ width: "40px" }}></img>
+      <img src={Logo} alt="로고" className="Mypage-img" style={{ width: "40px" }}></img>
       <div className='Mypage-wrap'>
         <hr className='Mypage-hr'/>
         <hr className='Mypage-hr'/>
 
         <div className='Mypage-account'>
-          <div>
+          <div className='Mypage-account-text'>
             나의 계정 정보 :
           </div>
 
-          <div>
+          <div className='Mypage-account-text'>
             <img src={kakao} alt="카카오계정" style={{ width: "30px" }}></img>
           </div>
         </div>

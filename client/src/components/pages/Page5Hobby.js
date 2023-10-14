@@ -48,6 +48,7 @@ function Page5Hobby() {
       <div className='page1-text'>
         <div className='page1-num'>Q.05</div>
         <div className='page1-qurry'>평소 나의 취미는?</div>
+        <div>( 복수선택 가능 )</div>
       </div>
 
 
@@ -93,7 +94,7 @@ function Page5Hobby() {
         <div className='Nextbtn'>
         <button type='submit'
           disabled={selectedOptions.length === 0}
-          className='page2-btn'>
+          className='page1-btn'>
           다음
         </button>
         </div>

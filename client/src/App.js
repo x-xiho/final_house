@@ -16,6 +16,7 @@ import Page5Hobby from './components/pages/Page5Hobby'
 import Page6Sports from './components/pages/Page6Sports'
 import Page7Tendency from './components/pages/Page7Tendency'
 import PageEnd from './components/pages/PageEnd'
+import PageStart from './components/pages/PageStart'
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
           <Route path="/" element={<Main />} />
 
           <Route path="myhome" element={<Myhome />}>
-            <Route index element={<Page1Sex/>} />
+          <Route index element={<PageStart/>} />
+            <Route path="pagesex" element={<Page1Sex/>} />
             <Route path="pageage" element={<Page2Age/>} />
             <Route path="pagefamily" element={<Page3Family/>} />
             <Route path="pagemarry" element={<Page4Marry/>} />

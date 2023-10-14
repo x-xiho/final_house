@@ -50,8 +50,8 @@ li {
 
 .Card-title {
   font-size: 18px;
-margin-left: auto;
-  
+  margin-left: auto;
+
 }
 
 .Card-region {
@@ -127,9 +127,55 @@ margin-left: auto;
   font-weight: bold;
 }
 
+/* 맞춤지역 추천페이지 버튼 css */
+
 .Nextbtn {
   text-align: center;
+  margin-top: 12px;
 }
+
+.pagestart-btn{
+  font-family: 'GmarketSans';
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #dcdcdc;
+  width: 100px;
+  height: 30px;
+
+  transition: background-color 0.5s;
+}
+
+.pagestart-btn:hover{
+  background-color: #A7B5A8;
+  color: white;
+}
+
+
+
+.page1-btn{
+  font-family: 'GmarketSans';
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #dcdcdc;
+  border: 1px solid #dcdcdc;
+  color: black;
+  width: 100px;
+  height: 30px;
+}
+
+
+
+.page1-btn:disabled{
+  background-color: transparent;
+  color:#dcdcdc;
+  /* color: white; */
+}
+
+
+/* ////////////////// */
 
 input[type="radio"] {
   display: none;
@@ -155,7 +201,20 @@ input[type="radio"] {
 }
 
 
+/* PageStart Css */
+.pageStart-container {
+  height: calc(100vh - 67px);
+  font-family: 'GmarketSans';
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageStart-text {
+  text-align: center;
+}
 
 /* Page1 Css */
 
@@ -183,7 +242,7 @@ input[type="radio"] {
   text-align: center;
   /* border: 1px solid #dcdcdc; */
 
-  
+
 }
 
 .page-radioStyle {
@@ -195,12 +254,12 @@ input[type="radio"] {
 
 }
 
-.page1-form span{
+.page1-form span {
   width: 150px;
   height: 50px;
 }
 
-.radioStyle{
+.radioStyle {
   margin: 0px 10px 10px 10px;
 }
 
@@ -209,7 +268,7 @@ input[type="radio"] {
   text-align: center;
 }
 
-.page1-qurry{
+.page1-qurry {
   font-size: 18px;
 }
 
@@ -223,7 +282,7 @@ input[type="radio"] {
 
 /* Page2 Css */
 
-.page-checkStyle{
+.page-checkStyle {
   margin-bottom: 16px;
 }
 
@@ -274,7 +333,7 @@ input[type="radio"] {
   background-color: #A7B5A8;
 }
 
-.End-text-btn{
+.End-text-btn {
   display: flex;
   justify-content: space-between;
 
@@ -288,8 +347,8 @@ input[type="radio"] {
   margin: 0px 10px;
 }
 
-.End-first{
-  font-size:18px;
+.End-first {
+  font-size: 18px;
 }
 
 /* .End-heart{
@@ -305,7 +364,7 @@ input[type="radio"] {
 
 
 /* Powerbi CSs */
-.embededReport{
+.embededReport {
   margin: 0px;
   height: 80vh;
   width: 60vw;

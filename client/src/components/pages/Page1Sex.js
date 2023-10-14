@@ -12,7 +12,7 @@ function Page1Sex() {
 
     if (selectedOption !== null) {
       localStorage.setItem('sex', selectedOption);
-      navigate('pageage');
+      navigate('/myhome/pageage');
       // 로컬에 저장하고 연령대 질문으로 이동
     }
   }
