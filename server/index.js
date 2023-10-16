@@ -12,9 +12,9 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 
 const UserInfo = []; // 유저데이터 임시 저장 배열
 const recommendResult = [{
-  first : "서울특별시 강남구청",
-  second : "서울특별시 서대문구청",
-  third : "서울특별시 종로구청",
+  first : "강남구",
+  second : "서대문구",
+  third : "종로구",
 }]; // 임시 추천결과 저장 배열
 
 const backendHeartList = []; // 유저의 관심목록 저장

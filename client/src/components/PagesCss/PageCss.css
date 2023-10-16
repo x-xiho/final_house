@@ -318,7 +318,7 @@ input[type="radio"] {
 .End-recommend-btn {
   display: flex;
   border: 1px solid black;
-  width: 300px;
+  width: 200px;
   justify-content: space-between;
   margin: 10px 40px;
   padding: 10px 5px;
@@ -335,7 +335,7 @@ input[type="radio"] {
 
 .End-text-btn {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 
   width: 250px;
 }
@@ -351,10 +351,10 @@ input[type="radio"] {
   font-size: 18px;
 }
 
-/* .End-heart{
+.End-heart{
   flex: none;
   margin: 0px 3px;
-} */
+}
 
 .End-powerbi {
   font-size: 48px;

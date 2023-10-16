@@ -7,6 +7,7 @@ import { models } from 'powerbi-client';
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
 
 import Powerbitest from './Powerbitest';
+import PowerBI from './PowerBI';
 
 function PageEnd() {
 
@@ -31,8 +32,8 @@ function PageEnd() {
     const basicFilter = {
       $schema: "http://powerbi.com/product/schema#basic",
       target: {
-        table: "12_04_08_E_CCTV정보_서울_20230710 - 복사본_종로구",
-        column: "관리기관명"
+        table: "도봉구_샘플제작데이터",
+        column: "구분"
       },
       operator: "In",
       values: [`${name}`],
@@ -46,6 +47,9 @@ function PageEnd() {
       const visuals = await page.getVisuals();
       const visual = visuals[1]; // 시각적 객체 요소 선택
 
+
+      // console.log('시각적 객체 요소 선택 ', page)
+      // console.log('비주얼 찍음 ', visual)
       await visual.setSlicerState({
         filters: [basicFilter]
       });
@@ -152,7 +156,7 @@ function PageEnd() {
             <div className="End-recomend-text">
 
               <button className='End-recommend-btn'
-                onClick={() => { powerbibtn(data[0].first) }}>
+                onClick={() => { powerbibtn('CCTV') }}>
                 <div className='End-text-btn'>
                   <div className='End-rank'>1위</div>
                   <div className='End-first'>{data[0].first}</div>
@@ -163,7 +167,7 @@ function PageEnd() {
               </button>
 
               <button className='End-recommend-btn'
-                onClick={() => { powerbibtn(data[0].second) }}>
+                onClick={() => { powerbibtn('경찰서') }}>
                 <div className='End-text-btn'>
                   <div className='End-rank'>2위</div>
                   <div className='End-first'>{data[0].second}</div>
@@ -174,7 +178,7 @@ function PageEnd() {
               </button>
 
               <button className='End-recommend-btn'
-                onClick={() => { powerbibtn(data[0].third) }}>
+                onClick={() => { powerbibtn('따릉이') }}>
                 <div className='End-text-btn'>
                   <div className='End-rank'>3위</div>
                   <div className='End-first'>{data[0].third}</div>
@@ -195,7 +199,8 @@ function PageEnd() {
 
         {/* 파워비아이 적용하기 */}
         <div className='End-powerbi'>
-          <Powerbitest />
+          {/* <Powerbitest /> */}
+          <PowerBI/>
         </div>
 
       </div>
