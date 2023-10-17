@@ -40,6 +40,7 @@ function Hcard() {
 
 export default Hcard
 
+// 예시코드
 {/* <div className="App">
 <Slider {...settings}>
   {dataDigitalBestSeller.map((item) => (
