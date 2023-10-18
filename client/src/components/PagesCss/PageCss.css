@@ -121,6 +121,55 @@ li {
 }
 
 
+
+/* Hcarousel Css */
+
+.H-container{
+  text-align: center;
+}
+
+.H-listName{
+  font-size: 15px;
+  margin: 20px 60px;
+}
+
+.H-wrap-slick{
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+.H-btn{
+  font-family: 'GmarketSans';
+
+  width: 50px;
+  height: 30px;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #dcdcdc;
+}
+
+.H-slider{
+width: 500px;
+border: 1px solid black;
+}
+
+.H-div{
+  border: 1px solid blue;
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  font-size: 18px;
+
+}
+
+
+
+
 /* Page 공통 */
 
 .page1-qurry {

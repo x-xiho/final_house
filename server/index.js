@@ -17,7 +17,8 @@ const recommendResult = [{
   third : "종로구",
 }]; // 임시 추천결과 저장 배열
 
-const backendHeartList = []; // 유저의 관심목록 저장
+const backendHeartList = ['강남구', '도봉구','노원구','중구','서대문구']; // (임시) 유저의 관심목록 저장
+// 배열로 저장해도 되는지? json으로 해야하는지? 
 
 /////////////////////////////////////////
 
@@ -65,10 +66,10 @@ app.post('/saveHeartList', (req, res) => {
 });
 
 
-// 백엔드에 저장된 heartList를 클라이언트에 전송
+// 백엔드에 저장된 heartList를 프론트엔드에 전송
 app.get('/deliver/heartList', (req, res) => {
-  res.send({ backendHeartList });
-  console.log('관심목록 데이터전송')
+  res.send(backendHeartList);
+  console.log('관심지역 목록 데이터전송')
 });
 
 

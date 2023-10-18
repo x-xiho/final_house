@@ -12,19 +12,6 @@ function Mypage() {
 
   const [heartdata, setHeartData] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:4000/deliver/recommendResult')
-  //     .then(response => {
-  //       setHeartData("백엔드로부터 받은 데이터2", response.data);
-  //     })
-
-  //     .catch(error => {
-  //       console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
-  //     });
-  // }, [])
-
-
-
 
   return (
     <div className='Mypage-container'>
@@ -47,8 +34,9 @@ function Mypage() {
         <hr className='Mypage-hr' />
       </div>
 
-      <Hcarousel />
-
+      <div className='Mypage-slick'>
+        <Hcarousel/>
+      </div>
 
     </div>
   )

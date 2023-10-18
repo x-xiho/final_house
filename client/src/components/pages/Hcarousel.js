@@ -1,78 +1,99 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Slider from "react-slick";
 import '../PagesCss/PageCss.css'
+import axios from 'axios';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
+
 function Hcarousel() {
+  // 슬라이더 버튼 연동
+  const slider = useRef(null)
+  // 관심목록 데이터 저장
+  const [heartList, setHeartList] = useState([]);
+  // 슬라이더 개수 관리
+  const divcount = 3;
+
+
+  // 백엔드로부터 관심목록 받아오기
+  useEffect(() => {
+    axios.get('http://localhost:4000/deliver/heartList')
+      .then(response => {
+        setHeartList(response.data)
+        console.log("백엔드로부터 받은 관심목록 리스트", heartList)
+      })
+
+      .catch(error => {
+        console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
+      });
+  }, [])
+
 
   const settings = {
     className: "center",
-    centerMode: true,
+    centerMode: false,
     infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 3,
+    arrows: false,
+    slidesToShow: 2,
     speed: 500,
     rows: 2,
-    slidesPerRow: 2
+    slidesPerRow: 1
   };
-  
+
+  if (divcount < 3) {
+    settings.rows = 1;
+  }
+
+
   return (
-    <div>
-    <h2>Multiple Rows</h2>
-    <Slider {...settings}>
-      <div>
-        <h3>1</h3>
-      </div>
-      <div>
-        <h3>2</h3>
-      </div>
-      <div>
-        <h3>3</h3>
-      </div>
-      <div>
-        <h3>4</h3>
-      </div>
-      <div>
-        <h3>5</h3>
-      </div>
-      <div>
-        <h3>6</h3>
-      </div>
-      <div>
-        <h3>7</h3>
-      </div>
-      <div>
-        <h3>8</h3>
-      </div>
-      <div>
-        <h3>9</h3>
-      </div>
-      <div>
-        <h3>10</h3>
-      </div>
-      <div>
-        <h3>11</h3>
-      </div>
-      <div>
-        <h3>12</h3>
-      </div>
-      <div>
-        <h3>13</h3>
-      </div>
-      <div>
-        <h3>14</h3>
-      </div>
-      <div>
-        <h3>15</h3>
-      </div>
-      <div>
-        <h3>16</h3>
-      </div>
-    </Slider>
-  </div>
+
+    <div className='H-container'>
+      <div className='H-listName'>관심지역 목록들</div>
+      {heartList.length === 0 ? <div className='H-wrap-slick'>관심지역이 없습니다.</div> :
+      
+        <div className='H-wrap-slick'>
+          <button className="H-btn" onClick={() => slider.current.slickPrev()}>이전</button>
+
+          <Slider ref={slider} {...settings} className='H-slider'>
+            {heartList.map((item, index) => (
+              <div className="H-div" key={index}>
+                {item}
+                <br></br>
+                <AiFillHeart color='red'></AiFillHeart>
+              </div>
+            ))}
+          </Slider>
+
+          <button className="H-btn" onClick={() => slider.current.slickNext()}>다음</button>
+        </div>
+      }
+
+
+
+    </div >
   )
 }
 
 export default Hcarousel
+
+
+// {heartList.length === 0 ? <div className='H-wrap-slick'>관심지역이 없습니다.</div> :
+      
+// <div className='H-wrap-slick'>
+//   <button className="H-btn" onClick={() => slider.current.slickPrev()}>이전</button>
+
+//   <Slider ref={slider} {...settings} className='H-slider'>
+//     {heartList.map((item, index) => (
+//       <div className="H-div" key={index}>
+//         {item}
+//         <br></br>
+//         <AiFillHeart color='red'></AiFillHeart>
+//       </div>
+//     ))}
+//   </Slider>
+
+//   <button className="H-btn" onClick={() => slider.current.slickNext()}>다음</button>
+// </div>
+// }
