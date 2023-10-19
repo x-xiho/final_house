@@ -12,13 +12,13 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 
 const UserInfo = []; // 유저데이터 임시 저장 배열
 const recommendResult = [{
-  first : "강남구",
-  second : "서대문구",
-  third : "종로구",
+  first: "강남구",
+  second: "서대문구",
+  third: "종로구",
 }]; // 임시 추천결과 저장 배열
 
-const backendHeartList = ['강남구', '도봉구','노원구','중구','서대문구']; // (임시) 유저의 관심목록 저장
-// 배열로 저장해도 되는지? json으로 해야하는지? 
+const heartList = ['강남구','서대문구','종로구','구1','구2','구3']; // (임시) 유저의 관심목록 저장
+
 
 /////////////////////////////////////////
 
@@ -33,7 +33,7 @@ app.get('/deliver/UserInfo', function (req, res) {
 // 프론트에서 보낸 유저의 설문조사 결과 값
 app.post('/create/userLifiStyle', (req, res) => {
   const userInfo = req.body; // JSON 데이터 파싱
-  
+
   console.log('Received Data:', userInfo);
 
   const sex = userInfo.sex;
@@ -55,8 +55,10 @@ app.get('/deliver/recommendResult', function (req, res) {
 });
 
 
+// 관심목록 관련 코드 //
+
 // 프론트에서 보낸 관심목록을 데이터 백엔드에 저장
-app.post('/saveHeartList', (req, res) => {
+app.put('/saveHeartList', (req, res) => {
   const heartList = req.body.heartList;
   backendHeartList = heartList;
 
@@ -66,10 +68,24 @@ app.post('/saveHeartList', (req, res) => {
 });
 
 
-// 백엔드에 저장된 heartList를 프론트엔드에 전송
-app.get('/deliver/heartList', (req, res) => {
-  res.send(backendHeartList);
+// 백엔드에 저장된 관심목록(heartList) 프론트엔드에 전송
+app.get('/heartList', (req, res) => {
+  res.send(heartList);
   console.log('관심지역 목록 데이터전송')
+});
+
+
+app.put('/heartList', (req, res) => {
+  const addToList = req.body;
+  heartList.push(addToList);
+
+  res.send(`${addToList}를 관심지역에 추가했습니다.`)
+});
+
+app.delete('/heartList', (req, res) => {
+  const deleteToList = req.body;
+  heartList.pop(deleteToList);
+  res.send(`${deleteToList}를 관심지역에서 삭제했습니다.`)
 });
 
 

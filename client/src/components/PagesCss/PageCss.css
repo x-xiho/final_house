@@ -155,11 +155,11 @@ li {
 
 .H-slider{
 width: 500px;
-border: 1px solid black;
+/* border: 1px solid black; */
 }
 
 .H-div{
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   width: 100px;
   height: 50px;
   text-align: center;

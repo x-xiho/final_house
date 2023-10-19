@@ -11,12 +11,15 @@ import PowerBI from './PowerBI';
 
 function PageEnd() {
 
-  // 백엔드에서 받은 데이터 저장
+  // 백엔드에서 받은 추천 지역 데이터 저장
   const [data, setData] = useState([]);
   const [get, setGet] = useState(false);
 
 
-  // 로컬스토리지에 관심목록 저장
+  // 백엔드로부터 관심목록 받아옴
+  const [heartTest, setHeartTest] = useState([]);
+
+
   const [heartList, setheartList] = useState([]);
 
   //관심목록 하트 클릭
@@ -57,7 +60,15 @@ function PageEnd() {
   }
 
   // 1등 지역 관심 목록
+  const deleteHeart = (area) => {
+    axios.delete('http://localhost:4000/heartList', area)
+    console.log('삭제할 지역', area)
+  }
 
+  const putHeart = (area) => {
+    axios.put('http://localhost:4000/heartList', area)
+    console.log('추가할 지역', area)
+  }
 
   // 2등 지역 관심 목록
   const handleHeart2 = (area) => {
@@ -111,34 +122,48 @@ function PageEnd() {
   }, []);
 
 
+  // 백엔드로부터 초기 관심목록 받기
+  useEffect(() => {
+    axios.get('http://localhost:4000/heartList')
+      .then(response => {
+        setHeartTest(response.data)
+        console.log("백엔드로부터 받은 관심목록 리스트", heartList)
+      })
+
+      .catch(error => {
+        console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
+      });
+  }, []);
+
+
   // 로컬스토리지에 저장된 관심목록을 불러옴
   // 수정이 필요함
-  useEffect(() => {
-    const heartList = JSON.parse(localStorage.getItem('heartList')) || [];
+  // useEffect(() => {
+  //   const heartList = JSON.parse(localStorage.getItem('heartList')) || [];
 
-    if (data.length > 0) {
-      const heartStates = data.map(item => heartList.includes(item.first));
-      setHeartClicked(heartStates);
-    }
-  }, [data]);
+  //   if (data.length > 0) {
+  //     const heartStates = data.map(item => heartList.includes(item.first));
+  //     setHeartClicked(heartStates);
+  //   }
+  // }, [data]);
 
   ////////////////////////////////////////////////////////////////////////////
 
 
   //백엔드에 관심목록 보내기
-  const saveHeartListToBackend = () => {
-    const heartList = JSON.parse(localStorage.getItem('heartList')) || [];
+  // const saveHeartListToBackend = () => {
+  //   const heartList = JSON.parse(localStorage.getItem('heartList')) || [];
 
-    axios.post('http://localhost:4000/saveHeartList', { heartList })
-      .then(response => {
-        console.log('데이터를 서버에 전송했습니다.', response);
-        alert('데이터 저장성공')
-      })
+  //   axios.post('http://localhost:4000/saveHeartList', { heartList })
+  //     .then(response => {
+  //       console.log('데이터를 서버에 전송했습니다.', response);
+  //       alert('데이터 저장성공')
+  //     })
 
-      .catch(error => {
-        console.error(' list데이터를 서버에 전송하는 중 오류가 발생했습니다.', error);
-      });
-  }
+  //     .catch(error => {
+  //       console.error(' list데이터를 서버에 전송하는 중 오류가 발생했습니다.', error);
+  //     });
+  // }
 
 
 
@@ -149,6 +174,7 @@ function PageEnd() {
     <div className='End-container'>
       <div className='End-recommend'>
 
+        {/* 백엔드로부터 지역추천결과를 받았으면 true */}
         {get ?
           <div className='End-recommend-result'>
             <div className='End-recommend-result-text'>추천 결과</div>
@@ -157,17 +183,22 @@ function PageEnd() {
 
               <button className='End-recommend-btn'
                 onClick={() => { powerbibtn('CCTV') }}>
+                {/* 함수 속에 들어가는 글자는 추후에 바꾸면 됨 */}
+
                 <div className='End-text-btn'>
                   <div className='End-rank'>1위</div>
                   <div className='End-first'>{data[0].first}</div>
                 </div>
+
                 {heartClicked1 ?
-                  <AiFillHeart  size="30" color="red" className='End-heart' />
-                  : <AiOutlineHeart size="30" color="red" className='End-heart' />}
+                  <AiFillHeart onClick={() => deleteHeart(data[0].first)} size="30" color="red" className='End-heart' />
+                  : <AiOutlineHeart onClick={() => putHeart(data[0].first)} size="30" color="red" className='End-heart' />}
+
               </button>
 
               <button className='End-recommend-btn'
                 onClick={() => { powerbibtn('경찰서') }}>
+
                 <div className='End-text-btn'>
                   <div className='End-rank'>2위</div>
                   <div className='End-first'>{data[0].second}</div>
@@ -189,6 +220,7 @@ function PageEnd() {
               </button>
 
             </div>
+            <div>다시 검사하기</div>
           </div>
 
           : <div><em>데이터를 불러오는데 실패했습니다.</em></div>}
@@ -197,10 +229,11 @@ function PageEnd() {
 
 
 
+
         {/* 파워비아이 적용하기 */}
         <div className='End-powerbi'>
           {/* <Powerbitest /> */}
-          <PowerBI/>
+          <PowerBI />
         </div>
 
       </div>

@@ -14,12 +14,11 @@ function Hcarousel() {
   // 관심목록 데이터 저장
   const [heartList, setHeartList] = useState([]);
   // 슬라이더 개수 관리
-  const divcount = 3;
 
 
-  // 백엔드로부터 관심목록 받아오기
+  // 백엔드로부터 지금까지 저장된 관심목록 받아오기
   useEffect(() => {
-    axios.get('http://localhost:4000/deliver/heartList')
+    axios.get('http://localhost:4000/heartList')
       .then(response => {
         setHeartList(response.data)
         console.log("백엔드로부터 받은 관심목록 리스트", heartList)
@@ -31,6 +30,7 @@ function Hcarousel() {
   }, [])
 
 
+  // 슬라이더 세팅
   const settings = {
     className: "center",
     centerMode: false,
@@ -42,18 +42,34 @@ function Hcarousel() {
     slidesPerRow: 1
   };
 
-  if (divcount < 3) {
-    settings.rows = 1;
-  }
 
 
   return (
 
     <div className='H-container'>
       <div className='H-listName'>관심지역 목록들</div>
-      {heartList.length === 0 ? <div className='H-wrap-slick'>관심지역이 없습니다.</div> :
-      
-        <div className='H-wrap-slick'>
+
+      {heartList.length === 0 && <div className='H-wrap-slick'>관심지역이 없습니다.</div>}
+
+
+      {heartList.length <= 2 && (<div className='H-wrap-slick'>
+        <button className="H-btn" onClick={() => slider.current.slickPrev()}>이전</button>
+
+        <Slider ref={slider} rows={1} slidesToShow={1} {...settings} className='H-slider'>
+          {heartList.map((item, index) => (
+            <div className="H-div" key={index}>
+              {item}
+              <br></br>
+              <AiFillHeart color='red'></AiFillHeart>
+            </div>
+          ))}
+        </Slider>
+
+        <button className="H-btn" onClick={() => slider.current.slickNext()}>다음</button>
+      </div>)}
+
+
+      {heartList.length > 2 && (<div className='H-wrap-slick'>
           <button className="H-btn" onClick={() => slider.current.slickPrev()}>이전</button>
 
           <Slider ref={slider} {...settings} className='H-slider'>
@@ -67,8 +83,7 @@ function Hcarousel() {
           </Slider>
 
           <button className="H-btn" onClick={() => slider.current.slickNext()}>다음</button>
-        </div>
-      }
+        </div>) }
 
 
 
@@ -79,12 +94,13 @@ function Hcarousel() {
 export default Hcarousel
 
 
+
 // {heartList.length === 0 ? <div className='H-wrap-slick'>관심지역이 없습니다.</div> :
-      
+
 // <div className='H-wrap-slick'>
 //   <button className="H-btn" onClick={() => slider.current.slickPrev()}>이전</button>
-
 //   <Slider ref={slider} {...settings} className='H-slider'>
+
 //     {heartList.map((item, index) => (
 //       <div className="H-div" key={index}>
 //         {item}

@@ -72,19 +72,19 @@ function Carousel() {
             <Card title="문화 1위" region="서울 종로구" hash="#전시 #관람" />
           </div>
           <div>
-            <Card title="1" region="서울 강북구" hash="#출근 #지하철 #여행" />
+            <Card title="복지 1위" region="서울 강북구" hash="#출근 #지하철 #여행" />
 
           </div>
           <div>
-            <Card title="2" region="서울 강북구" hash="#출근 #지하철 #여행" />
+            <Card title="운동의 도시" region="서울 강북구" hash="#출근 #지하철 #여행" />
 
           </div>
           <div>
-            <Card title="3" region="서울 강북구" hash="#출근 #지하철 #여행" />
+            <Card title="맛집의 도시" region="서울 강북구" hash="#출근 #지하철 #여행" />
 
           </div>
           <div>
-            <Card title="4" region="서울 강북구" hash="#출근 #지하철 #여행" />
+            <Card title="힐링 도시" region="서울 강북구" hash="#출근 #지하철 #여행" />
 
           </div>
         </Slider>
