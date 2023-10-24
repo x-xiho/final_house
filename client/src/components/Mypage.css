@@ -20,11 +20,26 @@
 
 .Mypage-account{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-weight: normal;
   color: gray;
   
+}
+
+.Mypage-profileImg{
+
+  width: 80px;
+  height: 80px;
+  border: 1px solid gray;
+  border-radius: 100px;
+}
+
+.Mypage-account-wrap{
+display: flex;
+align-items: center;
+
 }
 
 .Mypage-account-text{

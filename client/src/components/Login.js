@@ -16,7 +16,6 @@ function Login() {
 
     // 로그인 성공 시 호출되는 콜백 함수
     const kakaoOnSuccess = async (data) => {
-      // console.log(data);
       const accessToken = data.response.access_token;
   
       // 카카오 API를 사용하여 사용자 정보 가져오기
@@ -29,11 +28,12 @@ function Login() {
         });
         const userData = await response.json();
         setUserInfo(userData);
-        console.log(userData.properties.nickname);
-        localStorage.setItem('유저아이디', userData.id);
+  
+        // console.log("유저의 프로필 사진", userData.properties.profile_image);
         localStorage.setItem('유저이름', userData.properties.nickname);
+        localStorage.setItem('유저 프로필 사진', userData.properties.profile_image);
 
-        // window.location.replace('/')
+        // 로그인 이후 메인홈페이지로 이동
         navigate('/');
   
       } catch (error) {

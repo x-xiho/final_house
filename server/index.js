@@ -17,32 +17,34 @@ const recommendResult = [{
   third: "종로구",
 }]; // 임시 추천결과 저장 배열
 
-const heartList = ['강남구','서대문구','종로구','구1','구2','구3']; // (임시) 유저의 관심목록 저장
+const heartList = ['강남구']; // (임시) 유저의 관심목록 저장
 
 
-/////////////////////////////////////////
+///////////////////////////////////////// 
 
 
 // 프론트에서 유저 데이터 달라고하면 백엔드에서 보내줌
-app.get('/deliver/UserInfo', function (req, res) {
-  res.json(UserInfo);
-});
+// app.get('/users', function (req, res) {
+//   res.json(UserInfo);
+// });
 
 
 
-// 프론트에서 보낸 유저의 설문조사 결과 값
-app.post('/create/userLifiStyle', (req, res) => {
+// 프론트엔드에서 백엔드로 보낸 유저의 정보 
+app.post('/users', (req, res) => {
   const userInfo = req.body; // JSON 데이터 파싱
 
   console.log('Received Data:', userInfo);
 
+  const name = userInfo.name;
   const sex = userInfo.sex;
   const age = userInfo.age;
-  const hobby = userInfo.hobby;
-  const sports = userInfo.sports;
+  const hobby = JSON.stringify(userInfo.hobby);
+  const sports = JSON.stringify(userInfo.sports);
   const tendency = userInfo.tendency;
 
-  console.log(userInfo.hobby);
+  console.log("유저인포의 취미값",userInfo.hobby);
+  console.log("그냥 취미 값",hobby);
 
   res.send('데이터가 성공적으로 저장되었습니다.');
 });
@@ -50,7 +52,7 @@ app.post('/create/userLifiStyle', (req, res) => {
 
 
 // 지역추천 알로리즘 결과를 프론트에 보내줌
-app.get('/deliver/recommendResult', function (req, res) {
+app.get('/users/:name/locations', function (req, res) {
   res.json(recommendResult);
 });
 

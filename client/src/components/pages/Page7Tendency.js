@@ -17,6 +17,7 @@ function Page7Tendency() {
       localStorage.setItem('tendency', selectedOption);
 
       // 로컬에 저장된 값들을 모조리 뽑아옴
+      const name = localStorage.getItem('유저이름');
       const sex = localStorage.getItem('sex');
       const age = localStorage.getItem('age');
       const hobby = localStorage.getItem('hobby');
@@ -28,6 +29,7 @@ function Page7Tendency() {
 
       // 유저데이터를 한 번에 정리
       const userInfo = {
+        name: name,
         sex: sex,
         age: age,
         hobby: hobby,

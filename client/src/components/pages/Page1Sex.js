@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Prompt } from 'react-router-dom'
+import ReactRouterPrompt from "react-router-prompt";
 
 
 // 질문1 성별
 function Page1Sex() {
   const [selectedOption, setSelectedOption] = useState(null);
   const navigate = useNavigate();
+
 
   const handleSubmit = (e) => {
     e.preventDefault(); //페이지 새로고침 방지
@@ -37,7 +39,7 @@ function Page1Sex() {
               value="남성"
               checked={selectedOption === "남성"}
               onChange={handleRadioChange} />
-              <span>남성</span>
+            <span>남성</span>
           </label>
 
           <label className='radioStyle'>
@@ -46,8 +48,9 @@ function Page1Sex() {
               value="여성"
               checked={selectedOption === "여성"}
               onChange={handleRadioChange} />
-              <span>여성</span>
+            <span>여성</span>
           </label>
+
         </div>
 
         <div className='Nextbtn'>
@@ -55,11 +58,29 @@ function Page1Sex() {
             disabled={selectedOption === null}
             className='page1-btn'>
             다음
-            </button>
+          </button>
         </div>
+
+
+
       </form>
+
+
     </div>
   )
 }
 
 export default Page1Sex;
+
+
+{/* <ReactRouterPrompt when={selectedOption} >
+{({ isActive, onConfirm, onCancel }) => isActive && (
+  <div className='page-lightbox'>
+    <div className='page-container'>
+      <p>진짜루 떠나나요?</p>
+      <button onClick={onCancel}>안 떠남</button>
+      <button onClick={onConfirm}>떠나요</button>
+    </div>
+  </div>
+)}
+</ReactRouterPrompt> */}
