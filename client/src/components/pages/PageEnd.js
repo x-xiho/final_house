@@ -109,7 +109,7 @@ function PageEnd() {
 
   //백엔드에서 지역추천 결과 데이터 받아옴 {1 : 지역, 2: 지역, 3: 지역}
   useEffect(() => {
-    axios.get('http://localhost:4000/deliver/recommendResult')
+    axios.get('http://localhost:4000/users/김효정/locations')
       .then(response => {
         setData(response.data);
         // 객체 타입의 데이터

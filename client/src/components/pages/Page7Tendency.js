@@ -41,7 +41,7 @@ function Page7Tendency() {
       console.log("프론트엔드에서 저장된 데이터",userInfo);
 
       // 백엔드에 유저의 답변 전송
-      axios.post('http://localhost:4000/create/userLifiStyle', userInfo)
+      axios.post('http://localhost:4000/api/form', userInfo)
         .then(response => {
           console.log('데이터 전송 성공:', response);
         })
