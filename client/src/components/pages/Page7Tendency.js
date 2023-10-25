@@ -8,8 +8,6 @@ function Page7Tendency() {
   const [selectedOption, setSelectedOption] = useState(null);
   const navigate = useNavigate();
 
-
-  
   const handleSubmit = (e) => {
     e.preventDefault(); //페이지 새로고침 방지
 
@@ -25,8 +23,6 @@ function Page7Tendency() {
       const tendency = localStorage.getItem('tendency');
 
 
-
-
       // 유저데이터를 한 번에 정리
       const userInfo = {
         name: name,
@@ -37,13 +33,10 @@ function Page7Tendency() {
         tendency : tendency
       };
 
-      // const userInfoJSON = JSON.stringify({userInfo});
-      // const userInfoJSON = [userInfo];
-
       console.log("프론트엔드에서 저장된 데이터",userInfo);
 
       // 백엔드에 유저의 답변 전송
-      axios.post('http://localhost:4000/create/userLifiStyle', userInfo)
+      axios.post('http://localhost:4000/users', userInfo)
         .then(response => {
           console.log('데이터 전송 성공:', response);
         })

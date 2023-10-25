@@ -12,7 +12,7 @@ function Mypage() {
 
   const [heartdata, setHeartData] = useState([]);
   const userProfilImage = localStorage.getItem('유저 프로필 사진');
-
+  const userName = localStorage.getItem('유저이름');
 
   return (
     <div className='Mypage-container'>
@@ -24,13 +24,14 @@ function Mypage() {
         <div className='Mypage-account'>
           <img src={userProfilImage} alt="프로필사진" className='Mypage-profileImg'></img>
           <div className='Mypage-account-wrap'>
-          <div className='Mypage-account-text'>
-            나의 계정 정보 :
-          </div>
+            <div className='Mypage-account-text'>
+              나의 계정 정보
+            </div>
 
-          <div className='Mypage-account-text'>
-            <img src={kakao} alt="카카오계정" style={{ width: "30px" }}></img>
-          </div>
+            <div className='Mypage-account-text'>
+              {userName}
+              <img src={kakao} alt="카카오계정" style={{ width: "25px" }}></img>
+            </div>
           </div>
         </div>
 

@@ -29,7 +29,7 @@
 }
 
 .Mypage-profileImg{
-
+margin-top: 12px;
   width: 80px;
   height: 80px;
   border: 1px solid gray;
@@ -37,13 +37,19 @@
 }
 
 .Mypage-account-wrap{
-display: flex;
+/* display: flex; */
 align-items: center;
+margin-top:20px;
+margin-bottom: 12px;
 
 }
 
 .Mypage-account-text{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 0px 8px;
+
 }
 
 .Mypage-slick{
