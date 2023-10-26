@@ -4,17 +4,6 @@ function Hcard() {
 
   const [heartdata, setHeartData] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:4000/deliver/heartList')
-  //     .then(response => {
-  //       setHeartData(response.data.backendHeartList)
-  //     })
-
-  //     .catch(error => {
-  //       console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
-  //     });
-  // }, [])
-
 
   // 백엔드로부터 관심목록 받아서 map으로 뿌리기
   return (

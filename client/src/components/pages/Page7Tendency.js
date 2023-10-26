@@ -66,7 +66,7 @@ function Page7Tendency() {
   return (
     <div className='page1-container'>
       <div className='page1-text'>
-        <div className='page1-num'>Q.07</div>
+        <div className='page1-num'>Q.06</div>
         <div className='page1-qurry'>나의 성향은?</div>
       </div>
 

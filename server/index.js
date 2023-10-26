@@ -101,7 +101,7 @@ app.delete('/users/:name/favorites', (req, res) => {
   loacationData[name].favorites = updatedFavorites;
 
   console.log('프론트엔드로부터 받은 삭제할 관심목록 데이터', areaToDelete);
-  console.log('삭제 후 백엔드에 저장된 관심목록 데이터', loacationData[name].favorites);
+  console.log('삭제 후 백엔드에 남은 관심목록 데이터', loacationData[name].favorites);
   res.send("관심목록을 백엔드로 성공적으로 보냄")
 
 });
