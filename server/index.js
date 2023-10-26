@@ -68,44 +68,50 @@ app.get('/users/:name/locations', function (req, res) {
 
 // 관심목록 관련 코드 //
 
-// /users/:name/favorites
-// 프론트에서 보낸 관심목록을 데이터 백엔드에 저장
+// 프론트에서 보낸 관심목록을 백엔드에 저장
 app.put('/users/:name/favorites', (req, res) => {
   const { name } = req.params;
-  const favorites = req.body.favorites;
-  // loacationData[name].favorites = favorites;
+  const areaToAdd = req.body.favorites;
+  const favorites = loacationData[name].favorites;
 
-  // if (!loacationData[name].favorites) {
-  //   loacationData[name].favorites = []; // favorites가 없다면 빈 배열로 초기화
-  // }
+  if (!favorites.includes(areaToAdd)) {
+    // 중복된 값이 없는 경우에만 추가
+    loacationData[name].favorites.push(areaToAdd);
 
-  loacationData[name].favorites.push(favorites);
+    console.log('프론트엔드로부터 받은 관심목록 데이터', areaToAdd);
+    console.log('백엔드에 저장된 관심목록 데이터', loacationData[name].favorites);
+    res.send("관심목록을 백엔드로 성공적으로 보냄");
+  } else {
+    console.log('이미 중복된 값이 존재합니다.');
+  }
 
-  console.log('프론트엔드로부터 받은 관심목록 데이터', favorites);
-  console.log('백엔드에 저장된 관심목록 데이터', loacationData[name].favorites);
+});
+
+// 프론트에서 보낸 관심목록을 백엔드에서 삭제
+app.delete('/users/:name/favorites', (req, res) => {
+  const { name } = req.params;
+  const areaToDelete = req.body.favorites;
+
+
+  const favorites = loacationData[name].favorites;
+  const updatedFavorites = favorites.filter((item) => item !== areaToDelete);
+
+  console.log("업데이트 콘솔",updatedFavorites)
+
+  loacationData[name].favorites = updatedFavorites;
+
+  console.log('프론트엔드로부터 받은 삭제할 관심목록 데이터', areaToDelete);
+  console.log('삭제 후 백엔드에 저장된 관심목록 데이터', loacationData[name].favorites);
   res.send("관심목록을 백엔드로 성공적으로 보냄")
 
 });
 
 
-// 백엔드에 저장된 관심목록(heartList) 프론트엔드에 전송
-app.get('/heartList', (req, res) => {
-  res.send(heartList);
+// 백엔드에 저장된 관심목록 마이페이지에 전송
+app.get('/favorites/:name', (req, res) => {
+  const { name } = req.params;
+  res.send(loacationData[name].favorites);
   console.log('관심지역 목록 데이터전송')
-});
-
-
-// app.put('/heartList', (req, res) => {
-//   const addToList = req.body;
-//   heartList.push(addToList);
-
-//   res.send(`${addToList}를 관심지역에 추가했습니다.`)
-// });
-
-app.delete('/heartList', (req, res) => {
-  const deleteToList = req.body;
-  heartList.pop(deleteToList);
-  res.send(`${deleteToList}를 관심지역에서 삭제했습니다.`)
 });
 
 

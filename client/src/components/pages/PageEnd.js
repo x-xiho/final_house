@@ -65,13 +65,8 @@ function PageEnd() {
 
     if (area === data.first) {
       axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites : area})
-        .then(response => {
-          console.log('관심목록에 추가할 지역', area)
-          setHeartClicked1(!heartClicked1);
-        })
-      .catch(error => {
-          console.error('관심목록을 저장하는 과정에서 오류가 발생했습니다.', error);
-        });
+      console.log("관심목록에 추가할 지역", area)
+      setHeartClicked1(!heartClicked1);
 
     } else if (area === data.second) {
       axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites : area})
@@ -88,18 +83,37 @@ function PageEnd() {
 
   // 관심목록에서 지역 삭제
   const deleteHeart = (area) => {
-    axios.delete('http://localhost:4000/heartList', area)
 
     if (area === data.first) {
-      console.log('삭제할 지역 first', area)
-      setHeartClicked1(!heartClicked1);
-    } else if (area === data.second) {
-      console.log("삭제할 지역 second", area)
-      setHeartClicked2(!heartClicked2);
-    } else if (area === data.third) {
-      console.log("삭제할 지역 third", area)
-      setHeartClicked3(!heartClicked3);
-    }
+      axios.delete(`http://localhost:4000/users/${userName}/favorites`,{data : { favorites : area}})
+        .then(response => {
+          console.log('관심목록에 삭제할 지역', area)
+          setHeartClicked1(!heartClicked1);
+        })
+      .catch(error => {
+          console.error('관심목록을 삭제하는 과정에서 오류가 발생했습니다.', error);
+        });
+    } 
+    else if (area === data.second) {
+      axios.delete(`http://localhost:4000/users/${userName}/favorites`, {data : { favorites : area}})
+        .then(response => {
+          console.log('관심목록에 삭제할 지역', area)
+          setHeartClicked2(!heartClicked2);
+        })
+      .catch(error => {
+          console.error('관심목록을 삭제하는 과정에서 오류가 발생했습니다.', error);
+        });
+    } 
+    else if (area === data.third) {
+      axios.delete(`http://localhost:4000/users/${userName}/favorites`, {data : { favorites : area}})
+        .then(response => {
+          console.log('관심목록에 삭제할 지역', area)
+          setHeartClicked3(!heartClicked3);
+        })
+      .catch(error => {
+          console.error('관심목록을 삭제하는 과정에서 오류가 발생했습니다.', error);
+        });
+    } 
 
   }
 
@@ -152,25 +166,6 @@ function PageEnd() {
   // }, [data]);
 
   ////////////////////////////////////////////////////////////////////////////
-
-
-  //백엔드에 관심목록 보내기
-  // const saveHeartListToBackend = () => {
-  //   const heartList = JSON.parse(localStorage.getItem('heartList')) || [];
-
-  //   axios.post('http://localhost:4000/saveHeartList', { heartList })
-  //     .then(response => {
-  //       console.log('데이터를 서버에 전송했습니다.', response);
-  //       alert('데이터 저장성공')
-  //     })
-
-  //     .catch(error => {
-  //       console.error(' list데이터를 서버에 전송하는 중 오류가 발생했습니다.', error);
-  //     });
-  // }
-
-
-
 
 
   return (

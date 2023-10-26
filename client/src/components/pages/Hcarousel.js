@@ -14,11 +14,11 @@ function Hcarousel() {
   // 관심목록 데이터 저장
   const [heartList, setHeartList] = useState([]);
   // 슬라이더 개수 관리
-
+  const userName = localStorage.getItem('유저이름');
 
   // 백엔드로부터 지금까지 저장된 관심목록 받아오기
   useEffect(() => {
-    axios.get('http://localhost:4000/heartList')
+    axios.get(`http://localhost:4000/favorites/${userName}`)
       .then(response => {
         setHeartList(response.data)
         console.log("백엔드로부터 받은 관심목록 리스트2", heartList)
@@ -38,7 +38,7 @@ function Hcarousel() {
     arrows: false,
     slidesToShow: 2,
     speed: 500,
-    rows: 2,
+    rows: 1,
     slidesPerRow: 1
   };
 
@@ -49,10 +49,8 @@ function Hcarousel() {
     <div className='H-container'>
       <div className='H-listName'>관심지역 목록들</div>
 
-      {/* {heartList.length === 0 && <div className='H-wrap-slick'>관심지역이 없습니다.</div>} */}
 
-
-      {heartList.length <= 2 && <div className='H-wrap-slick'>
+      {heartList.length === 0?<div className='H-wrap-slick'>관심지역이 없습니다.</div> :  <div className='H-wrap-slick'>
         <button className="H-btn" onClick={() => slider.current.slickPrev()}>이전</button>
 
         <Slider ref={slider} rows={1} slidesToShow={1} {...settings} className='H-slider'>
