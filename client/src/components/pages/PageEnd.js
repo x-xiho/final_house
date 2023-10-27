@@ -8,6 +8,8 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
 
 import PowerBI from './PowerBI';
 
+// pageEnd 살아있나?ㄴ
+
 function PageEnd() {
   // 로컬에 저장된 유저 이름을 변수에 저장
   const userName = localStorage.getItem('유저이름');
