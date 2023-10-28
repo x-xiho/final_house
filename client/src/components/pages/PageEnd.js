@@ -67,17 +67,17 @@ function PageEnd() {
   const putHeart = (area) => {
 
     if (area === data.first) {
-      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites : area})
+      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: area })
       console.log("관심목록에 추가할 지역", area)
       setHeartClicked1(!heartClicked1);
 
     } else if (area === data.second) {
-      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites : area})
+      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: area })
       console.log("관심목록에 추가할 지역", area)
       setHeartClicked2(!heartClicked2);
 
     } else if (area === data.third) {
-      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites : area})
+      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: area })
       console.log("관심목록에 추가할 지역", area)
       setHeartClicked3(!heartClicked3);
     }
@@ -88,35 +88,35 @@ function PageEnd() {
   const deleteHeart = (area) => {
 
     if (area === data.first) {
-      axios.delete(`http://localhost:4000/users/${userName}/favorites`,{data : { favorites : area}})
+      axios.delete(`http://localhost:4000/users/${userName}/favorites`, { data: { favorites: area } })
         .then(response => {
           console.log('관심목록에 삭제할 지역', area)
           setHeartClicked1(!heartClicked1);
         })
-      .catch(error => {
+        .catch(error => {
           console.error('관심목록을 삭제하는 과정에서 오류가 발생했습니다.', error);
         });
-    } 
+    }
     else if (area === data.second) {
-      axios.delete(`http://localhost:4000/users/${userName}/favorites`, {data : { favorites : area}})
+      axios.delete(`http://localhost:4000/users/${userName}/favorites`, { data: { favorites: area } })
         .then(response => {
           console.log('관심목록에 삭제할 지역', area)
           setHeartClicked2(!heartClicked2);
         })
-      .catch(error => {
+        .catch(error => {
           console.error('관심목록을 삭제하는 과정에서 오류가 발생했습니다.', error);
         });
-    } 
+    }
     else if (area === data.third) {
-      axios.delete(`http://localhost:4000/users/${userName}/favorites`, {data : { favorites : area}})
+      axios.delete(`http://localhost:4000/users/${userName}/favorites`, { data: { favorites: area } })
         .then(response => {
           console.log('관심목록에 삭제할 지역', area)
           setHeartClicked3(!heartClicked3);
         })
-      .catch(error => {
+        .catch(error => {
           console.error('관심목록을 삭제하는 과정에서 오류가 발생했습니다.', error);
         });
-    } 
+    }
 
   }
 
@@ -143,165 +143,83 @@ function PageEnd() {
   }, []);
 
 
-  // 백엔드로부터 초기 관심목록 받기
-  // useEffect(() => {
-  //   axios.get('http://localhost:4000/heartList')
-  //     .then(response => {
-  //       setHeartTest(response.data)
-  //       console.log("백엔드로부터 받은 관심목록 리스트", heartList)
-  //     })
-
-  //     .catch(error => {
-  //       console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
-  //     });
-  // }, []);
-
-
-  // 로컬스토리지에 저장된 관심목록을 불러옴
-  // 수정이 필요함
-  // useEffect(() => {
-  //   const heartList = JSON.parse(localStorage.getItem('heartList')) || [];
-
-  //   if (data.length > 0) {
-  //     const heartStates = data.map(item => heartList.includes(item.first));
-  //     setHeartClicked(heartStates);
-  //   }
-  // }, [data]);
-
   ////////////////////////////////////////////////////////////////////////////
 
 
+
   return (
-
     <div className='End-container'>
+
+      <div className='End-powerbi-wrap'>
+        <PowerBI />
+      </div>
+
       <div className='End-recommend'>
+        <div className='End-recommend-text'>추천결과</div>
 
-        {/* 백엔드로부터 지역추천결과를 받았으면 get = true */}
+        <div className='End-result'>
         {get ?
-          <div className='End-recommend-result'>
-            <div className='End-recommend-result-text'>추천 결과</div>
+        <div className='End-recommend-result'>
 
-            <div className="End-recomend-text">
+          <div className="End-recomend-text">
 
-              <button className='End-recommend-btn'
-                onClick={() => { powerbibtn('CCTV') }}>
-                {/* 함수 속에 들어가는 글자는 추후에 바꾸면 됨 */}
+            <button className='End-recommend-btn'
+              onClick={() => { powerbibtn('CCTV') }}>
+              {/* 함수 속에 들어가는 글자는 추후에 바꾸면 됨 */}
 
-                <div className='End-text-btn'>
-                  <div className='End-rank'>1위</div>
-                  <div className='End-first'>{data.first}</div>
-                </div>
+              <div className='End-text-btn'>
+                <div className='End-rank'>1위</div>
+                <div className='End-first'>{data.first}</div>
+              </div>
 
-                {heartClicked1 ?
-                  <AiFillHeart onClick={() => deleteHeart(data.first)} size="30" color="red" className='End-heart' />
-                  : <AiOutlineHeart onClick={() => putHeart(data.first)} size="30" color="red" className='End-heart' />}
+              {heartClicked1 ?
+                <AiFillHeart onClick={() => deleteHeart(data.first)} size="30" color="red" className='End-heart' />
+                : <AiOutlineHeart onClick={() => putHeart(data.first)} size="30" color="red" className='End-heart' />}
 
-              </button>
+            </button>
 
-              <button className='End-recommend-btn'
-                onClick={() => { powerbibtn('경찰서') }}>
+            <button className='End-recommend-btn'
+              onClick={() => { powerbibtn('경찰서') }}>
 
-                <div className='End-text-btn'>
-                  <div className='End-rank'>2위</div>
-                  <div className='End-first'>{data.second}</div>
-                </div>
-                {heartClicked2 ?
-                  <AiFillHeart onClick={() => deleteHeart(data.second)} size="30" color="red" className='End-heart' />
-                  : <AiOutlineHeart onClick={() => putHeart(data.second)} size="30" color="red" className='End-heart' />}
-              </button>
+              <div className='End-text-btn'>
+                <div className='End-rank'>2위</div>
+                <div className='End-first'>{data.second}</div>
+              </div>
+              {heartClicked2 ?
+                <AiFillHeart onClick={() => deleteHeart(data.second)} size="30" color="red" className='End-heart' />
+                : <AiOutlineHeart onClick={() => putHeart(data.second)} size="30" color="red" className='End-heart' />}
+            </button>
 
-              <button className='End-recommend-btn'
-                onClick={() => { powerbibtn('따릉이') }}>
-                <div className='End-text-btn'>
-                  <div className='End-rank'>3위</div>
-                  <div className='End-first'>{data.third}</div>
-                </div>
-                {heartClicked3 ?
-                  <AiFillHeart onClick={() => deleteHeart(data.third)} size="30" color="red" className='End-heart' />
-                  : <AiOutlineHeart onClick={() => putHeart(data.third)} size="30" color="red" className='End-heart' />}
-              </button>
+            <button className='End-recommend-btn'
+              onClick={() => { powerbibtn('따릉이') }}>
+              <div className='End-text-btn'>
+                <div className='End-rank'>3위</div>
+                <div className='End-first'>{data.third}</div>
+              </div>
+              {heartClicked3 ?
+                <AiFillHeart onClick={() => deleteHeart(data.third)} size="30" color="red" className='End-heart' />
+                : <AiOutlineHeart onClick={() => putHeart(data.third)} size="30" color="red" className='End-heart' />}
+            </button>
 
-            </div>
-            <div>
-              {/* 1. 백엔드에 유저 정보 delete 요청하기 2. 설문조사 첫 페이지로 이동하기 */}
-              <button onClick={() => { navigate('/myhome/pagesex'); }}> 다시하기 </button>
-            </div>
           </div>
-
-          : <div><em>데이터를 불러오는데 실패했습니다.</em></div>}
-
-
-
-        {/* 파워비아이 적용하기 */}
-        <div className='End-powerbi'>
-          {/* <Powerbitest /> */}
-          <PowerBI />
+          <div>
+            {/* 1. 백엔드에 유저 정보 delete 요청하기 2. 설문조사 첫 페이지로 이동하기 */}
+            <button onClick={() => { navigate('/myhome/pagesex'); }}> 다시하기 </button>
+          </div>
         </div>
 
+        : <div><em>데이터를 불러오는데 실패했습니다.</em></div>}
+
+
+        </div>
       </div>
     </div>
+
   )
 }
 export default PageEnd
 
 
-// {get ?
-//   <div className='End-recommend-result'>
-//     <div className='End-recommend-result-text'>추천 결과</div>
-//     {data.map((item, index) => (
-//       <div className="End-recomend-text" key={index}>
-
-
-
-//         <button className='End-recommend-text-1'
-//           onClick={() => { powerbibtn(item.first) }}>
-//           <div className='End-1'>1위</div>
-//           {item.first}
-
-//           {heartClicked1 ?
-//             <AiFillHeart onClick={() => handleHeart1(item.first)} size="30" color="red" />
-//             : <AiOutlineHeart onClick={() => handleHeart1(item.first)} size="30" color="red" />}
-//         </button>
-
-
-//         {/* 2등 지역 */}
-//         <button className='End-recommend-text-1'
-//           onClick={() => powerbibtn(item.second)}>
-//           <div className='End-1'>2위</div>
-//           {item.second}
-//           {heartClicked2 ?
-//             <AiFillHeart onClick={() => handleHeart2(item.second)} size="30" color="red" />
-//             : <AiOutlineHeart onClick={() => handleHeart2(item.second)} size="30" color="red" />}
-//         </button>
-
-
-//         {/* 3등 지역 */}
-//         <button className='End-recommend-text-1'
-//           onClick={() => powerbibtn(item.third)}>
-//           <div className='End-1'>3위</div>
-//           {item.third}
-//           {heartClicked3 ?
-//             <AiFillHeart onClick={() => handleHeart3(item.third)} size="30" color="red" />
-//             : <AiOutlineHeart onClick={() => handleHeart3(item.third)} size="30" color="red" />}
-//         </button>
-//       </div>
-//     ))}
-//   </div>
-//   : <div><em>데이터를 불러오는데 실패했습니다.</em></div>}
-
-
-// const handleHeart1 = (area) => {
-//   setHeartClicked1(!heartClicked1);
-
-//   const heartList = JSON.parse(localStorage.getItem('heartList')) || [];
-
-//   if (heartList.includes(area)) {
-//     alert(`${area}를 관심목록에서 삭제했습니다.`);
-//     const updatedList = heartList.filter(item => item !== area);
-//     localStorage.setItem('heartList', JSON.stringify(updatedList));
-//   } else {
-//     alert(`${area}를 관심목록에 추가했습니다.`);
-//     heartList.push(area);
-//     localStorage.setItem('heartList', JSON.stringify(heartList));
-//   }
-// }
+// {data.map((item, index) => (
+//   <ButtonComponent key={index} value={item} />
+// ))}

@@ -17,6 +17,7 @@ import Page6Sports from './components/pages/Page6Sports'
 import Page7Tendency from './components/pages/Page7Tendency'
 import PageEnd from './components/pages/PageEnd'
 import PageStart from './components/pages/PageStart'
+import Main2 from './components/Main2'
 
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
         
       <Route path="login" element={<Login />} />
         <Route element={<Nav />}>
-          <Route path="/" element={<Main />} />
+          {/* <Route path="/" element={<Main />} /> */}
+          <Route path="/" element={<Main2 />} />
 
           <Route path="myhome" element={<Myhome />}>
           <Route index element={<PageStart/>} />

@@ -26,16 +26,16 @@ li {
 }
 
 
-
+/* 
 .Card-container:hover {
   background-color: black;
   color: white;
 
-}
+} */
 
 
 
-.Card-container:hover .Card-hash {
+/* .Card-container:hover .Card-hash {
   color: white;
 }
 
@@ -45,7 +45,7 @@ li {
 
 .Card-container:hover .Card-img {
   display: block;
-}
+} */
 
 
 .Card-title {
@@ -343,13 +343,19 @@ input[type="radio"] {
   font-family: 'GmarketSans';
   /* border: 1px solid black; */
   height: calc(100vh - 67px);
+
+  display: flex;
+  justify-content: space-between;
 }
 
 .End-recommend {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
   height: 100%;
+/* 
+  border: 1px solid black; */
 
 }
 
@@ -412,7 +418,7 @@ input[type="radio"] {
 
 
 
-/* Powerbi CSs */
+/* Powerbi Css */
 .embededReport {
   margin: 0px;
   height: 80vh;
