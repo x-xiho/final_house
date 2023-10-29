@@ -1,126 +1,116 @@
 @import url('https://webfontworld.github.io/gmarket/GmarketSans.css');
 
 .Login-container {
-  /* background-image: url('./images/whitefoolhouse.jpg');
-  background-size: cover; */
-  /* height: calc(100vh - 53.6px); */
   font-family: 'GmarketSans';
   height: 100vh;
+  overflow: hidden;
+
+  background-image: url(images/plant.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
-.Login-arch {
-  width: 300px;
-  height: 450px;
 
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(1px);
-  border: 1px solid white;
-  border-radius: 50% 50% 0% 0% / 35% 35% 0% 0%;
-box-shadow: 0 5px 15px rgba(0,0,0,1);
-display: flex;
-flex-direction: column;
-position: relative;
-align-items: center;
-
-/* background-color: blue; */
-}
-
-.Login-link{
-width: 100px;
-display: flex;
-justify-content: center;
-}
-.Login-logo{
-  width: 50px;
+.Login-account-wrap {
   position: absolute;
-  top: 25px;
-}
+  height: 60%;
+  width: 25%;
+  min-width: 300px;
+  min-height: 300px;
+  background-color: rgba(225, 225, 225, 0.2);
+  border: 2px solid rgba(225, 225, 225, 0.5);
+  border-radius: 12px;
 
-.Login-hr1{
-  width: 100px;
-  position: absolute;
-  top: 56px;
-  border: 1px solid black;
-}
-
-.Login-circle{
-  position: relative;
-  /* background-color: red; */
-
-  top: 80px;
-
-
-}
-
-.Login-circle-side{
-  width: 170px;
-  height: 170px;
-
-  border: 1px solid black;
-  border-radius: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-}
-
-.Login-circle-img{
-  width: 150px;
-  height: 150px;
-}
-
-.Login-key{
-rotate: 90deg;
-position: relative;
-}
-
-.Login-key-icons{
-  top: 50px;
-  position: absolute;
-}
-
-.Login-circle-img::after{
-  content:"메인 홈페이지";
-  position: absolute;
-  
-}
-/* .Login-circle-img:hover{
-   
-} */
-
-.Login-text{
-  position: absolute;
-  bottom: 80px;
   display: flex;
   flex-direction: column;
+
+  justify-content: center;
+
+  animation: Login-slidein 0.6s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes Login-slidein {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.Login-account {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
   align-items: center;
 }
 
-.Login-main-text{
-  font-weight: bold;
-  font-size: 18px;
+.Login-account-arrow {
+  cursor: pointer;
+  margin-right: auto;
+  margin-left: 12px;
+  z-index: 10;
+
 }
 
-.Login-side-text{
-  font-size: 14px;
-  color: gray;
-
-  margin-top: 10px;
+.Login-account-arrow:hover {
+  animation: bounce 0.5s;
+  animation-fill-mode: forwards;
 }
 
-.Login-text-hr{
-  width: 260px;
-  border: 1.5px solid black;
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-10px);
+    /* 왼쪽으로 10px 이동 */
+  }
 }
 
 
-.Login-kakao{
-  position: absolute;
-  bottom: 20px;
-  font-family: 'GmarketSans';
+.Login-account-login {
+  color: white;
+  font-size: 1rem;
+  margin-top: -28px;
+
 }
+
+.Login-logo {
+  /* width: 180px; */
+  width: 50%;
+  min-width: 100px;
+  margin-top: 25%;
+}
+
+.Login-logo:hover {
+  filter: blur(2px);
+}
+
+.Login-text {
+  font-size: 1rem;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.Login-kakao {
+  margin-bottom: 20px;
+}
+
+/* .Login-link{
+  border: 1px solid white;
+} */

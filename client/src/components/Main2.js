@@ -1,23 +1,26 @@
 import React from 'react'
-import './Main.css'
-import greenLamp from './images/greenLamp.jpg'
-import image from './images/car.jpg'
+import './Main2.css'
 import Carousel from './pages/Carousel'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-import img from './images/mainImg.jpg'
 
 function Main2() {
+  const navigate = useNavigate();
   return (
     <div className='Main2-container'>
+
       <div className='Main2-wrap'>
-        <div>
-          <img src={img} alt='메인사진' style={{objectFit:"cover",height:"60vh", width:"100vw"}}></img>
+      <div className='Main2-square'></div>
+        <div className='Main2-image-wrap'>
+          {/* <img src={img} alt='메인사진' className='Main2-image'></img> */}
+
+          <div className='Main2-text-wrap'>
+            <div className='Main2-text-main'>오직 나를 위한 맞춤 주거지역</div>
+            <button className='Main2-text-btn' onClick={() => { navigate('/myhome'); }}>지금 바로 추천받기</button>
+          </div>
         </div>
-        <div>
-          <div>오직 나를 위한 맞춤 주거지역</div>
-          <button>바로가기</button>
-        </div>
+
+
 
       </div>
 

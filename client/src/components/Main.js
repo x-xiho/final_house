@@ -1,7 +1,6 @@
 import React from 'react'
 import './Main.css'
 import greenLamp from './images/greenLamp.jpg'
-import image from './images/car.jpg'
 import Carousel from './pages/Carousel'
 import { Link } from 'react-router-dom'
 
