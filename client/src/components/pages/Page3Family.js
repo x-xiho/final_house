@@ -77,6 +77,7 @@ function Page3Family() {
       </div>
 
       <div className='Nextbtn'>
+      <button className='page1-btn' onClick={()=>navigate('/myhome/pageage')}>이전</button>
         <button type='submit'
           disabled={selectedOption === null}
           className='page1-btn'>

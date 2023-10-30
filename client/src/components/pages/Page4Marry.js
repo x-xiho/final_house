@@ -58,6 +58,7 @@ function Page4Marry() {
       </div>
 
       <div className='Nextbtn'>
+      <button className='page1-btn' onClick={()=>navigate('/myhome/pagefamily')}>이전</button>
         <button type='submit'
           disabled={selectedOption === null}
           className='page1-btn'>

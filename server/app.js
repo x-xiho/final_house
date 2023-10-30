@@ -17,6 +17,21 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 app.listen(PORT, () => console.log("서버가 시작됐습니다! 포트는", PORT));
 
 
+const data = [
+  {
+    name: "김효정",
+    age: "10대",
+    hobby: JSON.stringify(["test"]),
+    sex: "남성",
+    sports: JSON.stringify(["test"]),
+    tendency: "핫플도시",
+    location1:"강남구",
+    location2:"노원구",
+    location3:"중구",
+    favorites: "강남구"
+  },
+];
+
 const getExcelWorkbook = (name) => {
   try {
     return XLSX.readFile(name); // Excel 파일의 경로
@@ -24,15 +39,16 @@ const getExcelWorkbook = (name) => {
     // 존재하지 않을때
     const data = [
       {
-        "name": "김효정",
-        "age": "10대",
-        "hobby": JSON.stringify(["test"]),
-        "sex": "남성",
-        "sports": JSON.stringify(["test"]),
-        "tendency": "핫플 도시",
-        "locations": JSON.stringify(["강남구"]),
-        "favorites": "강남구"
-
+        name: "김효정",
+        age: "10대",
+        hobby: JSON.stringify(["test"]),
+        sex: "남성",
+        sports: JSON.stringify(["test"]),
+        tendency: "핫플도시",
+        location1:"강남구",
+        location2:"노원구",
+        location3:"중구",
+        favorites: "강남구"
       },
     ];
     const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
@@ -64,7 +80,7 @@ app.get("/api/survey-result", (req, res) => {
 });
 
 
-app.post("/api/form", (req, res) => {
+app.post("/users", (req, res) => {
   const { name, age, hobby, sex, sports, tendency, locations } = req.body;
   console.log(name, age, hobby, sex, sports, tendency, locations);
 
@@ -82,9 +98,20 @@ app.post("/api/form", (req, res) => {
   const updatedWorkSheet = XLSX.utils.json_to_sheet(updatedData);
   workbook.Sheets[sheetName] = updatedWorkSheet;
   XLSX.writeFile(workbook, "survey-result.xlsx");
+  const {exce} = require('child_process');
+  
+  // Python 스크립트를 실행
+  exec('cb_share.py', (error, stdout, stderr) => {
+    if (error) {
+      console.error(`오류 발생: ${error}`);
+      return;
+    }
+    console.log(`결과: ${stdout}`);
+  });
 
   return res.status(201).json({ "message": "created well!" });
 });
+
 
 app.get("/users/:name/locations", (req, res) => {
   const { name } = req.params;
@@ -94,13 +121,18 @@ app.get("/users/:name/locations", (req, res) => {
   const worksheet = workbook.Sheets[sheetName]; // 첫 번째 시트
   const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-  for (let i = 0; i < jsonData.length; i++) {
-    if (jsonData[i]["name"] === name) {
-      const userData = jsonData[i]["locations"];
-      return res.status(200).json({ "locations": JSON.parse(userData) });
-    }
-  }
-  return res.status(404).json({ error: "사용자를 찾을 수 없습니다." });
+
+  const { location1, location2, location3 } = data[0];
+  console.log(location1, location2, location3);
+  res.json({ location1, location2, location3 });
+
+  // for (let i = 0; i < jsonData.length; i++) {
+  //   if (jsonData[i]["name"] === name) {
+  //     const userData = jsonData[i]["locations"];
+  //     return res.status(200).json({ "locations": JSON.parse(userData) });
+  //   }
+  // }
+  // return res.status(404).json({ error: "사용자를 찾을 수 없습니다." });
 });
 
 app.delete("/users/:name", (req, res) => {

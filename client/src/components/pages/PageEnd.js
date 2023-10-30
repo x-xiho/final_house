@@ -8,32 +8,25 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
 
 import PowerBI from './PowerBI';
 
-// pageEnd 살아있나?ㄴ
-// test 커밋
-
 function PageEnd() {
   // 로컬에 저장된 유저 이름을 변수에 저장
   const userName = localStorage.getItem('유저이름');
 
   // 백엔드에서 받은 추천 지역 데이터 저장
   const [data, setData] = useState([]);
+
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);
+  const [data3, setData3] = useState([]);
   const [get, setGet] = useState(false);
 
   const navigate = useNavigate();
 
 
-  // 백엔드로부터 관심목록 받아옴
-  // const [heartTest, setHeartTest] = useState([]);
-  // const [heartList, setheartList] = useState([]);
-
   //관심목록 하트 클릭 여부
   const [heartClicked1, setHeartClicked1] = useState(false);
   const [heartClicked2, setHeartClicked2] = useState(false);
   const [heartClicked3, setHeartClicked3] = useState(false);
-
-  // const [heartClicked, setHeartClicked] = useState(false);
-  // 지워도 될듯
-
 
   // 파워비아이 연동 함수
   const powerbibtn = async (name) => {
@@ -122,8 +115,6 @@ function PageEnd() {
 
 
 
-
-
   ////////////////////////////////////////////////////////////////
 
   //백엔드에서 지역추천 결과 데이터 받아옴 {1 : 지역, 2: 지역, 3: 지역}
@@ -132,7 +123,8 @@ function PageEnd() {
       axios.get(`http://localhost:4000/users/${userName}/locations`)
         .then(response => {
           setData(response.data);
-          // 객체 타입의 데이터
+
+          console.log('백엔드에서 받은 지역추천 결과 데이터', data);
           setGet(!get);
         })
 
@@ -141,6 +133,21 @@ function PageEnd() {
         });
     }
   }, []);
+
+  // useEffect(() => {
+  //   if (userName) {
+  //     axios.get(`http://localhost:4000/users/${userName}/location`)
+  //       .then(response => {
+  //         setData(response.data);
+  //         // 객체 타입의 데이터
+  //         setGet(!get);
+  //       })
+
+  //       .catch(error => {
+  //         console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
+  //       });
+  //   }
+  // }, []);
 
 
   ////////////////////////////////////////////////////////////////////////////
@@ -169,12 +176,12 @@ function PageEnd() {
 
               <div className='End-text-btn'>
                 <div className='End-rank'>1위</div>
-                <div className='End-first'>{data.first}</div>
+                <div className='End-first'>{data.location1}</div>
               </div>
 
               {heartClicked1 ?
-                <AiFillHeart onClick={() => deleteHeart(data.first)} size="30" color="red" className='End-heart' />
-                : <AiOutlineHeart onClick={() => putHeart(data.first)} size="30" color="red" className='End-heart' />}
+                <AiFillHeart onClick={() => deleteHeart(data.location1)} size="30" color="red" className='End-heart' />
+                : <AiOutlineHeart onClick={() => putHeart(data.location1)} size="30" color="red" className='End-heart' />}
 
             </button>
 
@@ -183,22 +190,22 @@ function PageEnd() {
 
               <div className='End-text-btn'>
                 <div className='End-rank'>2위</div>
-                <div className='End-first'>{data.second}</div>
+                <div className='End-first'>{data.location2}</div>
               </div>
               {heartClicked2 ?
-                <AiFillHeart onClick={() => deleteHeart(data.second)} size="30" color="red" className='End-heart' />
-                : <AiOutlineHeart onClick={() => putHeart(data.second)} size="30" color="red" className='End-heart' />}
+                <AiFillHeart onClick={() => deleteHeart(data.location2)} size="30" color="red" className='End-heart' />
+                : <AiOutlineHeart onClick={() => putHeart(data.location2)} size="30" color="red" className='End-heart' />}
             </button>
 
             <button className='End-recommend-btn'
               onClick={() => { powerbibtn('따릉이') }}>
               <div className='End-text-btn'>
                 <div className='End-rank'>3위</div>
-                <div className='End-first'>{data.third}</div>
+                <div className='End-first'>{data.location3}</div>
               </div>
               {heartClicked3 ?
-                <AiFillHeart onClick={() => deleteHeart(data.third)} size="30" color="red" className='End-heart' />
-                : <AiOutlineHeart onClick={() => putHeart(data.third)} size="30" color="red" className='End-heart' />}
+                <AiFillHeart onClick={() => deleteHeart(data.location3)} size="30" color="red" className='End-heart' />
+                : <AiOutlineHeart onClick={() => putHeart(data.location3)} size="30" color="red" className='End-heart' />}
             </button>
 
           </div>

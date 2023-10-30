@@ -16,7 +16,7 @@ function Mypage() {
 
   return (
     <div className='Mypage-container'>
-      <img src={Logo} alt="로고" className="Mypage-img" style={{ width: "40px" }}></img>
+      {/* <img src={Logo} alt="로고" className="Mypage-img" style={{ width: "40px" }}></img> */}
       <div className='Mypage-wrap'>
         <hr className='Mypage-hr' />
         <hr className='Mypage-hr' />

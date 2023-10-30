@@ -92,6 +92,7 @@ function Page5Hobby() {
         </div>
 
         <div className='Nextbtn'>
+        <button className='page1-btn' onClick={()=>navigate('/myhome/pagemarry')}>이전</button>
         <button type='submit'
           disabled={selectedOptions.length === 0}
           className='page1-btn'>

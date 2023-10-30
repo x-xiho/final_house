@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
+import '../PagesCss/PageCss.css'
 
 function Page6Sports() {
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -38,50 +39,51 @@ function Page6Sports() {
 
       <form onSubmit={handleSubmit} className='page1-form'>
         <div className='page-checkStyle'>
-        <label>
-          <input type="checkbox"
-            name="sports"
-            value="테니스"
-            onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('테니스')} />
-          테니스
-        </label>
+          <label>
+            <input type="checkbox"
+              name="sports"
+              value="테니스"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('테니스')} />
+            테니스
+          </label>
 
-        <label>
-          <input type="checkbox"
-            name="sports"
-            value="축구"
-            onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('축구')} />
-          축구
-        </label>
+          <label>
+            <input type="checkbox"
+              name="sports"
+              value="축구"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('축구')} />
+            축구
+          </label>
 
-        <label>
-          <input type="checkbox"
-            name="sports"
-            value="볼링"
-            onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('볼링')} />
-          볼링
-        </label>
+          <label>
+            <input type="checkbox"
+              name="sports"
+              value="볼링"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('볼링')} />
+            볼링
+          </label>
 
-        <label>
-          <input type="checkbox"
-            name="sports"
-            value="산책"
-            onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('산책')} />
-          산책
-        </label>
+          <label>
+            <input type="checkbox"
+              name="sports"
+              value="산책"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('산책')} />
+            산책
+          </label>
         </div>
 
-      <div  className='Nextbtn'>
+        <div className='Nextbtn'>
+          <button className='page1-btn' onClick={() => navigate('/myhome/pagehobby')}>이전</button>
           <button type='submit'
             disabled={selectedOptions.length === 0}
-            className='Page3-btn'>
+            className='page1-btn'>
             다음
           </button>
-          </div>
+        </div>
       </form>
     </div>
   )

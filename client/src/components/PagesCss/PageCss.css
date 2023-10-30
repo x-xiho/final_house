@@ -177,10 +177,21 @@ width: 500px;
 }
 
 /* 맞춤지역 추천페이지 버튼 css */
+.startbtn{
+  text-align: center;
+  margin-top: 12px;
+}
 
 .Nextbtn {
   text-align: center;
   margin-top: 12px;
+  /* border: 1px solid #dcdcdc; */
+  
+  display: flex;
+  width: 40%;
+  justify-content: space-around;
+
+  /* margin: 12px 0px 10px 10px; */
 }
 
 .pagestart-btn{
@@ -289,6 +300,10 @@ input[type="radio"] {
   margin-top: 20px;
   width: 600px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   /* border: 1px solid #dcdcdc; */
 
 

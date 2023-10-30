@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import '../PagesCss/PageCss.css'
 
 // 공통 마지막 질문 성향 질문
 function Page7Tendency() {
@@ -30,10 +31,10 @@ function Page7Tendency() {
         age: age,
         hobby: hobby,
         sports: sports,
-        tendency : tendency
+        tendency: tendency
       };
 
-      console.log("프론트엔드에서 저장된 데이터",userInfo);
+      console.log("프론트엔드에서 저장된 데이터", userInfo);
 
       // 백엔드에 유저의 답변 전송
       axios.post('http://localhost:4000/users', userInfo)
@@ -44,17 +45,17 @@ function Page7Tendency() {
           console.error('데이터 전송 실패:', error);
         });
 
-        // 로컬스토리지 데이터 지우기
-        localStorage.removeItem('sex')
-        localStorage.removeItem('age')
-        localStorage.removeItem('hobby')
-        localStorage.removeItem('sports')
-        localStorage.removeItem('tendency')
-        localStorage.removeItem('family')
-        localStorage.removeItem('marry')
-        localStorage.removeItem('priority')
+      // 로컬스토리지 데이터 지우기
+      localStorage.removeItem('sex')
+      localStorage.removeItem('age')
+      localStorage.removeItem('hobby')
+      localStorage.removeItem('sports')
+      localStorage.removeItem('tendency')
+      localStorage.removeItem('family')
+      localStorage.removeItem('marry')
+      localStorage.removeItem('priority')
 
-        navigate('/myhome/pageend');
+      navigate('/myhome/pageend');
     }
   }
 
@@ -75,8 +76,8 @@ function Page7Tendency() {
           <label className='radioStyle'>
             <input type="radio"
               name="tendency"
-              value="한적한 도시"
-              checked={selectedOption === "한적한 도시"}
+              value="한적한도시"
+              checked={selectedOption === "한적한도시"}
               onChange={handleRadioChange} />
             <span>한적한 힐링 도시</span>
           </label>
@@ -84,8 +85,8 @@ function Page7Tendency() {
           <label className='radioStyle'>
             <input type="radio"
               name="tendency"
-              value="핫플 도시"
-              checked={selectedOption === "핫플 도시"}
+              value="핫플도시"
+              checked={selectedOption === "핫플도시"}
               onChange={handleRadioChange} />
             <span>활기찬 핫플 도시</span>
           </label>
@@ -93,8 +94,8 @@ function Page7Tendency() {
           <label className='radioStyle'>
             <input type="radio"
               name="tendency"
-              value="자연 지역"
-              checked={selectedOption === "자연 지역"}
+              value="자연지역"
+              checked={selectedOption === "자연지역"}
               onChange={handleRadioChange} />
             <span>자연이 인접한 지역</span>
           </label>
@@ -102,6 +103,7 @@ function Page7Tendency() {
         </div>
 
         <div className='Nextbtn'>
+          <button className='page1-btn' onClick={() => navigate('/myhome/pagehobby')}>이전</button>
           <button type='submit'
             disabled={selectedOption === null}
             className='page1-btn'>
