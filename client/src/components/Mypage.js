@@ -24,13 +24,13 @@ function Mypage() {
         <div className='Mypage-account'>
           <img src={userProfilImage} alt="프로필사진" className='Mypage-profileImg'></img>
           <div className='Mypage-account-wrap'>
-            <div className='Mypage-account-text'>
+            {/* <div className='Mypage-account-text'>
               나의 계정 정보
-            </div>
+            </div> */}
 
             <div className='Mypage-account-text'>
               {userName}
-              <img src={kakao} alt="카카오계정" style={{ width: "25px" }}></img>
+              {/* <img src={kakao} alt="카카오계정" style={{ width: "25px" }}></img> */}
             </div>
           </div>
         </div>

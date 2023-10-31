@@ -19,14 +19,25 @@ const recommendResult = {
 
 const loacationData = {
   김지호: { locations: { first: "강남구", second: "서대문구", third: "종로구" },
-  favorites: []},
+  favorites: ["노원구","강북구","종로구"]},
   홍길동 : { locations: { first: "도봉구", second: "중구", third: "노원구" },
   favorites: []}
 }
 
-// const userData = {
-
-// }
+const userData = [{
+name: "",
+sex:"",
+age:"",
+family:"",
+marry:"",
+hobby:"",
+sports:"",
+tendency:"",
+location1:"강남구",
+location2:"도봉구",
+location3:"중구",
+favorites:["노원구","어쩌구"]
+}]
 
 
 
@@ -51,7 +62,16 @@ app.post('/users', (req, res) => {
 
   const tendency = userInfo.tendency;
 
-  console.log("취미 값", hobby);
+  // userData[0] = {
+  //   name,
+  //   sex,
+  //   age,
+  //   family: userInfo.family,
+  //   marry: userInfo.marry,
+  //   hobby,
+  //   sports: userInfo.sports,
+  //   tendency
+  // };
 
 
   res.send('데이터가 성공적으로 저장되었습니다.');
@@ -62,7 +82,10 @@ app.post('/users', (req, res) => {
 // 지역추천 알로리즘 결과를 프론트에 보내줌
 app.get('/users/:name/locations', function (req, res) {
   const { name } = req.params;
-  res.json(loacationData[name].locations)
+
+  const { location1, location2, location3 } = userData[0];
+  console.log(location1, location2, location3);
+  res.json({ location1, location2, location3 });
 });
 
 

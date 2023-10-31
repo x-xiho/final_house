@@ -43,6 +43,8 @@ function Page5Hobby() {
 
   }
 
+  // 미술관 공연장 영화관 운동 공원산책 쇼핑 도서관
+
   return (
     <div className='page1-container'>
       <div className='page1-text'>
@@ -69,7 +71,7 @@ function Page5Hobby() {
             value="음악"
             onChange={handleCheckboxChange}
             checked={selectedOptions.includes('음악')} />
-          음악
+          공연 관람
         </label>
 
         <label>
@@ -78,7 +80,7 @@ function Page5Hobby() {
             value="미술"
             onChange={handleCheckboxChange}
             checked={selectedOptions.includes('미술')} />
-          미술
+          미술 전시 관람
         </label>
 
         <label>
@@ -88,6 +90,24 @@ function Page5Hobby() {
             onChange={handleCheckboxChange}
             checked={selectedOptions.includes('산책')} />
           산책
+        </label>
+
+        <label>
+          <input type="checkbox"
+            name="hobby"
+            value="산책"
+            onChange={handleCheckboxChange}
+            checked={selectedOptions.includes('산책')} />
+          맛집 / 쇼핑
+        </label>
+
+        <label>
+          <input type="checkbox"
+            name="hobby"
+            value="산책"
+            onChange={handleCheckboxChange}
+            checked={selectedOptions.includes('산책')} />
+          독서
         </label>
         </div>
 

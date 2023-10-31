@@ -59,17 +59,17 @@ function PageEnd() {
   // 관심목록에 지역 저장
   const putHeart = (area) => {
 
-    if (area === data.first) {
+    if (area === data.location1) {
       axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: area })
       console.log("관심목록에 추가할 지역", area)
       setHeartClicked1(!heartClicked1);
 
-    } else if (area === data.second) {
+    } else if (area === data.location2) {
       axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: area })
       console.log("관심목록에 추가할 지역", area)
       setHeartClicked2(!heartClicked2);
 
-    } else if (area === data.third) {
+    } else if (area === data.location3) {
       axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: area })
       console.log("관심목록에 추가할 지역", area)
       setHeartClicked3(!heartClicked3);
@@ -80,7 +80,7 @@ function PageEnd() {
   // 관심목록에서 지역 삭제
   const deleteHeart = (area) => {
 
-    if (area === data.first) {
+    if (area === data.location1) {
       axios.delete(`http://localhost:4000/users/${userName}/favorites`, { data: { favorites: area } })
         .then(response => {
           console.log('관심목록에 삭제할 지역', area)
@@ -90,7 +90,7 @@ function PageEnd() {
           console.error('관심목록을 삭제하는 과정에서 오류가 발생했습니다.', error);
         });
     }
-    else if (area === data.second) {
+    else if (area === data.location2) {
       axios.delete(`http://localhost:4000/users/${userName}/favorites`, { data: { favorites: area } })
         .then(response => {
           console.log('관심목록에 삭제할 지역', area)
@@ -100,7 +100,7 @@ function PageEnd() {
           console.error('관심목록을 삭제하는 과정에서 오류가 발생했습니다.', error);
         });
     }
-    else if (area === data.third) {
+    else if (area === data.location3) {
       axios.delete(`http://localhost:4000/users/${userName}/favorites`, { data: { favorites: area } })
         .then(response => {
           console.log('관심목록에 삭제할 지역', area)
@@ -133,22 +133,6 @@ function PageEnd() {
         });
     }
   }, []);
-
-  // useEffect(() => {
-  //   if (userName) {
-  //     axios.get(`http://localhost:4000/users/${userName}/location`)
-  //       .then(response => {
-  //         setData(response.data);
-  //         // 객체 타입의 데이터
-  //         setGet(!get);
-  //       })
-
-  //       .catch(error => {
-  //         console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
-  //       });
-  //   }
-  // }, []);
-
 
   ////////////////////////////////////////////////////////////////////////////
 

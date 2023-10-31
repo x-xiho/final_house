@@ -50,26 +50,28 @@ function Login() {
   return (
     <div className='Login-container'>
 
-
-
       <div className='Login-account-wrap'>
         <div className='Login-account'>
 
           <div className='Login-account-arrow'>
             <BiArrowBack size="30px" color="white" onClick={() => { navigate('/') }} />
           </div>
+            <div className='Login-account-login'>
+              로그인
+            </div>
         </div>
 
-        <div className='Login-account-login'>
-            로그인
-          </div>
 
-        <Link to='/' className='Login-link'>
-          <img src={logo} alt="로고" className='Login-logo' />
-        </Link>
 
+        <div className='Login-test'>
+          <Link to='/'>
+            <img src={logo} alt="로고" className='Login-logo' />
+          </Link>
+        </div>
+
+        <div className='Login-title'>오직 나를 위한 맞춤형 주거지역</div>
         <div className='Login-text'>
-          한 번의 클릭으로 간편하게 로그인
+          단 한 번의 클릭으로 간편하게 로그인!
         </div>
 
         <div className='Login-kakao'>
@@ -80,8 +82,7 @@ function Login() {
             className='kakao'
           />
         </div>
-
-
+        <div className='Login-ok'>회원가입 시 <b>서비스 이용 약관</b>과 <b>개인정보 보호정책</b>에 동의하게 됩니다.</div>
       </div>
 
 

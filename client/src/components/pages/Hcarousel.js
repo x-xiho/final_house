@@ -35,7 +35,8 @@ function Hcarousel() {
     axios.get(`http://localhost:4000/favorites/${userName}`)
       .then(response => {
         setHeartList(response.data)
-        // console.log("백엔드로부터 받은 관심목록 리스트2", heartList)
+        // 배열 데이터를 받음
+        console.log("백엔드로부터 받은 관심목록 리스트2", heartList)
       })
 
       .catch(error => {
@@ -48,14 +49,13 @@ function Hcarousel() {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     arrows: false,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    rows:1,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     initialSlide: 0,
     autoplay: false,
-    autoplaySpeed: 4000,
-    pauseOnHover : true,
     responsive: [
       {
         breakpoint: 1024,
@@ -86,7 +86,7 @@ function Hcarousel() {
   return (
 
     <div className='H-container'>
-      <div className='H-listName'>디자인을 뭐로 바꾸지</div>
+      <div className='H-listName'>&lt; 나의 관심지역 목록 &gt;</div>
 
 
       {heartList.length === 0? <div className='H-wrap-slick'>관심지역이 없습니다.</div> :  
@@ -98,7 +98,7 @@ function Hcarousel() {
             <div className="H-div" key={index} >
               {item}
               <br></br>
-              <AiFillHeart color='red' onClick={()=>handle(item)}></AiFillHeart>
+              <AiFillHeart size="30" color='red' onClick={()=>handle(item)}/>
             </div>
           ))}
         </Slider>

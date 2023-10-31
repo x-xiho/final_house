@@ -20,17 +20,15 @@ li {
 
   position: relative;
 
-  transition: background-color 0.5s;
-  transition: color 0.6s;
+  /* animation: pageStart-slidein 0.6s ease-in-out;
+  animation-fill-mode: forwards; */
 
 }
 
 
-/* 
-.Card-container:hover {
-  background-color: black;
-  color: white;
 
+/* .Card-container:hover{
+background-color: #fafafa;
 } */
 
 
@@ -124,23 +122,26 @@ li {
 
 /* Hcarousel Css */
 
-.H-container{
+.H-container {
   text-align: center;
 }
 
-.H-listName{
+.H-listName {
   font-size: 15px;
   margin: 20px 60px;
+  /* font-weight: bold; */
+  color: gray;
 }
 
-.H-wrap-slick{
-  border: 1px solid black;
+.H-wrap-slick {
+  border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 200px;
 }
-.H-btn{
+
+.H-btn {
   font-family: 'GmarketSans';
 
   width: 50px;
@@ -153,18 +154,33 @@ li {
   border: 1px solid #dcdcdc;
 }
 
-.H-slider{
-width: 500px;
-/* border: 1px solid black; */
+.H-slider {
+  width: 500px;
+  border: 1px solid black;
 }
 
-.H-div{
+.slick-dots {
+  text-align: center;
+}
+
+.H-div {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  text-align: center;
   /* border: 1px solid blue; */
-  width: 100px;
-  height: 50px;
+  width: 500px;
+  height: 100px;
   text-align: center;
   font-size: 18px;
+  font-weight: bold;
 
+}
+
+.H-div:hover {
+  background-color: rgb(220, 220, 200, 0.5);
+  color: black;
 }
 
 
@@ -177,16 +193,13 @@ width: 500px;
 }
 
 /* 맞춤지역 추천페이지 버튼 css */
-.startbtn{
-  text-align: center;
-  margin-top: 12px;
-}
+
 
 .Nextbtn {
   text-align: center;
   margin-top: 12px;
   /* border: 1px solid #dcdcdc; */
-  
+
   display: flex;
   width: 40%;
   justify-content: space-around;
@@ -194,27 +207,10 @@ width: 500px;
   /* margin: 12px 0px 10px 10px; */
 }
 
-.pagestart-btn{
-  font-family: 'GmarketSans';
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-color: transparent;
-  border: 1px solid #dcdcdc;
-  width: 100px;
-  height: 30px;
-
-  transition: background-color 0.5s;
-}
-
-.pagestart-btn:hover{
-  background-color: #A7B5A8;
-  color: white;
-}
 
 
 
-.page1-btn{
+.page1-btn {
   font-family: 'GmarketSans';
   border: none;
   outline: none;
@@ -228,9 +224,9 @@ width: 500px;
 
 
 
-.page1-btn:disabled{
+.page1-btn:disabled {
   background-color: transparent;
-  color:#dcdcdc;
+  color: #dcdcdc;
   /* color: white; */
 }
 
@@ -262,6 +258,7 @@ input[type="radio"] {
 
 
 /* PageStart Css */
+
 .pageStart-container {
   height: calc(100vh - 67px);
   font-family: 'GmarketSans';
@@ -270,11 +267,72 @@ input[type="radio"] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  animation: pageStart-slidein 0.8s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes pageStart-slidein {
+  from {
+    opacity: 0;
+    /* transform: translateY(3px); */
+  }
+
+  to {
+    opacity: 1;
+    /* transform: translateY(0); */
+  }
+}
+
+
+.pageStart-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageStart-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .pageStart-text {
   text-align: center;
+  font-size: 16px;
+  color: gray;
 }
+
+.pagestart-btn {
+  font-family: 'GmarketSans';
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #dcdcdc;
+  width: 150px;
+  height: 40px;
+  font-size: 16px;
+
+  transition: background-color 0.5s;
+}
+
+.startbtn {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.startbtn:after{
+  content:'\00bb';
+  position: absolute;
+}
+.pagestart-btn:hover {
+  background-color: #A7B5A8;
+  color: white;
+}
+
 
 /* Page1 Css */
 
@@ -369,7 +427,7 @@ input[type="radio"] {
   justify-content: center;
   align-items: end;
   height: 100%;
-/* 
+  /* 
   border: 1px solid black; */
 
 }
@@ -421,7 +479,7 @@ input[type="radio"] {
   font-size: 18px;
 }
 
-.End-heart{
+.End-heart {
   flex: none;
   margin: 0px 3px;
 }
