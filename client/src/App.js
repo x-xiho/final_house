@@ -3,11 +3,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 
 import Nav from './components/Nav'
-import Main from './components/Main'
+import Main2 from './components/Main2'
 import Myhome from './components/Myhome'
 import Login from './components/Login'
 import Mypage from './components/Mypage'
 
+import Page0Start from './components/pages/Page0Start'
 import Page1Sex from './components/pages/Page1Sex'
 import Page2Age from './components/pages/Page2Age'
 import Page3Family from './components/pages/Page3Family'
@@ -16,8 +17,9 @@ import Page5Hobby from './components/pages/Page5Hobby'
 import Page6Sports from './components/pages/Page6Sports'
 import Page7Tendency from './components/pages/Page7Tendency'
 import PageEnd from './components/pages/PageEnd'
-import PageStart from './components/pages/PageStart'
-import Main2 from './components/Main2'
+import PagePriority from './components/pages/PagePriority'
+
+
 
 
 function App() {
@@ -31,7 +33,7 @@ function App() {
           <Route path="/" element={<Main2 />} />
 
           <Route path="myhome" element={<Myhome />}>
-          <Route index element={<PageStart/>} />
+          <Route index element={<Page0Start/>} />
             <Route path="pagesex" element={<Page1Sex/>} />
             <Route path="pageage" element={<Page2Age/>} />
             <Route path="pagefamily" element={<Page3Family/>} />
@@ -43,6 +45,7 @@ function App() {
           </Route>
 
           <Route path="mypage" element={<Mypage />} />
+          <Route path="test" element={<PagePriority/>} />
 
         </Route>
       </Routes>

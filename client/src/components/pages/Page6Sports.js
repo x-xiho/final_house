@@ -35,6 +35,7 @@ function Page6Sports() {
       <div className='page1-text'>
         <div className='page1-num'>Q.05-2</div>
         <div className='page1-qurry'>'운동' 중에 내가 가장 좋아하는 종목은?</div>
+        <div>( 복수선택 가능 )</div>
       </div>
 
       <form onSubmit={handleSubmit} className='page1-form'>
