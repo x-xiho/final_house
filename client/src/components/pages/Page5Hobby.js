@@ -8,6 +8,8 @@ function Page5Hobby() {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const navigate = useNavigate();
 
+
+
   // 사용자가 체크박스를 선택하면 답변을 selectedOptions 배열에 추가
   const handleCheckboxChange = (e) => {
     const value = e.target.value;
@@ -55,69 +57,80 @@ function Page5Hobby() {
 
 
       <form onSubmit={handleSubmit} className='page1-form'>
+
         <div className='page-checkStyle'>
-        <label>
-          <input type="checkbox"
-            name="hobby"
-            value="운동"
-            onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('운동')} />
-          운동
-        </label>
 
-        <label>
-          <input type="checkbox"
-            name="hobby"
-            value="음악"
-            onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('음악')} />
-          공연 관람
-        </label>
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="hobby"
+              value="운동"
+              style={{ display: "none" }}
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('운동')}
+              className='test' />
+            <span>운동</span>
+          </label>
 
-        <label>
-          <input type="checkbox"
-            name="hobby"
-            value="미술"
-            onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('미술')} />
-          미술/전시 관람
-        </label>
 
-        <label>
-          <input type="checkbox"
-            name="hobby"
-            value="산책"
-            onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('산책')} />
-          산책
-        </label>
 
-        <label>
-          <input type="checkbox"
-            name="hobby"
-            value="맛집/쇼핑"
-            onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('맛집/쇼핑')} />
-          맛집 / 쇼핑
-        </label>
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="hobby"
+              value="음악"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('음악')} />
+            <span>공연 관람</span>
+          </label>
 
-        <label>
-          <input type="checkbox"
-            name="hobby"
-            value="독서"
-            onChange={handleCheckboxChange}
-            checked={selectedOptions.includes('독서')} />
-          독서
-        </label>
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="hobby"
+              value="미술"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('미술')} />
+            <span>미술/전시 관람</span>
+          </label>
+
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="hobby"
+              value="산책"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('산책')} />
+            <span>산책</span>
+          </label>
+
+
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="hobby"
+              value="맛집/쇼핑"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('맛집/쇼핑')} />
+            <span>맛집 / 쇼핑</span>
+          </label>
+
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="hobby"
+              value="독서"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('독서')} />
+            <span>독서</span>
+          </label>
         </div>
 
         <div className='Nextbtn'>
-        <button className='page1-btn' onClick={()=>navigate('/myhome/pagemarry')}>이전</button>
-        <button type='submit'
-          disabled={selectedOptions.length === 0}
-          className='page1-btn'>
-          다음
-        </button>
+          <button className='page1-btn' onClick={() => navigate('/myhome/pagemarry')}>이전</button>
+          <button type='submit'
+            disabled={selectedOptions.length === 0}
+            className='page1-btn'>
+            다음
+          </button>
         </div>
       </form>
     </div>
@@ -128,13 +141,13 @@ export default Page5Hobby;
 
 
 
-      // const hobbyList = JSON.parse(localStorage.getItem('heartList')) || [];
+// const hobbyList = JSON.parse(localStorage.getItem('heartList')) || [];
 
-      // axios.post('http://localhost:4000/save/UserInfo', { hobbyList })
-      // .then((response) => {
-      //   console.log(response.data);
-      // })
+// axios.post('http://localhost:4000/save/UserInfo', { hobbyList })
+// .then((response) => {
+//   console.log(response.data);
+// })
 
-      // .catch((error) => {
-      //   console.error(error);
-      // });
+// .catch((error) => {
+//   console.error(error);
+// });

@@ -16,17 +16,30 @@ function Hcarousel() {
 
   const userName = localStorage.getItem('유저이름');
 
+  // 슬라이더 최대 개수
+  const showMaxCnt = 4;
+  const arr = Array.from(new Array(3));
 
-// 관심목록 삭제
-  const handle=(name) => {
-    axios.delete(`http://localhost:4000/users/${userName}/favorites`,{data : { favorites : name}})
-    .then(response => {
-      console.log('관심목록에 삭제할 지역', name)
-      window.location.reload();
-    })
-  .catch(error => {
-      console.error('관심목록을 삭제하는 과정에서 오류가 발생했습니다.', error);
-    });
+  // 관심목록 삭제
+  const handle = (name) => {
+    const confirmed = window.confirm(`${name}을(를) 관심목록에서 삭제하시겠습니까?`);
+
+    if (confirmed) {
+      axios.delete(`http://localhost:4000/users/${userName}/favorites`, { data: { favorites: name } })
+        .then(response => {
+          console.log('관심목록에 삭제할 지역', name)
+          window.location.reload();
+        })
+        .catch(error => {
+          console.error('관심목록을 삭제하는 과정에서 오류가 발생했습니다.', error);
+        });
+      console.log("삭제되었습니다.");
+    } else {
+      // 사용자가 "아니요"를 눌렀을 때의 동작
+      console.log("취소되었습니다.");
+    }
+
+
   };
 
 
@@ -48,10 +61,10 @@ function Hcarousel() {
   // 슬라이더 세팅
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 1000,
     arrows: false,
-    rows:1,
+    rows: 1,
     slidesToShow: 3,
     slidesToScroll: 3,
     initialSlide: 0,
@@ -89,22 +102,25 @@ function Hcarousel() {
       <div className='H-listName'>&lt; 나의 관심지역 목록 &gt;</div>
 
 
-      {heartList.length === 0? <div className='H-wrap-slick'>관심지역이 없습니다.</div> :  
-      <div className='H-wrap-slick'>
-        <button className="H-btn" onClick={() => slider.current.slickPrev()}>이전</button>
+      {heartList.length === 0 ? <div className='H-wrap-slick'>관심지역이 없습니다.</div> :
+        <div className='H-wrap-slick'>
+          <button className="H-btn" onClick={() => slider.current.slickPrev()}>이전</button>
 
-        <Slider ref={slider} {...settings} className='H-slider'>
-          {heartList.map((item, index) => (
-            <div className="H-div" key={index} >
-              {item}
-              <br></br>
-              <AiFillHeart size="30" color='red' onClick={()=>handle(item)}/>
-            </div>
-          ))}
-        </Slider>
+          <Slider ref={slider} {...settings} className='H-slider'>
+            {heartList.map((item, index) => (
+              <div className="H-div" key={index} onClick={() => handle(item)}>
+                {item}
+                <br></br>
+                <AiFillHeart
+                  size="30"
+                  color='red'
+                  className="test" />
+              </div>
+            ))}
+          </Slider>
 
-        <button className="H-btn" onClick={() => slider.current.slickNext()}>다음</button>
-      </div>}
+          <button className="H-btn" onClick={() => slider.current.slickNext()}>다음</button>
+        </div>}
 
 
     </div >

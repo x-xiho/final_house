@@ -134,11 +134,12 @@ background-color: #fafafa;
 }
 
 .H-wrap-slick {
-  border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 200px;
+
+  /* border: 1px solid black; */
 }
 
 .H-btn {
@@ -147,27 +148,21 @@ background-color: #fafafa;
   width: 50px;
   height: 30px;
 
-  border: none;
-  outline: none;
   cursor: pointer;
   background-color: transparent;
   border: 1px solid #dcdcdc;
 }
 
 .H-slider {
-  width: 500px;
-  border: 1px solid black;
+  width: 800px;
+  /* border: 1px solid black; */
 }
 
 .slick-dots {
-  text-align: center;
+  right: 0%;
 }
 
 .H-div {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
   text-align: center;
   /* border: 1px solid blue; */
   width: 500px;
@@ -176,15 +171,18 @@ background-color: #fafafa;
   font-size: 18px;
   font-weight: bold;
 
+  transition: all 0.2s;
+
+  display: flex;
 }
 
 .H-div:hover {
-  background-color: rgb(220, 220, 200, 0.5);
+  /* background-color: rgb(220, 220, 200, 0.5); */
+  border-radius: 10px;
   color: black;
+  font-size:22px;
+
 }
-
-
-
 
 /* Page 공통 */
 
@@ -212,12 +210,12 @@ background-color: #fafafa;
 
 .page1-btn {
   font-family: 'GmarketSans';
-  border: none;
-  outline: none;
+
   cursor: pointer;
   background-color: #dcdcdc;
   border: 1px solid #dcdcdc;
   color: black;
+
   width: 100px;
   height: 30px;
 }
@@ -290,7 +288,7 @@ input[type="radio"] {
   justify-content: center;
 }
 
-.pageStart-home{
+.pageStart-home {
   animation: pageStart-home-slidein 0.5s ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -320,7 +318,7 @@ input[type="radio"] {
   color: gray;
 }
 
-.pagestart-btn{
+.pagestart-btn {
   font-family: 'GmarketSans';
   /* border: none; */
   cursor: pointer;
@@ -338,19 +336,19 @@ input[type="radio"] {
   margin-top: 24px;
 }
 
-.pagestart-btn:hover{
+.pagestart-btn:hover {
   background-color: #A7B5A8;
   color: white;
 }
 
-.span{
+.span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-.span:after{
+.span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -360,11 +358,11 @@ input[type="radio"] {
   transition: background-color 0.2s;
 }
 
-.pagestart-btn:hover .span{
+.pagestart-btn:hover .span {
   padding-right: 30px;
 }
 
-.pagestart-btn:hover .span:after{
+.pagestart-btn:hover .span:after {
   opacity: 1;
   right: 0;
 }
@@ -400,7 +398,6 @@ input[type="radio"] {
   align-items: center;
   /* border: 1px solid #dcdcdc; */
 
-
 }
 
 .page-radioStyle {
@@ -419,6 +416,7 @@ input[type="radio"] {
 
 .radioStyle {
   margin: 0px 10px 10px 10px;
+
 }
 
 .page1-text {
@@ -437,13 +435,147 @@ input[type="radio"] {
 }
 
 
-
-/* Page2 Css */
+/* checkbox Css */
 
 .page-checkStyle {
-  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+
+  justify-content: center;
+  align-items: center;
 }
 
+.checkboxStyle {
+  margin: 10px 10px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.checkboxStyle span {
+  text-align: center;
+  height: 50px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dcdcdc;
+  box-sizing: border-box;
+}
+
+
+.checkboxStyle [type="checkbox"]:checked+span {
+  color: white;
+  background-color: #A7B5A8;
+  font-weight: 500;
+}
+
+
+
+/* pagePriority css */
+
+
+.page-priority {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-priority-btn {
+  font-family: 'GmarketSans';
+  margin-right: 10px;
+  height: 50px;
+  width: 110px;
+  border: 1px solid #dcdcdc;
+
+  box-sizing: border-box;
+  /* font-weight: bold; */
+  font-size: 17px;
+
+  transition: all 0.2s;
+}
+
+.page-priority-btn:disabled {
+  color: white;
+  background-color: #A7B5A8;
+  /* font-weight: bold; */
+}
+
+.page-priority-2 {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  height: 30px;
+  padding: 6px 20px;
+
+  background-color: transparent;
+  border: 1px solid #dcdcdc;
+  border-radius: 30px;
+
+  transition: all 0.2s;
+}
+
+.page-priority-2:hover {
+  background-color: gray;
+  color: white;
+}
+
+
+.page-priority-rank {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+  height: 60px;
+}
+
+
+.page-priority-set {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+  width: 80px;
+
+}
+
+.page-priority-value {
+  color: gray;
+}
+
+.page-rank-key {
+  color: green;
+}
+
+
+.page-priority-form {
+  width: 600px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid #dcdcdc; */
+}
+
+
+.page-priority-nextbtn {
+  text-align: center;
+  /* margin-top: 12px; */
+  /* border: 1px solid #dcdcdc; */
+
+  display: flex;
+  width: 40%;
+  justify-content: space-around;
+
+  /* margin: 12px 0px 10px 10px; */
+}
 
 
 /* PageEnd Css */
@@ -528,6 +660,7 @@ input[type="radio"] {
 
 
 /* Powerbi Css */
+
 .embededReport {
   margin: 0px;
   height: 80vh;

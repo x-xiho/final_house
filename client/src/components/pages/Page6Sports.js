@@ -30,6 +30,8 @@ function Page6Sports() {
     }
   }
 
+  // 풋살 테니스 탁구 축구 족구 야구 스쿼시 수영 배드민턴 배구 농구 헬스
+
   return (
     <div className='page1-container'>
       <div className='page1-text'>
@@ -40,40 +42,112 @@ function Page6Sports() {
 
       <form onSubmit={handleSubmit} className='page1-form'>
         <div className='page-checkStyle'>
-          <label>
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="sports"
+              value="풋살"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('풋살')} />
+            <span>풋살</span>
+          </label>
+
+          <label className='checkboxStyle'>
             <input type="checkbox"
               name="sports"
               value="테니스"
               onChange={handleCheckboxChange}
               checked={selectedOptions.includes('테니스')} />
-            테니스
+            <span>테니스</span>
           </label>
 
-          <label>
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="sports"
+              value="탁구"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('탁구')} />
+            <span>탁구</span>
+          </label>
+
+          <label className='checkboxStyle'>
             <input type="checkbox"
               name="sports"
               value="축구"
               onChange={handleCheckboxChange}
               checked={selectedOptions.includes('축구')} />
-            축구
+            <span>축구</span>
           </label>
 
-          <label>
+          <label className='checkboxStyle'>
             <input type="checkbox"
               name="sports"
-              value="볼링"
+              value="족구"
               onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('볼링')} />
-            볼링
+              checked={selectedOptions.includes('족구')} />
+            <span>족구</span>
           </label>
 
-          <label>
+          <label className='checkboxStyle'>
             <input type="checkbox"
               name="sports"
-              value="산책"
+              value="야구"
               onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('산책')} />
-            산책
+              checked={selectedOptions.includes('야구')} />
+            <span>야구</span>
+          </label>
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="sports"
+              value="스쿼시"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('스쿼시')} />
+            <span>스쿼시</span>
+          </label>
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="sports"
+              value="수영"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('수영')} />
+            <span>수영</span>
+          </label>
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="sports"
+              value="배드민턴"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('배드민턴')} />
+            <span>배드민턴</span>
+          </label>
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="sports"
+              value="배구"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('배구')} />
+            <span>배구</span>
+          </label>
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="sports"
+              value="농구"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('농구')} />
+            <span>농구</span>
+          </label>
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="sports"
+              value="헬스"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('헬스')} />
+            <span>헬스</span>
           </label>
         </div>
 

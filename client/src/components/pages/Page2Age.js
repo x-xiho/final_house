@@ -13,7 +13,7 @@ function Page2Age() {
 
     if (selectedOption !== null) {
       localStorage.setItem('age', selectedOption);
-      navigate('/myhome/pagefamily');
+      navigate('/myhome/test');
     }
   }
 

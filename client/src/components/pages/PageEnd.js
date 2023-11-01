@@ -74,7 +74,6 @@ function PageEnd() {
       console.log("관심목록에 추가할 지역", area)
       setHeartClicked3(!heartClicked3);
     }
-
   }
 
   // 관심목록에서 지역 삭제
@@ -110,7 +109,6 @@ function PageEnd() {
           console.error('관심목록을 삭제하는 과정에서 오류가 발생했습니다.', error);
         });
     }
-
   }
 
 

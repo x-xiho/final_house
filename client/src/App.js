@@ -26,26 +26,27 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        
-      <Route path="login" element={<Login />} />
+
+        <Route path="login" element={<Login />} />
         <Route element={<Nav />}>
           {/* <Route path="/" element={<Main />} /> */}
           <Route path="/" element={<Main2 />} />
 
           <Route path="myhome" element={<Myhome />}>
-          <Route index element={<Page0Start/>} />
-            <Route path="pagesex" element={<Page1Sex/>} />
-            <Route path="pageage" element={<Page2Age/>} />
-            <Route path="pagefamily" element={<Page3Family/>} />
-            <Route path="pagemarry" element={<Page4Marry/>} />
-            <Route path="pagehobby" element={<Page5Hobby/>} />
-            <Route path="pagesports" element={<Page6Sports/>} />
-            <Route path="pagetendency" element={<Page7Tendency/>} />
+            <Route index element={<Page0Start />} />
+            <Route path="test" element={<PagePriority />} />
+            <Route path="pagesex" element={<Page1Sex />} />
+            <Route path="pageage" element={<Page2Age />} />
+            <Route path="pagefamily" element={<Page3Family />} />
+            <Route path="pagemarry" element={<Page4Marry />} />
+            <Route path="pagehobby" element={<Page5Hobby />} />
+            <Route path="pagesports" element={<Page6Sports />} />
+            <Route path="pagetendency" element={<Page7Tendency />} />
             <Route path="pageend" element={<PageEnd />} />
           </Route>
 
           <Route path="mypage" element={<Mypage />} />
-          <Route path="test" element={<PagePriority/>} />
+
 
         </Route>
       </Routes>

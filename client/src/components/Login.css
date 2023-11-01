@@ -124,6 +124,10 @@
   align-items: center;
 }
 
+.kakao{
+  font-family: 'GmarketSans';
+}
+
 .Login-ok {
   font-size: 0.7em;
   color: rgb(225, 225, 225, 0.8);
