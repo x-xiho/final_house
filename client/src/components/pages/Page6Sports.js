@@ -149,6 +149,16 @@ function Page6Sports() {
               checked={selectedOptions.includes('헬스')} />
             <span>헬스</span>
           </label>
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="sports"
+              value="기타"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('기타')} />
+            <span>기타</span>
+            {/* 금액, 직장 */}
+          </label>
         </div>
 
         <div className='Nextbtn'>

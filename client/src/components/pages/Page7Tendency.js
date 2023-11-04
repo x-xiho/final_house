@@ -15,26 +15,30 @@ function Page7Tendency() {
     if (selectedOption !== null) {
       localStorage.setItem('tendency', selectedOption);
 
-      // 로컬에 저장된 값들을 모조리 뽑아옴
-      const name = localStorage.getItem('유저이름');
-      const sex = localStorage.getItem('sex');
-      const age = localStorage.getItem('age');
-      const hobby = localStorage.getItem('hobby');
-      const sports = localStorage.getItem('sports');
-      const tendency = localStorage.getItem('tendency');
 
+      const userData = ['유저이름', 'sex', 'age', 'hobby', 'sports', 'tendency'];
+      const userPreferenceData = ['안전', '생활시설', '교육', '의료', '환경', '교통', '기타'];
 
-      // 유저데이터를 한 번에 정리
-      const userInfo = {
-        name: name,
-        sex: sex,
-        age: age,
-        hobby: hobby,
-        sports: sports,
-        tendency: tendency
-      };
+      // 유저의 설문조사 값이 저장될 변수
+      const userInfo = {};
+      // 우선순위 데이터가 저장될 변수
+      const userPreferenceInfo = {};
+
+      // 로컬스토리지에 저장된 유저의 설문조사 데이터를 userInfo 객체에 저장
+      userData.forEach(item => {
+        const value = localStorage.getItem(item);
+        userInfo[item] = value;
+      });
+
+      // 로컬스토리지에 저장된 우선순위 데이터를 userPreferenceInfo 객체에 저장
+      userPreferenceData.forEach(item => {
+        const value = localStorage.getItem(item);
+        userPreferenceInfo[item] = value;
+      });
 
       console.log("프론트엔드에서 저장된 데이터", userInfo);
+      console.log("우선순위 데이터", userPreferenceInfo);
+
 
       // 백엔드에 유저의 답변 전송
       axios.post('http://localhost:4000/users', userInfo)
@@ -45,6 +49,17 @@ function Page7Tendency() {
           console.error('데이터 전송 실패:', error);
         });
 
+      // 백엔드에 우선순위 데이터 전송
+      axios.post('http://localhost:4000/rank', userPreferenceInfo)
+        .then(response => {
+          console.log('우선순위 데이터 전송 성공:', response);
+        })
+        .catch(error => {
+          console.error('데이터 전송 실패:', error);
+        });
+
+
+
       // 로컬스토리지 데이터 지우기
       localStorage.removeItem('sex')
       localStorage.removeItem('age')
@@ -54,6 +69,14 @@ function Page7Tendency() {
       localStorage.removeItem('family')
       localStorage.removeItem('marry')
       localStorage.removeItem('priority')
+
+      localStorage.removeItem('안전')
+      localStorage.removeItem('생활시설')
+      localStorage.removeItem('교육')
+      localStorage.removeItem('의료')
+      localStorage.removeItem('환경')
+      localStorage.removeItem('교통')
+      localStorage.removeItem('기타')
 
       navigate('/myhome/pageend');
     }

@@ -77,6 +77,11 @@ app.post('/users', (req, res) => {
   res.send('데이터가 성공적으로 저장되었습니다.');
 });
 
+app.post('/rank', (req, res) => {
+  const userpre = req.body; // JSON 데이터 파싱
+
+  console.log('Received Data:', userpre);
+});
 
 
 // 지역추천 알로리즘 결과를 프론트에 보내줌

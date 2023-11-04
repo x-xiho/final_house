@@ -122,6 +122,15 @@ function Page5Hobby() {
               checked={selectedOptions.includes('독서')} />
             <span>독서</span>
           </label>
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="hobby"
+              value="기타"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('기타')} />
+            <span>기타</span>
+          </label>
         </div>
 
         <div className='Nextbtn'>

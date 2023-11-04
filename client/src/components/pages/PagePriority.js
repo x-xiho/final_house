@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { MdOutlineReplay} from "react-icons/md"
+import { MdOutlineReplay } from "react-icons/md"
 
 // 우선 순위 질문
 function PagePriority() {
@@ -24,21 +24,68 @@ function PagePriority() {
   // 백엔드에 순위 데이터 전송
   const sendDataToBackend = () => {
     // e.preventDefault(); //페이지 새로고침 방지
-    const dataToSend = {};
+    // const dataToSend = {};
 
-    buttonClicks.forEach((click, index) => {
-      const key = Object.keys(click)[0];
-      const value = index + 1;
-      dataToSend[key] = value;
-    });
+    // buttonClicks.forEach((click) => {
+    //   const key = Object.keys(click)[0];
+    //   const value = click[key];
+    //   dataToSend[key] = value;
 
-    console.log(dataToSend)
+    // });
 
     navigate('/myhome/pagefamily');
-
-    // 아직 백엔드 코드 작성 안함
   };
 
+
+
+
+  // 버튼 클릭 시 순서 저장
+  // const handleButtonClick = (button) => {
+  //   const existingClickIndex = buttonClicks.findIndex(click => Object.keys(click)[0] === button);
+  //   if (existingClickIndex !== -1) {
+
+  //     //이미 눌린 버튼일 경우, 삭제
+  //     const newButtonClicks = [...buttonClicks];
+  //     newButtonClicks.splice(existingClickIndex, 1);
+  //     newButtonClicks.forEach((click, index) => {
+  //       const key = Object.keys(click)[0];
+  //       const value = index + 1;
+  //       click[key] = value;
+  //     });
+  //     setButtonClicks(newButtonClicks);
+  //     setButtonStatus(prevStatus => ({ ...prevStatus, [button]: true }));
+  //   } else {
+  //     // 새로운 버튼일 경우, 추가
+  //     const newOrder = [...buttonClicks, { [button]: buttonClicks.length + 1 }];
+  //     setButtonClicks(newOrder);
+  //     setButtonStatus(prevStatus => ({ ...prevStatus, [button]: false }));
+  //   }
+  // };
+
+  const handleButtonClick = (button) => {
+    const existingClickIndex = buttonClicks.findIndex(click => Object.keys(click)[0] === button);
+    if (existingClickIndex !== -1) {
+      // 이미 눌린 버튼일 경우, 삭제
+      const newButtonClicks = [...buttonClicks];
+      newButtonClicks.splice(existingClickIndex, 1);
+      newButtonClicks.forEach((click, index) => {
+        const key = Object.keys(click)[0];
+        const value = index + 1;
+        // 로컬 스토리지에 각 버튼의 순위만 저장
+        localStorage.setItem(key, value.toString());
+        click[key] = value;
+      });
+      setButtonClicks(newButtonClicks);
+      setButtonStatus(prevStatus => ({ ...prevStatus, [button]: true }));
+    } else {
+      // 새로운 버튼일 경우, 추가
+      const newOrder = [...buttonClicks, { [button]: buttonClicks.length + 1 }];
+      setButtonClicks(newOrder);
+      setButtonStatus(prevStatus => ({ ...prevStatus, [button]: false }));
+      // 로컬 스토리지에 각 버튼의 순위만 저장
+      localStorage.setItem(button, (buttonClicks.length + 1).toString());
+    }
+  };
 
   // 다시하기 버튼
   const resetData = () => {
@@ -52,26 +99,6 @@ function PagePriority() {
       "교통": true,
       "기타": true
     });
-  };
-
-  // 
-
-  // 버튼 클릭
-  const handleButtonClick = (button) => {
-    if (buttonStatus[button]) {
-      setButtonClicks([...buttonClicks, { [button]: buttonClicks.length + 1 }]);
-      setButtonStatus(prevStatus => ({ ...prevStatus, [button]: false }));
-    }
-  };
-
-  // 이전 버튼 취소하기
-  const cancelLastButtonClick = () => {
-    const lastButtonClick = buttonClicks[buttonClicks.length - 1];
-    if (lastButtonClick) {
-      const cancelledButton = Object.keys(lastButtonClick)[0];
-      setButtonClicks(buttonClicks.slice(0, -1));
-      setButtonStatus(prevStatus => ({ ...prevStatus, [cancelledButton]: true }));
-    }
   };
 
 
@@ -89,20 +116,28 @@ function PagePriority() {
       </div>
 
       <div >
-        <button className='page-priority-2' onClick={resetData}>처음부터 다시하기<MdOutlineReplay/></button>
-        <button className='page-priority-2' onClick={cancelLastButtonClick}>이전 버튼 취소</button>
+        <button className='page-priority-2' onClick={resetData}>처음부터 다시하기<MdOutlineReplay /></button>
       </div>
 
       <div className='page-priority'>
 
         <div className='page-btns'>
-          <button className='page-priority-btn' onClick={() => handleButtonClick("안전")} disabled={!buttonStatus["안전"]}>안전</button>
-          <button className='page-priority-btn' onClick={() => handleButtonClick("생활시설")} disabled={!buttonStatus["생활시설"]}>생활시설</button>
-          <button className='page-priority-btn' onClick={() => handleButtonClick("교육")} disabled={!buttonStatus["교육"]}>교육</button>
-          <button className='page-priority-btn' onClick={() => handleButtonClick("의료")} disabled={!buttonStatus["의료"]}>의료</button>
-          <button className='page-priority-btn' onClick={() => handleButtonClick("환경")} disabled={!buttonStatus["환경"]}>환경</button>
-          <button className='page-priority-btn' onClick={() => handleButtonClick("교통")} disabled={!buttonStatus["교통"]}>교통</button>
-          <button className='page-priority-btn' onClick={() => handleButtonClick("기타")} disabled={!buttonStatus["기타"]}>기타</button>
+          <button className={`page-priority-btn ${buttonStatus["안전"] ? 'enabled' : 'disabled'}`}
+            onClick={() => handleButtonClick("안전")} >안전</button>
+          <button className={`page-priority-btn ${buttonStatus["생활시설"] ? 'enabled' : 'disabled'}`}
+            onClick={() => handleButtonClick("생활시설")}>생활시설</button>
+          <button className={`page-priority-btn ${buttonStatus["교육"] ? 'enabled' : 'disabled'}`}
+            onClick={() => handleButtonClick("교육")} >교육</button>
+          <button className={`page-priority-btn ${buttonStatus["의료"] ? 'enabled' : 'disabled'}`}
+            onClick={() => handleButtonClick("의료")} >의료</button>
+          <button className={`page-priority-btn ${buttonStatus["환경"] ? 'enabled' : 'disabled'}`}
+            onClick={() => handleButtonClick("환경")} >환경</button>
+          <button className={`page-priority-btn ${buttonStatus["교통"] ? 'enabled' : 'disabled'}`}
+            onClick={() => handleButtonClick("교통")}>교통</button>
+          <button className={`page-priority-btn ${buttonStatus["기타"] ? 'enabled' : 'disabled'}`}
+            onClick={() => handleButtonClick("기타")}>  
+            <div>기타</div>
+            <div className='page-priority-etc'>( 금액, 이웃 등 )</div></button>
         </div>
 
         <br />

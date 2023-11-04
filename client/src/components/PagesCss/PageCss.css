@@ -483,26 +483,45 @@ input[type="checkbox"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+}
+
+.page-btns{
+
+  display: flex;
+
 }
 
 .page-priority-btn {
   font-family: 'GmarketSans';
   margin-right: 10px;
-  height: 50px;
-  width: 110px;
+  height: 56px;
+  width: 120px;
   border: 1px solid #dcdcdc;
 
   box-sizing: border-box;
   /* font-weight: bold; */
-  font-size: 17px;
+  font-size: 20px;
 
   transition: all 0.2s;
+  text-align: center;
+
 }
 
-.page-priority-btn:disabled {
+.page-priority-etc{
+  font-size: 14px;
+  font-weight: normal;
+  color: gray;
+}
+
+
+.disabled{
   color: white;
   background-color: #A7B5A8;
-  /* font-weight: bold; */
+}
+
+.disabled .page-priority-etc{
+  color: white;
 }
 
 .page-priority-2 {
