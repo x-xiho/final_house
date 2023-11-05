@@ -26,7 +26,7 @@ function Page6Sports() {
 
     if (selectedOptions.length > 0) {
       localStorage.setItem('sports', JSON.stringify(selectedOptions));
-      navigate('/myhome/pagetendency');
+      navigate('/myhome/pagepriority');
     }
   }
 

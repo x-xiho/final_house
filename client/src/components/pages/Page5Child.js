@@ -1,22 +1,19 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-
-// 질문2 연령
-function Page2Age() {
+function Page5Child() {
   const [selectedOption, setSelectedOption] = useState(null);
   const navigate = useNavigate();
 
-  // 버튼을 누르면 다음 페이지로 이동하고, 값을 로컬스토리지에 저장
   const handleSubmit = (e) => {
     e.preventDefault(); //페이지 새로고침 방지
 
     if (selectedOption !== null) {
-      localStorage.setItem('age', selectedOption);
-      navigate('/myhome/pagefamily');
+      localStorage.setItem('child', selectedOption);
+      navigate('/myhome/pagehobby');
+      // 로컬에 저장하고 다음 질문으로 이동
     }
   }
-
 
   const handleRadioChange = (e) => {
     setSelectedOption(e.target.value);
@@ -25,77 +22,70 @@ function Page2Age() {
   return (
     <div className='page1-container'>
     <div className='page1-text'>
-      <div className='page1-num'>Q.02</div>
-      <div className='page1-qurry'>나의 나이는?</div>
+      <div className='page1-num'>Q.number</div>
+      <div className='page1-qurry'>나의 자식은?</div>
     </div>
 
     <form onSubmit={handleSubmit} className='page1-form'>
       <div className='page-radioStyle'>
-
         <label className='radioStyle'>
           <input type="radio"
-            name="age"
-            value="10대"
-            checked={selectedOption === "10대"}
+            name="child"
+            value="없음"
+            checked={selectedOption === "없음"}
             onChange={handleRadioChange} />
-            <span>10대 이하</span>
+            <span>없음</span>
         </label>
 
         <label className='radioStyle'>
           <input type="radio"
-            name="age"
-            value="20대"
-            checked={selectedOption === "20대"}
+            name="child"
+            value="미취학아동"
+            checked={selectedOption === "미취학아동"}
             onChange={handleRadioChange} />
-            <span>20대</span>
+            <span>미취학아동</span>
         </label>
 
         <label className='radioStyle'>
           <input type="radio"
-            name="age"
-            value="30대"
-            checked={selectedOption === "30대"}
+            name="child"
+            value="초등학교"
+            checked={selectedOption === "초등학교"}
             onChange={handleRadioChange} />
-            <span>30대</span>
-        </label>
-
-
-
-        <label className='radioStyle'>
-          <input type="radio"
-            name="age"
-            value="40대"
-            checked={selectedOption === "40대"}
-            onChange={handleRadioChange} />
-            <span>40대</span>
+            <span>초등학교</span>
         </label>
 
         <label className='radioStyle'>
           <input type="radio"
-            name="age"
-            value="50대"
-            checked={selectedOption === "50대"}
+            name="child"
+            value="중학교"
+            checked={selectedOption === "중학교"}
             onChange={handleRadioChange} />
-            <span>50대</span>
+            <span>중학교</span>
         </label>
 
-      
         <label className='radioStyle'>
           <input type="radio"
-            name="age"
-            value="60대 이상"
-            checked={selectedOption === "60대 이상"}
+            name="child"
+            value="고등학교"
+            checked={selectedOption === "고등학교"}
             onChange={handleRadioChange} />
-            <span>60대 이상</span>
+            <span>고등학교</span>
+        </label>
+
+        <label className='radioStyle'>
+          <input type="radio"
+            name="child"
+            value="특수학교"
+            checked={selectedOption === "특수학교"}
+            onChange={handleRadioChange} />
+            <span>특수학교</span>
         </label>
 
       </div>
 
-
-
       <div className='Nextbtn'>
-      <button className='page1-btn' onClick={()=>navigate('/myhome/pagesex')}>이전</button>
-
+      <button className='page1-btn' onClick={()=>navigate('/myhome/pagemarry')}>이전</button>
         <button type='submit'
           disabled={selectedOption === null}
           className='page1-btn'>
@@ -107,4 +97,4 @@ function Page2Age() {
   )
 }
 
-export default Page2Age
+export default Page5Child

@@ -13,11 +13,13 @@ import Page1Sex from './components/pages/Page1Sex'
 import Page2Age from './components/pages/Page2Age'
 import Page3Family from './components/pages/Page3Family'
 import Page4Marry from './components/pages/Page4Marry'
+import Page5Child from './components/pages/Page5Child'
 import Page5Hobby from './components/pages/Page5Hobby'
 import Page6Sports from './components/pages/Page6Sports'
 import Page7Tendency from './components/pages/Page7Tendency'
 import PageEnd from './components/pages/PageEnd'
 import PagePriority from './components/pages/PagePriority'
+
 
 
 
@@ -34,13 +36,14 @@ function App() {
 
           <Route path="myhome" element={<Myhome />}>
             <Route index element={<Page0Start />} />
-            <Route path="test" element={<PagePriority />} />
             <Route path="pagesex" element={<Page1Sex />} />
             <Route path="pageage" element={<Page2Age />} />
             <Route path="pagefamily" element={<Page3Family />} />
             <Route path="pagemarry" element={<Page4Marry />} />
+            <Route path="pagechild" element={<Page5Child/>} />
             <Route path="pagehobby" element={<Page5Hobby />} />
             <Route path="pagesports" element={<Page6Sports />} />
+            <Route path="pagepriority" element={<PagePriority />} />
             <Route path="pagetendency" element={<Page7Tendency />} />
             <Route path="pageend" element={<PageEnd />} />
           </Route>

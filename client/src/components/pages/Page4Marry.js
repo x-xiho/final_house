@@ -10,7 +10,7 @@ function Page4Marry() {
 
     if (selectedOption !== null) {
       localStorage.setItem('marry', selectedOption);
-      navigate('/myhome/pagehobby');
+      navigate('/myhome/pagechild');
       // 로컬에 저장하고 다음 질문으로 이동
     }
   }
@@ -39,7 +39,7 @@ function Page4Marry() {
 
         <label className='radioStyle'>
           <input type="radio"
-            name="family"
+            name="marry"
             value="기혼"
             checked={selectedOption === "기혼"}
             onChange={handleRadioChange} />
@@ -48,7 +48,7 @@ function Page4Marry() {
 
         <label className='radioStyle'>
           <input type="radio"
-            name="family"
+            name="marry"
             value="기타"
             checked={selectedOption === "기타"}
             onChange={handleRadioChange} />

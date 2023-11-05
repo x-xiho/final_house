@@ -33,7 +33,7 @@ function PagePriority() {
 
     // });
 
-    navigate('/myhome/pagefamily');
+    navigate('/myhome/pagetendency');
   };
 
 
@@ -111,8 +111,8 @@ function PagePriority() {
     <div className='page1-container'>
       <div className='page1-text'>
         <div className='page1-num'>Q.number</div>
-        <div className='page1-qurry'>내가 중요하게 생각하는 요소를 1순위부터 차례대로 눌러주세요.</div>
-        <div>( 1순위부터 7순위까지 모두 선택 후 다음 페이지로 이동 가능 )</div>
+        <div className='page1-qurry'>내가 중요하게 생각하는 요소를 1순위부터 7순위까지 차례대로 눌러주세요.</div>
+        <div>( 모든 요소 선택 이후 다음 페이지로 이동 가능합니다. )</div>
       </div>
 
       <div >
@@ -137,7 +137,7 @@ function PagePriority() {
           <button className={`page-priority-btn ${buttonStatus["기타"] ? 'enabled' : 'disabled'}`}
             onClick={() => handleButtonClick("기타")}>  
             <div>기타</div>
-            <div className='page-priority-etc'>( 금액, 이웃 등 )</div></button>
+            <div className='page-priority-etc'>( 금액, 평수 등 )</div></button>
         </div>
 
         <br />
@@ -154,7 +154,16 @@ function PagePriority() {
 
       <div className='page-priority-form'>
         <div className='page-priority-nextbtn'>
-          <button className='page1-btn' onClick={() => navigate('/myhome/pageage')}>이전</button>
+          <button className='page1-btn' 
+          onClick={() => {
+            const sportsValue = localStorage.getItem('sports');
+
+            if (sportsValue === null) {
+              navigate('/myhome/pagehobby'); // sports 값이 없을 경우, page1로 이동
+            } else {
+              navigate('/myhome/pagesports'); // sports 값이 있을 경우, page2로 이동
+            }
+          }}>이전</button>
 
           <button onClick={sendDataToBackend}
             disabled={buttonClicks.length < 7}
