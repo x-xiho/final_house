@@ -12,7 +12,7 @@ function Mypage() {
 
   const [heartdata, setHeartData] = useState([]);
   const userProfilImage = localStorage.getItem('유저 프로필 사진');
-  const userName = localStorage.getItem('유저이름');
+  const userName = localStorage.getItem('name');
 
   return (
     <div className='Mypage-container'>

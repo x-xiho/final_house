@@ -11,7 +11,7 @@ import Powerbitest from './Powerbitest';
 
 function PageEnd() {
   // 로컬에 저장된 유저 이름을 변수에 저장
-  const userName = localStorage.getItem('유저이름');
+  const userName = localStorage.getItem('name');
 
   // 백엔드에서 받은 추천 지역 데이터 저장
   const [data, setData] = useState([]);
@@ -36,8 +36,8 @@ function PageEnd() {
     const basicFilter = {
       $schema: "http://powerbi.com/product/schema#basic",
       target: {
-        table: "구글맵샘플_도봉구",
-        // table: "도봉구_샘플제작데이터",
+        // table: "구글맵샘플_도봉구",
+        table: "도봉구_샘플제작데이터",
         column: "구분"
       },
       operator: "In",
@@ -50,25 +50,24 @@ function PageEnd() {
       const page = pages[0]; // 페이지 넘버
 
       const visuals = await page.getVisuals();
-      // const visual = visuals[3]; // 시각적 객체 요소 선택
-      const visual = visuals.find(v => v.type === "googleMapsPbiVisual2982D2C8868A4D07BE77AE3D0F9F87C3");
+      const visual = visuals[1]; // 시각적 객체 요소 선택
+      // const visual = visuals.find(v => v.type === "googleMapsPbiVisual2982D2C8868A4D07BE77AE3D0F9F87C3");
 
-      // console.log('시각적 객체 요소 선택 ', page)
-      if (visual) {
-        console.log('비주얼 찍음222 ', visual);
+      // // console.log('시각적 객체 요소 선택 ', page)
+      // if (visual) {
+      //   console.log('비주얼 찍음222 ', visual);
 
-        await visual.setSlicerState({
-          filters: [basicFilter]
-        });
+      //   await visual.setSlicerState({
+      //     filters: [basicFilter]
+      //   });
 
 
         console.log('비주얼 찍음 ', visual)
 
-        // await visual.setSlicerState({
-        //   filters: [basicFilter]
-        // });
+        await visual.setSlicerState({
+          filters: [basicFilter]
+        });
       }
-    }
   }
 
 
@@ -150,14 +149,16 @@ function PageEnd() {
 
   ////////////////////////////////////////////////////////////////////////////
 
+  // 다시하기 버튼
+  // 사용자 지우기
 
 
   return (
     <div className='End-container'>
 
       <div className='End-powerbi-wrap'>
-        <PowerBI />
-        {/* <Powerbitest/> */}
+        {/* <PowerBI /> */}
+        <Powerbitest/>
       </div>
 
       <div className='End-recommend'>

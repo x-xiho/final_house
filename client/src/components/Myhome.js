@@ -7,7 +7,7 @@ function Myhome() {
   const navigate = useNavigate();
   //로그인 안했으면 로그인 페이지로 강제 이동
   useEffect(() => {
-    const userLogin = localStorage.getItem('유저이름')
+    const userLogin = localStorage.getItem('name')
 
     if (userLogin === null) {
       // window.location.replace('/login')

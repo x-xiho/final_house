@@ -15,7 +15,7 @@ function Nav() {
 
 // 로그인 여부 확인
   useEffect(() => {
-    const userState = localStorage.getItem('유저이름')
+    const userState = localStorage.getItem('name')
     if (userState) {
       setUserLogin(true)
       console.log(`${userState}라는 유저가 로그인 된 상태임`)

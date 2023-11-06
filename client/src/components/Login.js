@@ -28,7 +28,7 @@ function Login() {
       setUserInfo(userData);
 
       // console.log("유저의 프로필 사진", userData.properties.profile_image);
-      localStorage.setItem('유저이름', userData.properties.nickname);
+      localStorage.setItem('name', userData.properties.nickname);
       localStorage.setItem('유저 프로필 사진', userData.properties.profile_image);
 
       // 로그인 이후 메인홈페이지로 이동

@@ -16,9 +16,13 @@ function Page7Tendency() {
       localStorage.setItem('tendency', selectedOption);
 
 
-      const userData = ['유저이름', 'sex', 'age', 'child','hobby', 'sports', 'tendency'];
+      const userData = ['name', 'sex', 'age', 'child','hobby', 'sports', 'tendency'];
       const userPreferenceData = ['안전', '생활시설', '교육', '의료', '환경', '교통', '기타'];
 
+      const test =localStorage.getItem('name')
+      console.log('테스트', test)
+
+      
       // 유저의 설문조사 값이 저장될 변수
       const userInfo = {};
       // 우선순위 데이터가 저장될 변수

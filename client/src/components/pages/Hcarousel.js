@@ -14,7 +14,7 @@ function Hcarousel() {
   // 관심목록 데이터 저장
   const [heartList, setHeartList] = useState([]);
 
-  const userName = localStorage.getItem('유저이름');
+  const userName = localStorage.getItem('name');
 
   // 슬라이더 최대 개수
   const showMaxCnt = 4;
