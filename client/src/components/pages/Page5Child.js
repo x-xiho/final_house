@@ -23,7 +23,7 @@ function Page5Child() {
     <div className='page1-container'>
     <div className='page1-text'>
       <div className='page1-num'>Q.number</div>
-      <div className='page1-qurry'>나의 자식은?</div>
+      <div className='page1-qurry'>나의 자녀는?</div>
     </div>
 
     <form onSubmit={handleSubmit} className='page1-form'>

@@ -9,9 +9,9 @@ function Powerbitest() {
       <PowerBIEmbed
         embedConfig={{
           type: 'report', // 보고서 타입
-          id: 'ff956d20-3082-48e1-aefb-057b1e35a91f', // CCTV 파일
-          embedUrl: "https://app.powerbi.com/reportEmbed?reportId=ff956d20-3082-48e1-aefb-057b1e35a91f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLUVBU1QtQVNJQS1BLVBSSU1BUlktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQiLCJlbWJlZEZlYXR1cmVzIjp7Im1vZGVybkVtYmVkIjp0cnVlLCJ1c2FnZU1ldHJpY3NWTmV4dCI6dHJ1ZX19",
-          accessToken:"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvZmQwOWIyYmMtOTIyMC00YzZiLTgzNzItMjIwYjdiZDUxODE5LyIsImlhdCI6MTY5NzM2NzYzMywibmJmIjoxNjk3MzY3NjMzLCJleHAiOjE2OTczNzIzNTgsImFjY3QiOjAsImFjciI6IjEiLCJhZ2VHcm91cCI6IjQiLCJhaW8iOiJBVFFBeS84VUFBQUFSd1FVemRyYjl1OWdYRng2dk5KcERSMFpVajYyaVhLQngzbHdzaThWMldnUHNkZGR4RzI0Z3ZMQ0NHKzV4TFFLIiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6Ijg3MWMwMTBmLTVlNjEtNGZiMS04M2FjLTk4NjEwYTdlOTExMCIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiS2ltIiwiZ2l2ZW5fbmFtZSI6IkppaG8iLCJpcGFkZHIiOiIyMjEuMTU0LjI0LjgxIiwibmFtZSI6IktpbUppaG8iLCJvaWQiOiIxYzc0NjdhNC0xYjMyLTRiMjUtYTZiMS0wNjUxNTg4ZTUwM2EiLCJwdWlkIjoiMTAwMzIwMDA0OTAzNkM2RiIsInB3ZF9leHAiOiIxMjA3MzczIiwicHdkX3VybCI6Imh0dHBzOi8vcG9ydGFsLm1pY3Jvc29mdG9ubGluZS5jb20vQ2hhbmdlUGFzc3dvcmQuYXNweCIsInJoIjoiMC5BWEVBdkxJSl9TQ1NhMHlEY2lJTGU5VVlHUWtBQUFBQUFBQUF3QUFBQUFBQUFBQnhBTVUuIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic2lnbmluX3N0YXRlIjpbImttc2kiXSwic3ViIjoicFZ3N2VHcW1hb2NUcVl5X0ZRdGFhZUlnb3dDOHNZSlUyb0RQdDIwVXVWayIsInRpZCI6ImZkMDliMmJjLTkyMjAtNGM2Yi04MzcyLTIyMGI3YmQ1MTgxOSIsInVuaXF1ZV9uYW1lIjoia29uZzg4QGR1a3N1bmcuYWMua3IiLCJ1cG4iOiJrb25nODhAZHVrc3VuZy5hYy5rciIsInV0aSI6IlJpUS12UGFwNlVXcy0tLTVfWEZoQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdLCJ4bXNfcGwiOiJrby1LUiJ9.QG9bzPTe96DDRrPKg7r4z0nrHzNKDl3XJpO4ORhD1Jj8EbJwLygo8zqyNhZE0pxHoHVlj0acG95jwb5imyXqpFzwYnQozHI8Sw8wMI0maOS-iugtFBqoToHEIKV0GKxd4kaP_Oixil1Wfbr62wx73ZiCKqjr1QYyoh-Z8HVml0q2W-fzyYmSbuEY8bnU8xyTyFQnbcYrXSZ-i1PtdRsPlq1WQyA4aRd5MUHnPz5KaMaAYJuhRTKArW12vUYmhNpTiAQmuA74480E6quhZVyk78v5Pp4YCkO7WZz7rGdf_EqwTD2Qb1auiXvrXAEVXpOa0IOAUO5v1MXMo1gZv88JgA",
+          id: '64847c3f-9d8c-43ee-8c69-e7bc8d46a8d0', // CCTV 파일
+          embedUrl: "https://app.powerbi.com/reportEmbed?reportId=17fe5df0-9871-4479-b9fe-d317878995a8&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLUVBU1QtQVNJQS1BLVBSSU1BUlktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQiLCJlbWJlZEZlYXR1cmVzIjp7InVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d",
+          accessToken:"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjlHbW55RlBraGMzaE91UjIybXZTdmduTG83WSIsImtpZCI6IjlHbW55RlBraGMzaE91UjIybXZTdmduTG83WSJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvZmQwOWIyYmMtOTIyMC00YzZiLTgzNzItMjIwYjdiZDUxODE5LyIsImlhdCI6MTY5OTI0MzkwNiwibmJmIjoxNjk5MjQzOTA2LCJleHAiOjE2OTkyNDg1MzgsImFjY3QiOjAsImFjciI6IjEiLCJhZ2VHcm91cCI6IjQiLCJhaW8iOiJBVFFBeS84VUFBQUFVbXdTSlJXZjhsMHFlMXdSZm80N2FwSlVFa2JuVVhQaDlRNnh3aG8xVzZWRmZXRzVJNmxQWHBmOGFZWUdydWp3IiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6Ijg3MWMwMTBmLTVlNjEtNGZiMS04M2FjLTk4NjEwYTdlOTExMCIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiS2ltIiwiZ2l2ZW5fbmFtZSI6IkppaG8iLCJpcGFkZHIiOiIyMDMuMjUyLjIyMy4yNTMiLCJuYW1lIjoiS2ltSmlobyIsIm9pZCI6IjFjNzQ2N2E0LTFiMzItNGIyNS1hNmIxLTA2NTE1ODhlNTAzYSIsInB1aWQiOiIxMDAzMjAwMDQ5MDM2QzZGIiwicmgiOiIwLkFYRUF2TElKX1NDU2EweURjaUlMZTlVWUdRa0FBQUFBQUFBQXdBQUFBQUFBQUFCeEFNVS4iLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzaWduaW5fc3RhdGUiOlsia21zaSJdLCJzdWIiOiJwVnc3ZUdxbWFvY1RxWXlfRlF0YWFlSWdvd0M4c1lKVTJvRFB0MjBVdVZrIiwidGlkIjoiZmQwOWIyYmMtOTIyMC00YzZiLTgzNzItMjIwYjdiZDUxODE5IiwidW5pcXVlX25hbWUiOiJrb25nODhAZHVrc3VuZy5hYy5rciIsInVwbiI6Imtvbmc4OEBkdWtzdW5nLmFjLmtyIiwidXRpIjoieUtUbzBxTHltRWlMc1lXUlB4MWFBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc19wbCI6ImtvLUtSIn0.myYTaZRB0bVEGyG76zgMh25YLG2TOstOi0sz1z42x7SOl34tIzY_zAyynjQKfFCNbSSY1dvc1et-V-G898sOtCSO6GPNfIHeQAqZ8P5MWnMiZcXKjkwLAL3SNLRPznrscxdA-3o0Zt8Z3Ns9CPrCx2V2hs2WhvJi4B8XIPRhxwfq9eJ_uJalcyWpfMtPWst9rjFQjZaWQb00i6bwYf8lJ_SDe_zRuydgCoacTyYgT23VxhA3K_Hl1diFoLvzad9Oit_BAFfVBh7f4QZyW9ThYXhelBG9gmDPkJjeUKTWaPeQtLeA5iFYUHOw0C8iKJ51AfE8wjzH_WEp1YxeFPpxtA",
           tokenType: models.TokenType.Aad, 
           settings: {
             panes: {
@@ -24,18 +24,18 @@ function Powerbitest() {
           }
         }}
 
-        // eventHandlers={
-        //   new Map([
-        //     ['loaded', function () { console.log('Report loaded'); }],
-        //     ['rendered', function () { console.log('Report rendered'); }],
-        //     ['error', function (event) { console.log(event.detail); }],
-        //     ['visualClicked', (event) => {
-        //       const visualData = event.detail;
-        //       console.log('Visual Clicked:', visualData)
-        //     }],
-        //     ['pageChanged', (event) => console.log(event)],
-        //   ])
-        // }
+        eventHandlers={
+          new Map([
+            ['loaded', function () { console.log('Report loaded'); }],
+            ['rendered', function () { console.log('Report rendered'); }],
+            ['error', function (event) { console.log(event.detail); }],
+            ['visualClicked', (event) => {
+              const visualData = event.detail;
+              console.log('Visual Clicked:', visualData)
+            }],
+            ['pageChanged', (event) => console.log(event)],
+          ])
+        }
         
         cssClassName={"embededReport"}
         getEmbeddedComponent={(embeddedReport) => {
