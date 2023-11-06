@@ -21,7 +21,7 @@ function Page0Start() {
 
         <div className='startbtn'>
           <button className='pagestart-btn' onClick={()=> navigate('/myhome/pagesex')}>
-            <sapn className="span">시작하기</sapn>
+            <span className="span">시작하기</span>
           </button>
         </div>
 

@@ -21,6 +21,8 @@ function Page6Sports() {
     });
   }
 
+  // 위치만 바꾸기
+
   const handleSubmit = (e) => {
     e.preventDefault(); // 페이지 새로고침 방지
 

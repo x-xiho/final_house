@@ -31,6 +31,7 @@ function PageEnd() {
 
   // 파워비아이 연동 함수
   const powerbibtn = async (name) => {
+    console.log("선택한 지역 이름", name)
     console.log('파워비아이 연동 함수 실행됨 ds', typeof name);
 
     const basicFilter = {
@@ -72,21 +73,21 @@ function PageEnd() {
 
 
   // 관심목록에 지역 저장
-  const putHeart = (area) => {
+  const putHeart = (areas) => {
 
-    if (area === data.location1) {
-      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: area })
-      console.log("관심목록에 추가할 지역", area)
+    if (areas === data.location1) {
+      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: areas })
+      console.log("관심목록에 추가할 지역", areas)
       setHeartClicked1(!heartClicked1);
 
-    } else if (area === data.location2) {
-      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: area })
-      console.log("관심목록에 추가할 지역", area)
+    } else if (areas === data.location2) {
+      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: areas })
+      console.log("관심목록에 추가할 지역", areas)
       setHeartClicked2(!heartClicked2);
 
-    } else if (area === data.location3) {
-      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: area })
-      console.log("관심목록에 추가할 지역", area)
+    } else if (areas === data.location3) {
+      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: areas })
+      console.log("관심목록에 추가할 지역", areas)
       setHeartClicked3(!heartClicked3);
     }
   }
@@ -157,8 +158,8 @@ function PageEnd() {
     <div className='End-container'>
 
       <div className='End-powerbi-wrap'>
-        {/* <PowerBI /> */}
-        <Powerbitest/>
+        <PowerBI />
+        {/* <Powerbitest/> */}
       </div>
 
       <div className='End-recommend'>

@@ -78,7 +78,7 @@ function Page5Hobby() {
               name="hobby"
               value="음악"
               onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('음악')} />
+              checked={selectedOptions.includes('공연관람')} />
             <span>공연 관람</span>
           </label>
 
@@ -107,9 +107,9 @@ function Page5Hobby() {
           <label className='checkboxStyle'>
             <input type="checkbox"
               name="hobby"
-              value="맛집/쇼핑"
+              value="쇼핑"
               onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('맛집/쇼핑')} />
+              checked={selectedOptions.includes('쇼핑')} />
             <span>맛집 / 쇼핑</span>
           </label>
 

@@ -193,7 +193,7 @@ app.delete("/users/:name", (req, res) => {
 app.put('/users/:name/favorites', (req, res) => {
   const { name } = req.params;
   const { favorites: areas } = req.body;
-  console.log(areas);
+  console.log("ddd",req.body);
   const workbook = getExcelWorkbook("survey-result.xlsx");
   const sheetName = workbook.SheetNames[0];
   const worksheet = workbook.Sheets[sheetName];

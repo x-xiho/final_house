@@ -121,7 +121,10 @@ app.put('/users/:name/favorites', (req, res) => {
 // 프론트에서 보낸 관심목록을 백엔드에서 삭제
 app.delete('/users/:name/favorites', (req, res) => {
   const { name } = req.params;
+  const test = req.body;
   const areaToDelete = req.body.favorites;
+
+  console.log("req body", test);
 
 
   const favorites = loacationData[name].favorites;
