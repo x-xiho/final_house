@@ -13,6 +13,14 @@
 ### API 정의서
 *[노션](https://www.notion.so/2-29540c534eb54de2808f282591fea938)
 
+1. App serviec -> 리소스 만들기 -> 웹앱 
+2. 리소스 그룹 (rg-name) / 이름(app-name) / 러타임 스택 ( node 18 LTS ) / 지역 ( korea central ) / 플랜 새로 만들기 (asp-name) / 가격 책정 플랜 ( B1 ) -> 검토 만들기 / 배포완
+3. vscode에서 해당하는 파일 deploy 
+
+#### Azure 배포
+*[참고 티스토리](https://zigispace.net/1111)
+
+
 /////
 
 ###교수님 피드백
