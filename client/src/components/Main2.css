@@ -75,6 +75,23 @@
   animation-fill-mode: forwards;
 }
 
+/* 반응형 웹 모바일용 크기*/
+
+@media all and (max-width: 960px){
+	.Main2-text-main{
+    font-size: 1.2em;
+  }
+
+
+}
+
+@media (max-width: 600px) {
+  .Main2-text-btn {
+    font-size: 2px; /* 원하는 작은 크기로 조절 */
+  }
+}
+
+
 .Main2-text-btn {
   font-family: 'GmarketSans';
   font-size: 24px;

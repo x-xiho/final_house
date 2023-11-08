@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link, Outlet, NavLink  } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import KakaoLogin from 'react-kakao-login';
 
 import './Nav.css'
 import Logo from './images/200pxLogo.png'
 
-import Login from './Login'
-import Myhome from './Myhome'
+
 
 function Nav() {
   const [userLogin, setUserLogin] = useState(true)

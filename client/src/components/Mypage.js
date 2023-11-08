@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
+import React from 'react'
 
 import './Mypage.css'
 
-import Logo from './images/200pxLogo.png'
-import kakao from './images/kakaobtn.png'
 import Hcarousel from './pages/Hcarousel'
 
 function Mypage() {
 
-  const [heartdata, setHeartData] = useState([]);
   const userProfilImage = localStorage.getItem('유저 프로필 사진');
   const userName = localStorage.getItem('name');
 

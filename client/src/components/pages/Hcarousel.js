@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Slider from "react-slick";
 import '../PagesCss/PageCss.css'
 import axios from 'axios';
@@ -16,9 +16,6 @@ function Hcarousel() {
 
   const userName = localStorage.getItem('name');
 
-  // 슬라이더 최대 개수
-  const showMaxCnt = 4;
-  const arr = Array.from(new Array(3));
 
   // 관심목록 삭제
   const handle = (name) => {
@@ -55,6 +52,7 @@ function Hcarousel() {
       .catch(error => {
         console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 

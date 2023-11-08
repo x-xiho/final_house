@@ -472,6 +472,10 @@ input[type="checkbox"] {
   font-weight: 500;
 }
 
+.checkboxStyle [type="checkbox"]:disabled+span {
+  color: white;
+}
+
 
 
 /* pagePriority css */
@@ -612,11 +616,8 @@ input[type="checkbox"] {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
   height: 100%;
-  /* 
-  border: 1px solid black; */
-
 }
 
 .End-recommend-result {

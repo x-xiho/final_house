@@ -8,7 +8,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl"
 
 import Card from './Card';
-import car from '../images/house2.jpg'
 
 function Carousel() {
   const slider = useRef(null)

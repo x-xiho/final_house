@@ -103,10 +103,10 @@ function Page7Tendency() {
           <label className='radioStyle'>
             <input type="radio"
               name="tendency"
-              value="한적한도시"
-              checked={selectedOption === "한적한도시"}
+              value="힐링도시"
+              checked={selectedOption === "힐링도시"}
               onChange={handleRadioChange} />
-            <span>한적한 힐링 도시</span>
+            <span>자연인접 한산한 힐링도시</span>
           </label>
 
           <label className='radioStyle'>
@@ -115,16 +115,7 @@ function Page7Tendency() {
               value="핫플도시"
               checked={selectedOption === "핫플도시"}
               onChange={handleRadioChange} />
-            <span>활기찬 핫플 도시</span>
-          </label>
-
-          <label className='radioStyle'>
-            <input type="radio"
-              name="tendency"
-              value="자연지역"
-              checked={selectedOption === "자연지역"}
-              onChange={handleRadioChange} />
-            <span>자연이 인접한 지역</span>
+            <span>도심 속 활기찬 핫플 도시</span>
           </label>
 
         </div>

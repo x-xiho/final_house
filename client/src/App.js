@@ -22,8 +22,6 @@ import PagePriority from './components/pages/PagePriority'
 
 
 
-
-
 function App() {
   return (
     <BrowserRouter>

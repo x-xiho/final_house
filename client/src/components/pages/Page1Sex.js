@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useNavigate, Prompt } from 'react-router-dom'
-import ReactRouterPrompt from "react-router-prompt";
+import { useNavigate } from 'react-router-dom'
+
 
 
 // 질문1 성별
@@ -71,16 +71,3 @@ function Page1Sex() {
 }
 
 export default Page1Sex;
-
-
-{/* <ReactRouterPrompt when={selectedOption} >
-{({ isActive, onConfirm, onCancel }) => isActive && (
-  <div className='page-lightbox'>
-    <div className='page-container'>
-      <p>진짜루 떠나나요?</p>
-      <button onClick={onCancel}>안 떠남</button>
-      <button onClick={onConfirm}>떠나요</button>
-    </div>
-  </div>
-)}
-</ReactRouterPrompt> */}

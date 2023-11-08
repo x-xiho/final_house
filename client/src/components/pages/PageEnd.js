@@ -14,11 +14,8 @@ function PageEnd() {
   const userName = localStorage.getItem('name');
 
   // 백엔드에서 받은 추천 지역 데이터 저장
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([{ location1: 'd', location2: 'c', location3: 'a'}]);
 
-  const [data1, setData1] = useState([]);
-  const [data2, setData2] = useState([]);
-  const [data3, setData3] = useState([]);
   const [get, setGet] = useState(false);
 
   const navigate = useNavigate();
@@ -132,6 +129,7 @@ function PageEnd() {
   ////////////////////////////////////////////////////////////////
 
   //백엔드에서 지역추천 결과 데이터 받아옴 {1 : 지역, 2: 지역, 3: 지역}
+
   useEffect(() => {
     if (userName) {
       axios.get(`http://localhost:4000/users/${userName}/locations`)
@@ -146,20 +144,19 @@ function PageEnd() {
           console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   ////////////////////////////////////////////////////////////////////////////
 
-  // 다시하기 버튼
-  // 사용자 지우기
 
 
   return (
     <div className='End-container'>
 
       <div className='End-powerbi-wrap'>
-        <PowerBI />
-        {/* <Powerbitest/> */}
+        {/* <PowerBI /> */}
+        <Powerbitest/>
       </div>
 
       <div className='End-recommend'>

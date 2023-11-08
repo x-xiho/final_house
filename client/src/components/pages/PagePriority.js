@@ -102,8 +102,6 @@ function PagePriority() {
   };
 
 
-  {/* 안전, 생활시설, 교육, 의료, 환경, 교통, 기타 */ }
-
 
 
   return (

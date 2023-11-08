@@ -76,7 +76,7 @@ function Page5Hobby() {
           <label className='checkboxStyle'>
             <input type="checkbox"
               name="hobby"
-              value="음악"
+              value="공연관람"
               onChange={handleCheckboxChange}
               checked={selectedOptions.includes('공연관람')} />
             <span>공연 관람</span>

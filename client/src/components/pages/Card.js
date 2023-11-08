@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../PagesCss/PageCss.css'
-import axios from 'axios'
 
 function Card(props) {
 

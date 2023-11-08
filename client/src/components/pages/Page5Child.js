@@ -2,21 +2,42 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function Page5Child() {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); //페이지 새로고침 방지
 
-    if (selectedOption !== null) {
-      localStorage.setItem('child', selectedOption);
-      navigate('/myhome/pagehobby');
-      // 로컬에 저장하고 다음 질문으로 이동
-    }
+  const handleCheckboxChange = (e) => {
+    const value = e.target.value;
+    const isChecked = e.target.checked;
+
+    setSelectedOptions(prevOptions => {
+      if (isChecked && !prevOptions.includes(value)) {
+        return [...prevOptions, value];
+      } else if (!isChecked && prevOptions.includes(value)) {
+        return prevOptions.filter(option => option !== value);
+      } else {
+        return prevOptions;
+      }
+    });
   }
 
-  const handleRadioChange = (e) => {
-    setSelectedOption(e.target.value);
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 페이지 새로고침 방지
+    console.log('ok');
+
+    if (selectedOptions.length > 0) {
+      localStorage.setItem('hobby', JSON.stringify(selectedOptions));
+
+
+      // 운동을 선택했다면 page3로, 선택하지 않았다면 pageEnd로 이동
+      if (selectedOptions.includes('운동')) {
+        navigate('/myhome/pagesports');
+      }
+      else {
+        navigate('/myhome/pagehobby');
+      }
+    }
   }
 
   return (
@@ -24,70 +45,91 @@ function Page5Child() {
     <div className='page1-text'>
       <div className='page1-num'>Q.number</div>
       <div className='page1-qurry'>나의 자녀는?</div>
+      <div>( 복수선택 가능 )</div>
     </div>
 
     <form onSubmit={handleSubmit} className='page1-form'>
-      <div className='page-radioStyle'>
-        <label className='radioStyle'>
-          <input type="radio"
-            name="child"
-            value="없음"
-            checked={selectedOption === "없음"}
-            onChange={handleRadioChange} />
+      <div className='page-checkStyle'>
+
+      <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="child"
+              value="없음"
+              style={{ display: "none" }}
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('없음')}
+              disabled={selectedOptions.length > 0 && !selectedOptions.includes('없음')}
+              className='test' />
             <span>없음</span>
-        </label>
+          </label>
 
-        <label className='radioStyle'>
-          <input type="radio"
-            name="child"
-            value="미취학아동"
-            checked={selectedOption === "미취학아동"}
-            onChange={handleRadioChange} />
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="child"
+              value="미취학아동"
+              style={{ display: "none" }}
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('미취학아동')}
+              disabled={selectedOptions.includes('없음')}
+              className='test' />
             <span>미취학아동</span>
-        </label>
+          </label>
 
-        <label className='radioStyle'>
-          <input type="radio"
-            name="child"
-            value="초등학교"
-            checked={selectedOption === "초등학교"}
-            onChange={handleRadioChange} />
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="child"
+              value="초등학교"
+              style={{ display: "none" }}
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('초등학교')}
+              disabled={selectedOptions.includes('없음')}
+              className='test' />
             <span>초등학교</span>
-        </label>
+          </label>
 
-        <label className='radioStyle'>
-          <input type="radio"
-            name="child"
-            value="중학교"
-            checked={selectedOption === "중학교"}
-            onChange={handleRadioChange} />
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="child"
+              value="중학교"
+              style={{ display: "none" }}
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('중학교')}
+              disabled={selectedOptions.includes('없음')}
+              className='test' />
             <span>중학교</span>
-        </label>
+          </label>
 
-        <label className='radioStyle'>
-          <input type="radio"
-            name="child"
-            value="고등학교"
-            checked={selectedOption === "고등학교"}
-            onChange={handleRadioChange} />
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="child"
+              value="고등학교"
+              style={{ display: "none" }}
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('고등학교')}
+              disabled={selectedOptions.includes('없음')}
+              className='test' />
             <span>고등학교</span>
-        </label>
+          </label>
 
-        <label className='radioStyle'>
-          <input type="radio"
-            name="child"
-            value="특수학교"
-            checked={selectedOption === "특수학교"}
-            onChange={handleRadioChange} />
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="child"
+              value="특수학교"
+              style={{ display: "none" }}
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('특수학교')}
+              disabled={selectedOptions.includes('없음')}
+              className='test' />
             <span>특수학교</span>
-        </label>
+          </label>
 
       </div>
 
       <div className='Nextbtn'>
       <button className='page1-btn' onClick={()=>navigate('/myhome/pagemarry')}>이전</button>
         <button type='submit'
-          disabled={selectedOption === null}
+          disabled={selectedOptions.length === 0}
           className='page1-btn'>
           다음
           </button>
