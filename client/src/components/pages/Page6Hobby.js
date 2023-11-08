@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 // 질문5 취미
-function Page5Hobby() {
+function Page6Hobby() {
   // 사용자의 답변을 저장할 배열
   const [selectedOptions, setSelectedOptions] = useState([]);
   const navigate = useNavigate();
@@ -28,13 +28,11 @@ function Page5Hobby() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); // 페이지 새로고침 방지
-    console.log('ok');
 
     if (selectedOptions.length > 0) {
       localStorage.setItem('hobby', JSON.stringify(selectedOptions));
 
-
-      // 운동을 선택했다면 page3로, 선택하지 않았다면 pageEnd로 이동
+      // 운동을 선택했다면 PageSports로, 선택하지 않았다면 PagePriority로 이동
       if (selectedOptions.includes('운동')) {
         navigate('/myhome/pagesports');
       }
@@ -146,17 +144,4 @@ function Page5Hobby() {
   )
 }
 
-export default Page5Hobby;
-
-
-
-// const hobbyList = JSON.parse(localStorage.getItem('heartList')) || [];
-
-// axios.post('http://localhost:4000/save/UserInfo', { hobbyList })
-// .then((response) => {
-//   console.log(response.data);
-// })
-
-// .catch((error) => {
-//   console.error(error);
-// });
+export default Page6Hobby;

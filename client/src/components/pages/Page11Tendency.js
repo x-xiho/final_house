@@ -4,7 +4,7 @@ import axios from 'axios';
 import '../PagesCss/PageCss.css'
 
 // 공통 마지막 질문 성향 질문
-function Page7Tendency() {
+function Page11Tendency() {
 
   const [selectedOption, setSelectedOption] = useState(null);
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ function Page7Tendency() {
 
 
       const userData = ['name', 'sex', 'age', 'child','hobby', 'sports', 'tendency'];
-      const userPreferenceData = ['안전', '생활시설', '교육', '의료', '환경', '교통', '기타'];
+      const userPreferenceData = ['name','안전', '생활시설', '교육', '의료', '환경', '교통', '기타'];
 
       const test =localStorage.getItem('name')
       console.log('테스트', test)
@@ -121,7 +121,7 @@ function Page7Tendency() {
         </div>
 
         <div className='Nextbtn'>
-          <button className='page1-btn' onClick={() => navigate('/myhome/pagehobby')}>이전</button>
+          <button className='page1-btn' onClick={() => navigate('/myhome/pagewelfare')}>이전</button>
           <button type='submit'
             disabled={selectedOption === null}
             className='page1-btn'>
@@ -133,4 +133,4 @@ function Page7Tendency() {
   )
 }
 
-export default Page7Tendency
+export default Page11Tendency

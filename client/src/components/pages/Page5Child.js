@@ -24,19 +24,10 @@ function Page5Child() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); // 페이지 새로고침 방지
-    console.log('ok');
 
     if (selectedOptions.length > 0) {
-      localStorage.setItem('hobby', JSON.stringify(selectedOptions));
-
-
-      // 운동을 선택했다면 page3로, 선택하지 않았다면 pageEnd로 이동
-      if (selectedOptions.includes('운동')) {
-        navigate('/myhome/pagesports');
-      }
-      else {
-        navigate('/myhome/pagehobby');
-      }
+      localStorage.setItem('child', JSON.stringify(selectedOptions));
+      navigate('/myhome/pagehobby');
     }
   }
 

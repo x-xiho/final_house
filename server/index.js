@@ -103,8 +103,11 @@ app.get('/users/:name/locations', function (req, res) {
 app.put('/users/:name/favorites', (req, res) => {
   const { name } = req.params;
   const areaToAdd = req.body.favorites;
+  const namedata = req.body.name; 
   const favorites = loacationData[name].favorites;
 
+  console.log("전체 바디", req.body);
+  console.log("백엔드에서 받은 유저이름", req.body.name);
   if (!favorites.includes(areaToAdd)) {
     // 중복된 값이 없는 경우에만 추가
     loacationData[name].favorites.push(areaToAdd);

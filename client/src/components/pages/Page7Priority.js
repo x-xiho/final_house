@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { MdOutlineReplay } from "react-icons/md"
 
 // 우선 순위 질문
-function PagePriority() {
+function Page7Priority() {
 
   const navigate = useNavigate();
 
@@ -22,45 +22,10 @@ function PagePriority() {
 
 
   // 백엔드에 순위 데이터 전송
-  const sendDataToBackend = () => {
-    // e.preventDefault(); //페이지 새로고침 방지
-    // const dataToSend = {};
-
-    // buttonClicks.forEach((click) => {
-    //   const key = Object.keys(click)[0];
-    //   const value = click[key];
-    //   dataToSend[key] = value;
-
-    // });
-
-    navigate('/myhome/pagetendency');
+  const nextPage = () => {
+    navigate('/myhome/pagecar');
   };
 
-
-
-
-  // 버튼 클릭 시 순서 저장
-  // const handleButtonClick = (button) => {
-  //   const existingClickIndex = buttonClicks.findIndex(click => Object.keys(click)[0] === button);
-  //   if (existingClickIndex !== -1) {
-
-  //     //이미 눌린 버튼일 경우, 삭제
-  //     const newButtonClicks = [...buttonClicks];
-  //     newButtonClicks.splice(existingClickIndex, 1);
-  //     newButtonClicks.forEach((click, index) => {
-  //       const key = Object.keys(click)[0];
-  //       const value = index + 1;
-  //       click[key] = value;
-  //     });
-  //     setButtonClicks(newButtonClicks);
-  //     setButtonStatus(prevStatus => ({ ...prevStatus, [button]: true }));
-  //   } else {
-  //     // 새로운 버튼일 경우, 추가
-  //     const newOrder = [...buttonClicks, { [button]: buttonClicks.length + 1 }];
-  //     setButtonClicks(newOrder);
-  //     setButtonStatus(prevStatus => ({ ...prevStatus, [button]: false }));
-  //   }
-  // };
 
   const handleButtonClick = (button) => {
     const existingClickIndex = buttonClicks.findIndex(click => Object.keys(click)[0] === button);
@@ -139,6 +104,7 @@ function PagePriority() {
         </div>
 
         <br />
+
         <div className='page-priority-rank'>
           {buttonClicks.map((click, index) => (
             <div key={index} className='page-priority-set'>
@@ -157,13 +123,13 @@ function PagePriority() {
             const sportsValue = localStorage.getItem('sports');
 
             if (sportsValue === null) {
-              navigate('/myhome/pagehobby'); // sports 값이 없을 경우, page1로 이동
+              navigate('/myhome/pagehobby'); // sports 값이 없을 경우, pageHobby로 이동
             } else {
-              navigate('/myhome/pagesports'); // sports 값이 있을 경우, page2로 이동
+              navigate('/myhome/pagesports'); // sports 값이 있을 경우, pageSports로 이동
             }
           }}>이전</button>
 
-          <button onClick={sendDataToBackend}
+          <button onClick={nextPage}
             disabled={buttonClicks.length < 7}
             className='page1-btn'>
             다음
@@ -176,4 +142,4 @@ function PagePriority() {
   )
 }
 
-export default PagePriority
+export default Page7Priority

@@ -14,7 +14,7 @@ function PageEnd() {
   const userName = localStorage.getItem('name');
 
   // 백엔드에서 받은 추천 지역 데이터 저장
-  const [data, setData] = useState([{ location1: 'd', location2: 'c', location3: 'a'}]);
+  const [data, setData] = useState([]);
 
   const [get, setGet] = useState(false);
 
@@ -49,23 +49,13 @@ function PageEnd() {
 
       const visuals = await page.getVisuals();
       const visual = visuals[1]; // 시각적 객체 요소 선택
-      // const visual = visuals.find(v => v.type === "googleMapsPbiVisual2982D2C8868A4D07BE77AE3D0F9F87C3");
 
-      // // console.log('시각적 객체 요소 선택 ', page)
-      // if (visual) {
-      //   console.log('비주얼 찍음222 ', visual);
+      console.log('비주얼 찍음 ', visual)
 
-      //   await visual.setSlicerState({
-      //     filters: [basicFilter]
-      //   });
-
-
-        console.log('비주얼 찍음 ', visual)
-
-        await visual.setSlicerState({
-          filters: [basicFilter]
-        });
-      }
+      await visual.setSlicerState({
+        filters: [basicFilter]
+      });
+    }
   }
 
 
@@ -73,17 +63,17 @@ function PageEnd() {
   const putHeart = (areas) => {
 
     if (areas === data.location1) {
-      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: areas })
+      axios.put(`http://localhost:4000/users/${userName}/favorites`, { name: userName, favorites: areas })
       console.log("관심목록에 추가할 지역", areas)
       setHeartClicked1(!heartClicked1);
 
     } else if (areas === data.location2) {
-      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: areas })
+      axios.put(`http://localhost:4000/users/${userName}/favorites`, { name: userName, favorites: areas })
       console.log("관심목록에 추가할 지역", areas)
       setHeartClicked2(!heartClicked2);
 
     } else if (areas === data.location3) {
-      axios.put(`http://localhost:4000/users/${userName}/favorites`, { favorites: areas })
+      axios.put(`http://localhost:4000/users/${userName}/favorites`, { name: userName, favorites: areas })
       console.log("관심목록에 추가할 지역", areas)
       setHeartClicked3(!heartClicked3);
     }
@@ -93,7 +83,7 @@ function PageEnd() {
   const deleteHeart = (area) => {
 
     if (area === data.location1) {
-      axios.delete(`http://localhost:4000/users/${userName}/favorites`, { data: { favorites: area } })
+      axios.delete(`http://localhost:4000/users/${userName}/favorites`, { data: { name: userName, favorites: area } })
         .then(response => {
           console.log('관심목록에 삭제할 지역', area)
           setHeartClicked1(!heartClicked1);
@@ -103,7 +93,7 @@ function PageEnd() {
         });
     }
     else if (area === data.location2) {
-      axios.delete(`http://localhost:4000/users/${userName}/favorites`, { data: { favorites: area } })
+      axios.delete(`http://localhost:4000/users/${userName}/favorites`, { data: { name: userName, favorites: area } })
         .then(response => {
           console.log('관심목록에 삭제할 지역', area)
           setHeartClicked2(!heartClicked2);
@@ -113,7 +103,7 @@ function PageEnd() {
         });
     }
     else if (area === data.location3) {
-      axios.delete(`http://localhost:4000/users/${userName}/favorites`, { data: { favorites: area } })
+      axios.delete(`http://localhost:4000/users/${userName}/favorites`, { data: { name: userName, favorites: area } })
         .then(response => {
           console.log('관심목록에 삭제할 지역', area)
           setHeartClicked3(!heartClicked3);
@@ -155,8 +145,8 @@ function PageEnd() {
     <div className='End-container'>
 
       <div className='End-powerbi-wrap'>
-        {/* <PowerBI /> */}
-        <Powerbitest/>
+        <PowerBI />
+        {/* <Powerbitest/> */}
       </div>
 
       <div className='End-recommend'>
@@ -223,8 +213,3 @@ function PageEnd() {
   )
 }
 export default PageEnd
-
-
-// {data.map((item, index) => (
-//   <ButtonComponent key={index} value={item} />
-// ))}

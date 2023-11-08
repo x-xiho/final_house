@@ -1,156 +1,51 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
+import React from 'react';
+import { PowerBIEmbed } from 'powerbi-client-react';
+import { models } from 'powerbi-client';
 
-import React, { useState } from "react";
-import { models } from "powerbi-client";
-import { PowerBIEmbed } from "powerbi-client-react";
-
-import "./powerbitest.css";
-
-// Root Component to demonstrate usage of wrapper component
-function Powerbitest() {
-  // PowerBI Report object (to be received via callback)
-  const [report, setReport] = useState();
-
-  // API end-point url to get embed config for a sample report
-  const sampleReportUrl = 
-  "https://playgroundbe-bck-1.azurewebsites.net/Reports/SampleReport";
-  // "https://app.powerbi.com/groups/me/reports/17fe5df0-9871-4479-b9fe-d317878995a8/ReportSection?experience=power-bi";
-  
-  
-  // Report config useState hook
-  // Values for properties like embedUrl, accessToken and settings will be set on click of buttons below
-  const [sampleReportConfig, setReportConfig] = useState({
-    type: "report",
-    embedUrl: undefined,
-    tokenType: models.TokenType.Embed,
-    accessToken: undefined,
-    settings: undefined
-  });
-
-  // Map of event handlers to be applied to the embedding report
-  const eventHandlersMap = new Map([
-    [
-      "loaded",
-      function () {
-        console.log("Report has loaded");
-      }
-    ],
-    [
-      "rendered",
-      function () {
-        console.log("Report has rendered");
-
-        // Update display message
-        setMessage("The report is rendered");
-      }
-    ],
-    [
-      "error",
-      function (event) {
-        if (event) {
-          console.error(event.detail);
-        }
-      }
-    ]
-  ]);
-
-  // Fetch sample report's config (eg. embedUrl and AccessToken) for embedding
-  const mockSignIn = async () => {
-    // Fetch sample report's embed config
-    const reportConfigResponse = await fetch(sampleReportUrl);
-
-    if (!reportConfigResponse.ok) {
-      console.error(
-        `Failed to fetch config for report. Status: ${reportConfigResponse.status} ${reportConfigResponse.statusText}`
-      );
-      return;
-    }
-
-    const reportConfig = await reportConfigResponse.json();
-
-    // Update display message
-    setMessage(
-      "The access token is successfully set. Loading the Power BI report"
-    );
-
-    // Set the fetched embedUrl and embedToken in the report config
-    setReportConfig({
-      ...sampleReportConfig,
-      embedUrl: reportConfig.EmbedUrl,
-      accessToken: reportConfig.EmbedToken.Token
-    });
-  };
-
-  const changeSettings = () => {
-    // Update the state "sampleReportConfig" and re-render DemoApp component
-    setReportConfig({
-      ...sampleReportConfig,
-      settings: {
-        panes: {
-          filters: {
-            expanded: false,
-            visible: false
-          }
-        }
-      }
-    });
-  };
-
-  const [displayMessage, setMessage] = useState(
-    `The report is bootstrapped. Click the Embed Report button to set the access token`
-  );
-
-  const controlButtons = (
-    <div className="controls">
-      <button onClick={mockSignIn}>Embed Report</button>
-
-      <button onClick={changeSettings}>Hide filter pane</button>
-    </div>
-  );
-
-  const header = (
-    <div className="header">
-      <div className="title">Power BI React component demo</div>
-    </div>
-  );
-
-  const footer = (
-    <div className="footer">
-      <div className="footer-text">
-        GitHub: &nbsp;
-        <a href="https://github.com/microsoft/PowerBI-client-react">
-          https://github.com/microsoft/PowerBI-client-react
-        </a>
-      </div>
-    </div>
-  );
-
+// 도봉구 샘플
+function PowerBI() {
   return (
     <div>
-      {header}
-
       <PowerBIEmbed
-        embedConfig={sampleReportConfig}
-        eventHandlers={eventHandlersMap}
-        cssClassName={"report-style-class"}
-        getEmbeddedComponent={(embedObject) => {
-          console.log(
-            `Embedded object of type "${embedObject.embedtype}" received`
-          );
-          setReport(embedObject);
+        embedConfig={{
+          type: 'report', // 보고서 타입
+          id: '17fe5df0-9871-4479-b9fe-d317878995a8',
+          // URL 수정 요함
+          embedUrl: "https://app.powerbi.com/reportEmbed?reportId=17fe5df0-9871-4479-b9fe-d317878995a8&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLUVBU1QtQVNJQS1BLVBSSU1BUlktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQiLCJlbWJlZEZlYXR1cmVzIjp7InVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d",
+          accessToken:"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjlHbW55RlBraGMzaE91UjIybXZTdmduTG83WSIsImtpZCI6IjlHbW55RlBraGMzaE91UjIybXZTdmduTG83WSJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvZmQwOWIyYmMtOTIyMC00YzZiLTgzNzItMjIwYjdiZDUxODE5LyIsImlhdCI6MTY5OTM2MTU0MiwibmJmIjoxNjk5MzYxNTQyLCJleHAiOjE2OTkzNjY4NzEsImFjY3QiOjAsImFjciI6IjEiLCJhZ2VHcm91cCI6IjQiLCJhaW8iOiJBVFFBeS84VUFBQUFkWVpTRVFBTzJmTk5XcG9KV2RpMkpGVmlFTUpING45VTFDY0IvWWVOeUFoUUdhN01iMDEyQnlEQWJKRUgwS0xxIiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6Ijg3MWMwMTBmLTVlNjEtNGZiMS04M2FjLTk4NjEwYTdlOTExMCIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiS2ltIiwiZ2l2ZW5fbmFtZSI6IkppaG8iLCJpcGFkZHIiOiIyMjEuMTU0LjI0LjgxIiwibmFtZSI6IktpbUppaG8iLCJvaWQiOiIxYzc0NjdhNC0xYjMyLTRiMjUtYTZiMS0wNjUxNTg4ZTUwM2EiLCJwdWlkIjoiMTAwMzIwMDA0OTAzNkM2RiIsInJoIjoiMC5BWEVBdkxJSl9TQ1NhMHlEY2lJTGU5VVlHUWtBQUFBQUFBQUF3QUFBQUFBQUFBQnhBTVUuIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoicFZ3N2VHcW1hb2NUcVl5X0ZRdGFhZUlnb3dDOHNZSlUyb0RQdDIwVXVWayIsInRpZCI6ImZkMDliMmJjLTkyMjAtNGM2Yi04MzcyLTIyMGI3YmQ1MTgxOSIsInVuaXF1ZV9uYW1lIjoia29uZzg4QGR1a3N1bmcuYWMua3IiLCJ1cG4iOiJrb25nODhAZHVrc3VuZy5hYy5rciIsInV0aSI6InVBdzJzSjg2REVPQ2ZEZEZHRS1pQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdLCJ4bXNfcGwiOiJrby1LUiJ9.B65PzcPpCQKHao-0-KLu2uDHTeH6j_YVB7wv59t9TvkeTzZtmsGQenr7xi18lUgrMa0jSUpbxYof78aK9KmKNYJOH7zyGQVGcWXGaQvGDLV2fz0cc917Q3xoz8VnvXb6TndNqAdmdP4vlbSG9y4eYWlBlImv5ku_s-rR_MfCeo0Nl3ptiDIPhVdr-BQp763JY2n4rbytlI5B1i3pf6Ostu4pk5gUG3TAKXJC_-uou_7HKMVV9uN7CJ5gvmGULiJ_uFNu8ycMo6_QhzpXdLXy914nNcgZS3Hd02vR4h75RZ4kNob1QqOXyTX_qmW9AvoLwXxHDVXSjvSIxu_Gps0MnQ",
+          tokenType: models.TokenType.Aad,
+          settings: {
+            panes: {
+              filters: {
+                expanded: false,
+                visible: false
+              }
+            },
+            background: models.BackgroundType.Transparent,
+          }
         }}
+
+
+      eventHandlers={
+        new Map([
+          ['loaded', function () { console.log('Report loaded'); }],
+          ['rendered', function () { console.log('Report rendered'); }],
+          ['error', function (event) { console.log(event.detail); }],
+          ['visualClicked', (event) => {
+            const visualData = event.detail;
+            console.log('Visual Clicked:', visualData)
+          }],
+          ['pageChanged', (event) => console.log(event)],
+        ])
+      }
+
+      cssClassName={"embededReport"}
+      getEmbeddedComponent={(embeddedReport) => {
+        window.report = embeddedReport;
+      }}
       />
-
-      <div className="hr"></div>
-
-      <div className="displayMessage">{displayMessage}</div>
-
-      {controlButtons}
-
-      {footer}
     </div>
-  );
+  )
 }
 
-export default Powerbitest;
+export default PowerBI

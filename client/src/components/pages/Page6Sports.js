@@ -47,33 +47,6 @@ function Page6Sports() {
           <label className='checkboxStyle'>
             <input type="checkbox"
               name="sports"
-              value="풋살"
-              onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('풋살')} />
-            <span>풋살</span>
-          </label>
-
-          <label className='checkboxStyle'>
-            <input type="checkbox"
-              name="sports"
-              value="테니스"
-              onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('테니스')} />
-            <span>테니스</span>
-          </label>
-
-          <label className='checkboxStyle'>
-            <input type="checkbox"
-              name="sports"
-              value="탁구"
-              onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('탁구')} />
-            <span>탁구</span>
-          </label>
-
-          <label className='checkboxStyle'>
-            <input type="checkbox"
-              name="sports"
               value="축구"
               onChange={handleCheckboxChange}
               checked={selectedOptions.includes('축구')} />
@@ -92,28 +65,19 @@ function Page6Sports() {
           <label className='checkboxStyle'>
             <input type="checkbox"
               name="sports"
-              value="야구"
+              value="풋살"
               onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('야구')} />
-            <span>야구</span>
+              checked={selectedOptions.includes('풋살')} />
+            <span>풋살</span>
           </label>
 
           <label className='checkboxStyle'>
             <input type="checkbox"
               name="sports"
-              value="스쿼시"
+              value="테니스"
               onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('스쿼시')} />
-            <span>스쿼시</span>
-          </label>
-
-          <label className='checkboxStyle'>
-            <input type="checkbox"
-              name="sports"
-              value="수영"
-              onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('수영')} />
-            <span>수영</span>
+              checked={selectedOptions.includes('테니스')} />
+            <span>테니스</span>
           </label>
 
           <label className='checkboxStyle'>
@@ -123,6 +87,15 @@ function Page6Sports() {
               onChange={handleCheckboxChange}
               checked={selectedOptions.includes('배드민턴')} />
             <span>배드민턴</span>
+          </label>
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="sports"
+              value="스쿼시"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('스쿼시')} />
+            <span>스쿼시</span>
           </label>
 
           <label className='checkboxStyle'>
@@ -146,6 +119,24 @@ function Page6Sports() {
           <label className='checkboxStyle'>
             <input type="checkbox"
               name="sports"
+              value="야구"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('야구')} />
+            <span>야구</span>
+          </label>
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="sports"
+              value="탁구"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('탁구')} />
+            <span>탁구</span>
+          </label>
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="sports"
               value="헬스"
               onChange={handleCheckboxChange}
               checked={selectedOptions.includes('헬스')} />
@@ -155,11 +146,20 @@ function Page6Sports() {
           <label className='checkboxStyle'>
             <input type="checkbox"
               name="sports"
+              value="수영"
+              onChange={handleCheckboxChange}
+              checked={selectedOptions.includes('수영')} />
+            <span>수영</span>
+          </label>
+
+          <label className='checkboxStyle'>
+            <input type="checkbox"
+              name="sports"
               value="기타"
               onChange={handleCheckboxChange}
               checked={selectedOptions.includes('기타')} />
             <span>기타</span>
-            {/* 금액, 직장 */}
+
           </label>
         </div>
 
