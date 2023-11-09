@@ -34,7 +34,7 @@ function Page5Child() {
   return (
     <div className='page1-container'>
     <div className='page1-text'>
-      <div className='page1-num'>Q.number</div>
+      <div className='page1-num'>Q.05</div>
       <div className='page1-qurry'>나의 자녀는?</div>
       <div>( 복수선택 가능 )</div>
     </div>

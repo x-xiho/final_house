@@ -15,18 +15,17 @@ function Page11Tendency() {
     if (selectedOption !== null) {
       localStorage.setItem('tendency', selectedOption);
 
+      // key 값 정렬
+      const userData = ['name', 'sex', 'age', 'child', 'hobby', 'sports', 'welfare', 'tendency'];
+      const userPreferenceData = ['name', '안전', '생활시설', '교육', '의료', '환경', '교통', '기타'];
+      const userCar = ['name', '자차', '지하철', '시내버스', '광역버스', '기차', '따릉이']
+      const userEnv = ['name', '공원', '미세먼지', '소음', '풍수해', '주택침수']
 
-      const userData = ['name', 'sex', 'age', 'child','hobby', 'sports', 'tendency'];
-      const userPreferenceData = ['name','안전', '생활시설', '교육', '의료', '환경', '교통', '기타'];
-
-      const test =localStorage.getItem('name')
-      console.log('테스트', test)
-
-      
       // 유저의 설문조사 값이 저장될 변수
       const userInfo = {};
-      // 우선순위 데이터가 저장될 변수
       const userPreferenceInfo = {};
+      const userCarInfo = {};
+      const userEnvInfo = {};
 
       // 로컬스토리지에 저장된 유저의 설문조사 데이터를 userInfo 객체에 저장
       userData.forEach(item => {
@@ -40,8 +39,21 @@ function Page11Tendency() {
         userPreferenceInfo[item] = value;
       });
 
-      console.log("프론트엔드에서 저장된 데이터", userInfo);
+      userCar.forEach(item => {
+        const value = localStorage.getItem(item);
+        userCarInfo[item] = value !== null ? value : "0";
+      });
+
+      userEnv.forEach(item => {
+        const value = localStorage.getItem(item);
+        userEnvInfo[item] = value !== null ? value : "0";
+      });
+
+      // 콘솔 확인
+      console.log("유저 데이터", userInfo);
       console.log("우선순위 데이터", userPreferenceInfo);
+      console.log("교통수단 데이터", userCarInfo);
+      console.log("환경 데이터", userEnvInfo);
 
 
       // 백엔드에 유저의 답변 전송
@@ -50,8 +62,9 @@ function Page11Tendency() {
           console.log('데이터 전송 성공:', response);
         })
         .catch(error => {
-          console.error('데이터 전송 실패:', error);
+          console.error('유저 데이터 전송 실패:', error);
         });
+
 
       // 백엔드에 우선순위 데이터 전송
       axios.post('http://localhost:4000/rank', userPreferenceInfo)
@@ -59,20 +72,40 @@ function Page11Tendency() {
           console.log('우선순위 데이터 전송 성공:', response);
         })
         .catch(error => {
-          console.error('데이터 전송 실패:', error);
+          console.error('우선순위 데이터 전송 실패:', error);
         });
 
+      // 대중교통 데이터 전송
+      axios.post('http://localhost:4000/car', userCarInfo)
+        .then(response => {
+          console.log('대중교통 데이터 전송 성공:', response);
+        })
+        .catch(error => {
+          console.error('교통수단 데이터 전송 실패:', error);
+        });
+
+      // 환경 데이터 전송
+      axios.post('http://localhost:4000/env', userEnvInfo)
+        .then(response => {
+          console.log('환경 데이터 전송 성공:', response);
+        })
+        .catch(error => {
+          console.error('환경 데이터 전송 실패:', error);
+        });
 
 
       // 로컬스토리지 데이터 지우기
       localStorage.removeItem('sex')
       localStorage.removeItem('age')
-      localStorage.removeItem('hobby')
-      localStorage.removeItem('sports')
-      localStorage.removeItem('tendency')
       localStorage.removeItem('family')
       localStorage.removeItem('marry')
+      localStorage.removeItem('child')
+      localStorage.removeItem('hobby')
+      localStorage.removeItem('sports')
       localStorage.removeItem('priority')
+      localStorage.removeItem('env')
+      localStorage.removeItem('welfare')
+      localStorage.removeItem('tendency')
 
       localStorage.removeItem('안전')
       localStorage.removeItem('생활시설')
@@ -81,6 +114,19 @@ function Page11Tendency() {
       localStorage.removeItem('환경')
       localStorage.removeItem('교통')
       localStorage.removeItem('기타')
+
+      localStorage.removeItem('자차')
+      localStorage.removeItem('지하철')
+      localStorage.removeItem('시내버스')
+      localStorage.removeItem('광역버스')
+      localStorage.removeItem('기차')
+      localStorage.removeItem('따릉이')
+
+      localStorage.removeItem('공원')
+      localStorage.removeItem('미세먼지')
+      localStorage.removeItem('소음')
+      localStorage.removeItem('풍수해')
+      localStorage.removeItem('주택침수')
 
       navigate('/myhome/pageend');
     }
@@ -94,7 +140,7 @@ function Page11Tendency() {
   return (
     <div className='page1-container'>
       <div className='page1-text'>
-        <div className='page1-num'>Q.06</div>
+        <div className='page1-num'>Q.11</div>
         <div className='page1-qurry'>나의 성향은?</div>
       </div>
 
@@ -105,8 +151,9 @@ function Page11Tendency() {
               name="tendency"
               value="힐링도시"
               checked={selectedOption === "힐링도시"}
-              onChange={handleRadioChange} />
-            <span>자연인접 한산한 힐링도시</span>
+              onChange={handleRadioChange}
+              className='tendencyBtn' />
+            <span>자연인접 힐링도시</span>
           </label>
 
           <label className='radioStyle'>
@@ -114,8 +161,9 @@ function Page11Tendency() {
               name="tendency"
               value="핫플도시"
               checked={selectedOption === "핫플도시"}
-              onChange={handleRadioChange} />
-            <span>도심 속 활기찬 핫플 도시</span>
+              onChange={handleRadioChange}
+              className='tendencyBtn' />
+            <span>도심 속 핫플 도시</span>
           </label>
 
         </div>

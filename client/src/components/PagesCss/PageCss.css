@@ -4,12 +4,10 @@ li {
   list-style: none;
 }
 
-
 .slick-slider {
   margin: 0px 0px;
   padding: 0px 100px 0px 100px;
 }
-
 
 /* Card Css */
 
@@ -19,31 +17,7 @@ li {
   box-sizing: border-box;
 
   position: relative;
-
-  /* animation: pageStart-slidein 0.6s ease-in-out;
-  animation-fill-mode: forwards; */
-
 }
-
-
-
-/* .Card-container:hover{
-background-color: #fafafa;
-} */
-
-
-
-/* .Card-container:hover .Card-hash {
-  color: white;
-}
-
-.Card-container:hover .Card-hr {
-  border-color: white;
-}
-
-.Card-container:hover .Card-img {
-  display: block;
-} */
 
 
 .Card-title {
@@ -150,12 +124,13 @@ background-color: #fafafa;
 
   cursor: pointer;
   background-color: transparent;
-  border: 1px solid #dcdcdc;
+  border: none;
 }
 
 .H-slider {
   width: 800px;
   /* border: 1px solid black; */
+  cursor: pointer;
 }
 
 .slick-dots {
@@ -180,7 +155,7 @@ background-color: #fafafa;
   /* background-color: rgb(220, 220, 200, 0.5); */
   border-radius: 10px;
   color: black;
-  font-size:22px;
+  font-size: 22px;
 
 }
 
@@ -470,13 +445,20 @@ input[type="checkbox"] {
   color: white;
   background-color: #A7B5A8;
   font-weight: 500;
+  border: 1px solid #dcdcdc;
 }
 
 .checkboxStyle [type="checkbox"]:disabled+span {
   color: white;
 }
 
+.aa span{
+  border: 2px solid red;
+}
 
+.bb span{
+  border: 2px solid blue;
+}
 
 /* pagePriority css */
 
@@ -490,7 +472,7 @@ input[type="checkbox"] {
 
 }
 
-.page-btns{
+.page-btns {
 
   display: flex;
 
@@ -512,19 +494,19 @@ input[type="checkbox"] {
 
 }
 
-.page-priority-etc{
+.page-priority-etc {
   font-size: 14px;
   font-weight: normal;
   color: gray;
 }
 
 
-.disabled{
+.disabled {
   color: white;
   background-color: #A7B5A8;
 }
 
-.disabled .page-priority-etc{
+.disabled .page-priority-etc {
   color: white;
 }
 
@@ -601,6 +583,7 @@ input[type="checkbox"] {
 }
 
 
+
 /* PageEnd Css */
 
 .End-container {
@@ -609,7 +592,24 @@ input[type="checkbox"] {
   height: calc(100vh - 67px);
 
   display: flex;
+  overflow: hidden;
   justify-content: space-between;
+
+  animation: End-slidein 0.8s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes End-slidein {
+  from {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .End-recommend {
@@ -618,6 +618,28 @@ input[type="checkbox"] {
   justify-content: center;
   align-items: flex-end;
   height: 100%;
+  margin-right: 30px;
+}
+
+.End-recommend-btn-reset {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: transform 1.5s ease;
+}
+
+.End-recommend-btn-reset:hover {
+  transform: rotate(360deg);
+  transition: transform 0.6s ease;
+}
+
+.End-recommend-text {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.End-recommend-text-sub {
+  color: gray;
 }
 
 .End-recommend-result {
@@ -631,15 +653,19 @@ input[type="checkbox"] {
   margin: 0px 40px;
 }
 
+
 .End-recommend-btn {
+  font-family: 'GmarketSans';
   display: flex;
-  border: 1px solid black;
+
+  border: none;
   width: 200px;
   justify-content: space-between;
-  margin: 10px 40px;
+  align-items: center;
+  margin-top: 15px;
   padding: 10px 5px;
 
-  background-color: #ECEBE7;
+  background-color: transparent;
 
   font-size: 22px;
   font-weight: bold;
@@ -652,19 +678,18 @@ input[type="checkbox"] {
 .End-text-btn {
   display: flex;
   /* justify-content: space-between; */
-
   width: 250px;
 }
 
 .End-rank {
   color: gray;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 24px;
   margin: 0px 10px;
 }
 
 .End-first {
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .End-heart {
@@ -672,10 +697,10 @@ input[type="checkbox"] {
   margin: 0px 3px;
 }
 
-.End-powerbi {
+/* .End-powerbi-wrap {
   font-size: 48px;
   margin-right: 50px;
-}
+} */
 
 
 
@@ -684,5 +709,5 @@ input[type="checkbox"] {
 .embededReport {
   margin: 0px;
   height: 80vh;
-  width: 60vw;
+  width: 70vw;
 }

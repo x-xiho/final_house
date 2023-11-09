@@ -80,9 +80,21 @@ app.post('/users', (req, res) => {
 app.post('/rank', (req, res) => {
   const userpre = req.body; // JSON 데이터 파싱
 
-  console.log('Received Data:', userpre);
+  console.log('우선순위 데이터 결과:', userpre);
 });
 
+
+app.post('/car', (req, res) => {
+  const userpre = req.body; // JSON 데이터 파싱
+
+  console.log('대중교통 데이터 결과 :', userpre);
+});
+
+app.post('/env', (req, res) => {
+  const userpre = req.body; // JSON 데이터 파싱
+
+  console.log('환경 데이터 결과:', userpre);
+});
 
 // 지역추천 알로리즘 결과를 프론트에 보내줌
 app.get('/users/:name/locations', function (req, res) {

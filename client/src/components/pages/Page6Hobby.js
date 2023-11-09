@@ -48,7 +48,7 @@ function Page6Hobby() {
   return (
     <div className='page1-container'>
       <div className='page1-text'>
-        <div className='page1-num'>Q.05</div>
+        <div className='page1-num'>Q.06</div>
         <div className='page1-qurry'>평소 나의 취미는?</div>
         <div>( 복수선택 가능 )</div>
       </div>

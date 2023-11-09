@@ -16,7 +16,7 @@ function Page0Start() {
         <div className='pageStart-text'>
           라이프 스타일 테스트를 통해 나에게 딱 맞는 주거지역을 추천받아보세요.
           <br/>
-          질문은 답변에 따라 <b>10개 내외</b>로 진행됩니다.
+          질문은 답변에 따라 평균적으로 <b>10개 내외</b>로 진행됩니다.
         </div>
 
         <div className='startbtn'>

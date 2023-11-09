@@ -59,8 +59,6 @@ function Page2Age() {
             <span>30대</span>
         </label>
 
-
-
         <label className='radioStyle'>
           <input type="radio"
             name="age"

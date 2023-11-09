@@ -37,14 +37,15 @@ function Page6Sports() {
   return (
     <div className='page1-container'>
       <div className='page1-text'>
-        <div className='page1-num'>Q.05-2</div>
+        <div className='page1-num'>Q.06-1</div>
         <div className='page1-qurry'>'운동' 중에 내가 가장 좋아하는 종목은?</div>
         <div>( 복수선택 가능 )</div>
       </div>
 
       <form onSubmit={handleSubmit} className='page1-form'>
         <div className='page-checkStyle'>
-          <label className='checkboxStyle'>
+
+          <label className='checkboxStyle aa'>
             <input type="checkbox"
               name="sports"
               value="축구"
@@ -53,7 +54,7 @@ function Page6Sports() {
             <span>축구</span>
           </label>
 
-          <label className='checkboxStyle'>
+          <label className='checkboxStyle aa'>
             <input type="checkbox"
               name="sports"
               value="족구"
@@ -62,7 +63,7 @@ function Page6Sports() {
             <span>족구</span>
           </label>
 
-          <label className='checkboxStyle'>
+          <label className='checkboxStyle aa'>
             <input type="checkbox"
               name="sports"
               value="풋살"
@@ -71,7 +72,7 @@ function Page6Sports() {
             <span>풋살</span>
           </label>
 
-          <label className='checkboxStyle'>
+          <label className='checkboxStyle bb'>
             <input type="checkbox"
               name="sports"
               value="테니스"
@@ -80,7 +81,7 @@ function Page6Sports() {
             <span>테니스</span>
           </label>
 
-          <label className='checkboxStyle'>
+          <label className='checkboxStyle bb'>
             <input type="checkbox"
               name="sports"
               value="배드민턴"
@@ -89,7 +90,7 @@ function Page6Sports() {
             <span>배드민턴</span>
           </label>
 
-          <label className='checkboxStyle'>
+          <label className='checkboxStyle bb'>
             <input type="checkbox"
               name="sports"
               value="스쿼시"
@@ -98,7 +99,7 @@ function Page6Sports() {
             <span>스쿼시</span>
           </label>
 
-          <label className='checkboxStyle'>
+          <label className='checkboxStyle cc'>
             <input type="checkbox"
               name="sports"
               value="배구"
@@ -107,7 +108,7 @@ function Page6Sports() {
             <span>배구</span>
           </label>
 
-          <label className='checkboxStyle'>
+          <label className='checkboxStyle cc'>
             <input type="checkbox"
               name="sports"
               value="농구"
@@ -116,7 +117,7 @@ function Page6Sports() {
             <span>농구</span>
           </label>
 
-          <label className='checkboxStyle'>
+          <label className='checkboxStyle dd'>
             <input type="checkbox"
               name="sports"
               value="야구"
@@ -125,7 +126,7 @@ function Page6Sports() {
             <span>야구</span>
           </label>
 
-          <label className='checkboxStyle'>
+          <label className='checkboxStyle dd'>
             <input type="checkbox"
               name="sports"
               value="탁구"
@@ -134,7 +135,7 @@ function Page6Sports() {
             <span>탁구</span>
           </label>
 
-          <label className='checkboxStyle'>
+          <label className='checkboxStyle ee'>
             <input type="checkbox"
               name="sports"
               value="헬스"
@@ -143,7 +144,7 @@ function Page6Sports() {
             <span>헬스</span>
           </label>
 
-          <label className='checkboxStyle'>
+          <label className='checkboxStyle ee'>
             <input type="checkbox"
               name="sports"
               value="수영"
@@ -152,7 +153,7 @@ function Page6Sports() {
             <span>수영</span>
           </label>
 
-          <label className='checkboxStyle'>
+          <label className='checkboxStyle ee'>
             <input type="checkbox"
               name="sports"
               value="기타"

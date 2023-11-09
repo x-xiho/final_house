@@ -27,6 +27,7 @@ function Page7Priority() {
   };
 
 
+  // 클릭하는대로 순서 저장하기
   const handleButtonClick = (button) => {
     const existingClickIndex = buttonClicks.findIndex(click => Object.keys(click)[0] === button);
     if (existingClickIndex !== -1) {
@@ -73,7 +74,7 @@ function Page7Priority() {
 
     <div className='page1-container'>
       <div className='page1-text'>
-        <div className='page1-num'>Q.number</div>
+        <div className='page1-num'>Q.07</div>
         <div className='page1-qurry'>내가 중요하게 생각하는 요소를 1순위부터 7순위까지 차례대로 눌러주세요.</div>
         <div>( 모든 요소 선택 이후 다음 페이지로 이동 가능합니다. )</div>
       </div>

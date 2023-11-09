@@ -3,6 +3,7 @@ import React from 'react'
 import './Mypage.css'
 
 import Hcarousel from './pages/Hcarousel'
+import { SlArrowLeft, SlArrowRight } from "react-icons/sl"
 
 function Mypage() {
 

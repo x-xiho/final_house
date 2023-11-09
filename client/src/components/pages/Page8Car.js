@@ -25,29 +25,42 @@ function Page8Car() {
     navigate('/myhome/pageenv');
   };
 
-
+  // 클릭하는대로 순위 저장하기
   const handleButtonClick = (button) => {
     const existingClickIndex = buttonClicks.findIndex(click => Object.keys(click)[0] === button);
+  
     if (existingClickIndex !== -1) {
-      // 이미 눌린 버튼일 경우, 삭제
-      const newButtonClicks = [...buttonClicks];
-      newButtonClicks.splice(existingClickIndex, 1);
+      // 이미 눌린 버튼일 경우, 삭제하고 순위 조정
+      const removedButton = buttonClicks[existingClickIndex];
+      const newButtonClicks = buttonClicks.filter((_, index) => index !== existingClickIndex);
+  
       newButtonClicks.forEach((click, index) => {
         const key = Object.keys(click)[0];
-        const value = newButtonClicks.length - index;
-        localStorage.setItem(key, value.toString());
+        const value = index + 1;
+        const rank = 5 - index; 
+        localStorage.setItem(key, rank.toString());
         click[key] = value;
       });
+  
       setButtonClicks(newButtonClicks);
       setButtonStatus(prevStatus => ({ ...prevStatus, [button]: true }));
-    } 
-    
-    else {
-      // 새로운 버튼일 경우, 추가
-      const newOrder = [{ [button]: buttonClicks.length + 1 }, ...buttonClicks];
+  
+      const key = Object.keys(removedButton)[0];
+      localStorage.removeItem(key);
+    } else {
+      // 새로운 버튼일 경우, 추가하고 순위 조정
+      const newOrder = [...buttonClicks, { [button]: buttonClicks.length + 1 }];
+  
+      newOrder.forEach((click, index) => {
+        const key = Object.keys(click)[0];
+        const value = index + 1;
+        const rank = 5 - index; 
+        localStorage.setItem(key, rank.toString());
+        click[key] = value;
+      });
+  
       setButtonClicks(newOrder);
       setButtonStatus(prevStatus => ({ ...prevStatus, [button]: false }));
-      localStorage.setItem(button, (buttonClicks.length + 1).toString());
     }
   };
   
@@ -81,9 +94,9 @@ function Page8Car() {
 
     <div className='page1-container'>
       <div className='page1-text'>
-        <div className='page1-num'>Q.number</div>
+        <div className='page1-num'>Q.08</div>
         <div className='page1-qurry'>내가 자주 사용하는 교통수단을 중요도에 맞게 차례대로 눌러주세요. </div>
-        <div>( 이용하지 않는 교통수단의 경우 선택하지 않아도 됨 )</div>
+        <div>( 이용하지 않는 교통수단의 경우 선택하지 않아도 됩니다. )</div>
       </div>
 
       <div >

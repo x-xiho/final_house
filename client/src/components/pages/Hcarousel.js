@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import { AiFillHeart } from "react-icons/ai"
+import { SlArrowLeft, SlArrowRight } from "react-icons/sl"
 
 function Hcarousel() {
   // 슬라이더 버튼 연동
@@ -35,8 +36,6 @@ function Hcarousel() {
       // 사용자가 "아니요"를 눌렀을 때의 동작
       console.log("취소되었습니다.");
     }
-
-
   };
 
 
@@ -44,9 +43,10 @@ function Hcarousel() {
   useEffect(() => {
     axios.get(`http://localhost:4000/favorites/${userName}`)
       .then(response => {
-        setHeartList(response.data)
-        // 배열 데이터를 받음
-        console.log("백엔드로부터 받은 관심목록 리스트2", heartList)
+        const heartList = response.data;
+        setHeartList(heartList);
+        console.log('백엔드로부터 받아온 관심목록 리스트', heartList);
+        
       })
 
       .catch(error => {
@@ -102,7 +102,7 @@ function Hcarousel() {
 
       {heartList.length === 0 ? <div className='H-wrap-slick'>관심지역이 없습니다.</div> :
         <div className='H-wrap-slick'>
-          <button className="H-btn" onClick={() => slider.current.slickPrev()}>이전</button>
+          <button className="H-btn" onClick={() => slider.current.slickPrev()}><SlArrowLeft size="20" /></button>
 
           <Slider ref={slider} {...settings} className='H-slider'>
             {heartList.map((item, index) => (
@@ -117,7 +117,7 @@ function Hcarousel() {
             ))}
           </Slider>
 
-          <button className="H-btn" onClick={() => slider.current.slickNext()}>다음</button>
+          <button className="H-btn" onClick={() => slider.current.slickNext()}><SlArrowRight size="20" /></button>
         </div>}
 
 

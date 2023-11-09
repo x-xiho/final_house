@@ -71,7 +71,7 @@ function Carousel() {
             <Card title="문화 1위" region="서울 종로구" hash="#전시 #관람" />
           </div>
           <div>
-            <Card title="복지 1위" region="서울 강북구" hash="#출근 #지하철 #여행" />
+            <Card title="복지 1위" region="서울 강서구" hash="#출근 #지하철 #여행" />
 
           </div>
           <div>

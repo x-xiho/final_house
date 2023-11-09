@@ -54,6 +54,7 @@ function Page10Welfare() {
               style={{ display: "none" }}
               onChange={handleCheckboxChange}
               checked={selectedOptions.includes('노인복지시설')}
+              disabled={selectedOptions.includes('필요없음')}
               className='test' />
             <span>노인복지시설</span>
           </label>
@@ -65,6 +66,7 @@ function Page10Welfare() {
               style={{ display: "none" }}
               onChange={handleCheckboxChange}
               checked={selectedOptions.includes('장애인복지시설')}
+              disabled={selectedOptions.includes('필요없음')}
               className='test' />
             <span>장애인복지시설</span>
           </label>
@@ -77,6 +79,7 @@ function Page10Welfare() {
               style={{ display: "none" }}
               onChange={handleCheckboxChange}
               checked={selectedOptions.includes('아동복지시설')}
+              disabled={selectedOptions.includes('필요없음')}
               className='test' />
             <span>아동복지시설</span>
           </label>
@@ -88,14 +91,20 @@ function Page10Welfare() {
               style={{ display: "none" }}
               onChange={handleCheckboxChange}
               checked={selectedOptions.includes('필요없음')}
+              disabled={selectedOptions.length > 0 && !selectedOptions.includes('필요없음')}
               className='test' />
             <span>필요없음</span>
           </label>
 
         </div>
-
         <div className='Nextbtn'>
-          <button className='page1-btn' onClick={() => navigate('/myhome/pageenv')}>이전</button>
+          <button className='page1-btn' onClick={() => {
+            localStorage.removeItem('공원');
+            localStorage.removeItem('미세먼지');
+            localStorage.removeItem('소음');
+            localStorage.removeItem('풍수해');
+            localStorage.removeItem('주택침수');
+            navigate('/myhome/pageenv');}}>이전</button>
           <button type='submit'
             disabled={selectedOptions.length === 0}
             className='page1-btn'>
