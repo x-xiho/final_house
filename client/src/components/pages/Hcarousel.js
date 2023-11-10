@@ -43,7 +43,7 @@ function Hcarousel() {
   useEffect(() => {
     axios.get(`http://localhost:4000/favorites/${userName}`)
       .then(response => {
-        const heartList = response.data;
+        const heartList = response.data.heartList;
         setHeartList(heartList);
         console.log('백엔드로부터 받아온 관심목록 리스트', heartList);
         

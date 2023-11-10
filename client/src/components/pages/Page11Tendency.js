@@ -18,8 +18,8 @@ function Page11Tendency() {
       // key 값 정렬
       const userData = ['name', 'sex', 'age', 'child', 'hobby', 'sports', 'welfare', 'tendency'];
       const userPreferenceData = ['name', '안전', '생활시설', '교육', '의료', '환경', '교통', '기타'];
-      const userCar = ['name', '자차', '지하철', '시내버스', '광역버스', '기차', '따릉이']
-      const userEnv = ['name', '공원', '미세먼지', '소음', '풍수해', '주택침수']
+      const userCarData = ['name', '자차', '지하철', '시내버스', '광역버스', '기차', '따릉이']
+      const userEnvData = ['name', '공원', '미세먼지', '소음', '풍수해', '주택침수']
 
       // 유저의 설문조사 값이 저장될 변수
       const userInfo = {};
@@ -39,12 +39,12 @@ function Page11Tendency() {
         userPreferenceInfo[item] = value;
       });
 
-      userCar.forEach(item => {
+      userCarData.forEach(item => {
         const value = localStorage.getItem(item);
         userCarInfo[item] = value !== null ? value : "0";
       });
 
-      userEnv.forEach(item => {
+      userEnvData.forEach(item => {
         const value = localStorage.getItem(item);
         userEnvInfo[item] = value !== null ? value : "0";
       });

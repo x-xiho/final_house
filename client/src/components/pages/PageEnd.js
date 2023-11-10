@@ -34,6 +34,8 @@ function PageEnd() {
   const [heartClicked2, setHeartClicked2] = useState(false);
   const [heartClicked3, setHeartClicked3] = useState(false);
 
+
+
   // 파워비아이 연동 함수
   const powerbibtn = async (name) => {
     // window.location.reload();
@@ -77,8 +79,6 @@ function PageEnd() {
   // 파워비아이 페이지 이동 테스트
   const powerbibtn2 = async (name, pageNumber) => {
 
-    const num = seoulData[name];
-    console.log("이ㅡㄻ",name)
     const basicFilter = {
       $schema: "http://powerbi.com/product/schema#basic",
       target: {
@@ -98,13 +98,13 @@ function PageEnd() {
 
         if (page) {
           await page.setActive();
+// 테스트할 땐 지우기
+          const visuals = await page.getVisuals();
+          const visual = visuals[1]; // 시각적 객체 요소 선택
 
-          // const visuals = await page.getVisuals();
-          // const visual = visuals[1]; // 시각적 객체 요소 선택
-
-          // await visual.setSlicerState({
-          //   filters: [basicFilter]
-          // });
+          await visual.setSlicerState({
+            filters: [basicFilter]
+          });
         } else {
           console.error(`페이지 ${pageNumber}를 찾을 수 없습니다.`);
         }
