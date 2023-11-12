@@ -123,3 +123,45 @@ useEffect(() => {
 }, []);
 
 ```
+
+### powerbi 페이지 이동 코드
+```
+  const powerbibtn = async (name) => {
+    window.location.reload();
+    console.log("선택한 지역 이름", name)
+    console.log('파워비아이 연동 함수 실행됨 ds', typeof name);
+
+    const basicFilter = {
+      $schema: "http://powerbi.com/product/schema#basic",
+      target: {
+        table: "데이터통합",
+        column: "자치구"
+      },
+      operator: "In",
+      values: [`${name}`],
+      filterType: models.FilterType.BasicFilter
+    };
+
+    try {
+      if (window.report) {
+        console.log('파워비아이 연동 함수 실행됨 if', typeof name);
+        const pages = await window.report.getPages();
+        const page = pages[0]; // 페이지 넘버
+
+        console.log('페이지 찍음 ', page);
+
+        const visuals = await page.getVisuals();
+        const visual = visuals[1]; // 시각적 객체 요소 선택
+
+        console.log('비주얼 찍음 ', visual);
+
+        await visual.setSlicerState({
+          filters: [basicFilter]
+        });
+      }
+    } catch (error) {
+      console.error('powerbibtn 함수에서 에러가 났습니다', error);
+    }
+  };
+
+```
