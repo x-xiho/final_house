@@ -28,7 +28,7 @@ function Page10Welfare() {
     e.preventDefault(); // 페이지 새로고침 방지
 
     if (selectedOptions.length > 0) {
-      localStorage.setItem('welfare', JSON.stringify(selectedOptions));
+      localStorage.setItem('wel', JSON.stringify(selectedOptions));
       navigate('/myhome/pagetendency');
     }
   }
@@ -38,7 +38,7 @@ function Page10Welfare() {
     <div className='page1-container'>
       <div className='page1-text'>
         <div className='page1-num'>Q.10</div>
-        <div className='page1-qurry'>나에게 필요한 시설이 있다면?</div>
+        <div className='page1-qurry'>다음 3가지 중 나에게 필요한 시설이 있다면?</div>
         <div>( 복수선택 가능 )</div>
       </div>
 
@@ -50,10 +50,10 @@ function Page10Welfare() {
           <label className='checkboxStyle'>
             <input type="checkbox"
               name="welfare"
-              value="노인복지시설"
+              value="노인"
               style={{ display: "none" }}
               onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('노인복지시설')}
+              checked={selectedOptions.includes('노인')}
               disabled={selectedOptions.includes('필요없음')}
               className='test' />
             <span>노인복지시설</span>
@@ -62,10 +62,10 @@ function Page10Welfare() {
           <label className='checkboxStyle'>
             <input type="checkbox"
               name="welfare"
-              value="장애인복지시설"
+              value="장애인"
               style={{ display: "none" }}
               onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('장애인복지시설')}
+              checked={selectedOptions.includes('장애인')}
               disabled={selectedOptions.includes('필요없음')}
               className='test' />
             <span>장애인복지시설</span>
@@ -75,10 +75,10 @@ function Page10Welfare() {
           <label className='checkboxStyle'>
             <input type="checkbox"
               name="welfare"
-              value="아동복지시설"
+              value="아동"
               style={{ display: "none" }}
               onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('아동복지시설')}
+              checked={selectedOptions.includes('아동')}
               disabled={selectedOptions.includes('필요없음')}
               className='test' />
             <span>아동복지시설</span>
@@ -103,7 +103,7 @@ function Page10Welfare() {
             localStorage.removeItem('미세먼지');
             localStorage.removeItem('소음');
             localStorage.removeItem('풍수해');
-            localStorage.removeItem('주택침수');
+            localStorage.removeItem('없음');
             navigate('/myhome/pageenv');}}>이전</button>
           <button type='submit'
             disabled={selectedOptions.length === 0}

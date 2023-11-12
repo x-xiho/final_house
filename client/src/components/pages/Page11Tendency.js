@@ -11,15 +11,15 @@ function Page11Tendency() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); //페이지 새로고침 방지
+    localStorage.setItem('ten', selectedOption);
 
     if (selectedOption !== null) {
-      localStorage.setItem('tendency', selectedOption);
 
       // key 값 정렬
-      const userData = ['name', 'sex', 'age', 'child', 'hobby', 'sports', 'welfare', 'tendency'];
+      const userData = ['name', 'sex', 'age','family','marry', 'child', 'hobby', 'sports', 'wel', 'ten'];
       const userPreferenceData = ['name', '안전', '생활시설', '교육', '의료', '환경', '교통', '기타'];
       const userCarData = ['name', '자차', '지하철', '시내버스', '광역버스', '기차', '따릉이']
-      const userEnvData = ['name', '공원', '미세먼지', '소음', '풍수해', '주택침수']
+      const userEnvData = ['name', '공원', '미세먼지', '소음', '풍수해']
 
       // 유저의 설문조사 값이 저장될 변수
       const userInfo = {};
@@ -104,8 +104,8 @@ function Page11Tendency() {
       localStorage.removeItem('sports')
       localStorage.removeItem('priority')
       localStorage.removeItem('env')
-      localStorage.removeItem('welfare')
-      localStorage.removeItem('tendency')
+      localStorage.removeItem('wel')
+      localStorage.removeItem('ten')
 
       localStorage.removeItem('안전')
       localStorage.removeItem('생활시설')
@@ -121,12 +121,13 @@ function Page11Tendency() {
       localStorage.removeItem('광역버스')
       localStorage.removeItem('기차')
       localStorage.removeItem('따릉이')
+      localStorage.removeItem('없음')
 
       localStorage.removeItem('공원')
       localStorage.removeItem('미세먼지')
       localStorage.removeItem('소음')
       localStorage.removeItem('풍수해')
-      localStorage.removeItem('주택침수')
+      localStorage.removeItem('없음')
 
       navigate('/myhome/pageend');
     }
@@ -149,21 +150,21 @@ function Page11Tendency() {
           <label className='radioStyle'>
             <input type="radio"
               name="tendency"
-              value="힐링도시"
-              checked={selectedOption === "힐링도시"}
+              value="자연"
+              checked={selectedOption === "자연"}
               onChange={handleRadioChange}
               className='tendencyBtn' />
-            <span>자연인접 힐링도시</span>
+            <span>자연 인접 힐링도시</span>
           </label>
 
           <label className='radioStyle'>
             <input type="radio"
               name="tendency"
-              value="핫플도시"
-              checked={selectedOption === "핫플도시"}
+              value="핫플"
+              checked={selectedOption === "핫플"}
               onChange={handleRadioChange}
               className='tendencyBtn' />
-            <span>도심 속 핫플 도시</span>
+            <span>도심 속 핫플도시</span>
           </label>
 
         </div>

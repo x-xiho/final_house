@@ -112,7 +112,7 @@ app.get('/users/:name/locations', function (req, res) {
 // 관심목록 관련 코드 //
 
 // 프론트에서 보낸 관심목록을 백엔드에 저장
-app.put('/users/:name/favorites', (req, res) => {
+app.put('/users/:name/favorites/:areas', (req, res) => {
   const { name } = req.params;
   const areaToAdd = req.body.favorites;
   const namedata = req.body.name; 
@@ -134,7 +134,7 @@ app.put('/users/:name/favorites', (req, res) => {
 });
 
 // 프론트에서 보낸 관심목록을 백엔드에서 삭제
-app.delete('/users/:name/favorites', (req, res) => {
+app.delete('/users/:name/favorites/:area', (req, res) => {
   const { name } = req.params;
   const test = req.body;
   const areaToDelete = req.body.favorites;
@@ -157,7 +157,7 @@ app.delete('/users/:name/favorites', (req, res) => {
 
 
 // 백엔드에 저장된 관심목록 마이페이지에 전송
-app.get('/favorites/:name', (req, res) => {
+app.get('/favorites/:name/favorites', (req, res) => {
   const { name } = req.params;
   res.send(loacationData[name].favorites);
   console.log('관심지역 목록 데이터전송')

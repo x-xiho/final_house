@@ -13,8 +13,8 @@ function Mypage() {
     <div className='Mypage-container'>
       {/* <img src={Logo} alt="로고" className="Mypage-img" style={{ width: "40px" }}></img> */}
       <div className='Mypage-wrap'>
-        <hr className='Mypage-hr' />
-        <hr className='Mypage-hr' />
+        {/* <hr className='Mypage-hr' />
+        <hr className='Mypage-hr' /> */}
 
         <div className='Mypage-account'>
           <img src={userProfilImage} alt="프로필사진" className='Mypage-profileImg'></img>
@@ -24,14 +24,15 @@ function Mypage() {
             </div> */}
 
             <div className='Mypage-account-text'>
-              {userName}
+              <b>{userName}</b>님의
               {/* <img src={kakao} alt="카카오계정" style={{ width: "25px" }}></img> */}
             </div>
+            딱 맞는 관심목록 리스트
           </div>
         </div>
 
-        <hr className='Mypage-hr' />
-        <hr className='Mypage-hr' />
+        {/* <hr className='Mypage-hr' />
+        <hr className='Mypage-hr' /> */}
       </div>
 
       <div className='Mypage-slick'>

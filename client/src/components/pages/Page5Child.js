@@ -54,19 +54,6 @@ function Page5Child() {
             <span>없음</span>
           </label>
 
-
-          <label className='checkboxStyle'>
-            <input type="checkbox"
-              name="child"
-              value="미취학아동"
-              style={{ display: "none" }}
-              onChange={handleCheckboxChange}
-              checked={selectedOptions.includes('미취학아동')}
-              disabled={selectedOptions.includes('없음')}
-              className='test' />
-            <span>미취학아동</span>
-          </label>
-
           <label className='checkboxStyle'>
             <input type="checkbox"
               name="child"
