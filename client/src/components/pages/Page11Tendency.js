@@ -5,7 +5,7 @@ import '../PagesCss/PageCss.css'
 
 // 공통 마지막 질문 성향 질문
 function Page11Tendency() {
-
+  // const userName = localStorage.getItem('name');
   const [selectedOption, setSelectedOption] = useState(null);
   const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ function Page11Tendency() {
     if (selectedOption !== null) {
 
       // key 값 정렬
-      const userData = ['name', 'sex', 'age','family','marry', 'child', 'hobby', 'sports', 'wel', 'ten'];
+      const userData = ['name', 'sex', 'age', 'family', 'marry', 'child', 'hobby', 'sports', 'wel', 'ten'];
       const userPreferenceData = ['name', '안전', '생활시설', '교육', '의료', '환경', '교통', '기타'];
       const userCarData = ['name', '자차', '지하철', '시내버스', '광역버스', '기차', '따릉이']
       const userEnvData = ['name', '공원', '미세먼지', '소음', '풍수해']
@@ -94,6 +94,18 @@ function Page11Tendency() {
         });
 
 
+        // 지역추천받기
+
+      // axios.get(`http://localhost:4000/users/${userName}/locations`)
+      //   .then(response => {
+      //     console.log(response.data)
+      //     console.log('백엔드에서 받은 지역추천 결과 데이터', response.data);
+
+      //     localStorage.setItem('location1', response.data.location1);
+      //     localStorage.setItem('location2', response.data.location2);
+      //     localStorage.setItem('location3', response.data.location3);
+      //   })
+
       // 로컬스토리지 데이터 지우기
       localStorage.removeItem('sex')
       localStorage.removeItem('age')
@@ -128,6 +140,9 @@ function Page11Tendency() {
       localStorage.removeItem('소음')
       localStorage.removeItem('풍수해')
       localStorage.removeItem('없음')
+
+
+
 
       navigate('/myhome/pageend');
     }

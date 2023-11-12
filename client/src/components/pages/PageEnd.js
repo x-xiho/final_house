@@ -6,18 +6,14 @@ import axios from 'axios';
 import { models } from 'powerbi-client';
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
 import { MdOutlineReplay } from "react-icons/md"
+import { BsClipboardData, BsMap } from "react-icons/bs"
 
-import PowerBI from './PowerBI';
-// import Powerbitest from './Powerbitest';
+// import PowerBI from './PowerBI';
+import Powerbitest from './Powerbitest';
 
 function PageEnd() {
   // 로컬에 저장된 유저 이름을 변수에 저장
   const userName = localStorage.getItem('name');
-
-  // const [button1, setButton1] = useState(false);
-  // const [button2, setButton2] = useState(false);
-  // const [button3, setButton3] = useState(false);
-
 
   // 백엔드에서 받은 추천 지역 데이터 저장
   const [data, setData] = useState([]);
@@ -25,6 +21,7 @@ function PageEnd() {
   const [get, setGet] = useState(false);
 
   const navigate = useNavigate();
+
 
   // 파워비아이 대시보드용 변수
   // const seoulData = {
@@ -78,47 +75,10 @@ function PageEnd() {
 
 
   // 파워비아이 연동 함수
-  const powerbibtn = async (name) => {
-    // window.location.reload();
-    // console.log("선택한 지역 이름", name)
-    // console.log('파워비아이 연동 함수 실행됨 ds', typeof name);
-
-    const basicFilter = {
-      $schema: "http://powerbi.com/product/schema#basic",
-      target: {
-        table: "데이터통합",
-        column: "자치구"
-      },
-      operator: "In",
-      values: [`${name}`],
-      filterType: models.FilterType.BasicFilter
-    };
-
-    try {
-      if (window.report) {
-        console.log('파워비아이 연동 함수 실행됨 if', typeof name);
-        const pages = await window.report.getPages();
-        const page = pages[0]; // 페이지 넘버
-
-        console.log('페이지 찍음 ', page);
-
-        const visuals = await page.getVisuals();
-        const visual = visuals[1]; // 시각적 객체 요소 선택
-
-        console.log('비주얼 찍음 ', visual);
-
-        await visual.setSlicerState({
-          filters: [basicFilter]
-        });
-      }
-    } catch (error) {
-      console.error('powerbibtn 함수에서 에러가 났습니다', error);
-    }
-  };
-
-
-  // 파워비아이 페이지
-  // const powerbibtn2 = async (name, pageNumber) => {
+  // const powerbibtn = async (name) => {
+  //   window.location.reload();
+  //   console.log("선택한 지역 이름", name)
+  //   console.log('파워비아이 연동 함수 실행됨 ds', typeof name);
 
   //   const basicFilter = {
   //     $schema: "http://powerbi.com/product/schema#basic",
@@ -133,28 +93,89 @@ function PageEnd() {
 
   //   try {
   //     if (window.report) {
+  //       console.log('파워비아이 연동 함수 실행됨 if', typeof name);
   //       const pages = await window.report.getPages();
-  //       // const page = pages[pageNumber - 1]; // 페이지 넘버
-  //       const page = pages[pageNumber]
+  //       const page = pages[0]; // 페이지 넘버
 
-  //       if (page) {
-  //         await page.setActive();
-  //         // 테스트할 땐 지우기
-  //         const visuals = await page.getVisuals();
-  //         const visual = visuals[1]; // 시각적 객체 요소 선택
+  //       console.log('페이지 찍음 ', page);
 
-  //         await visual.setSlicerState({
-  //           filters: [basicFilter]
-  //         });
-  //       } else {
-  //         console.error(`페이지 ${pageNumber}를 찾을 수 없습니다.`);
-  //       }
+  //       const visuals = await page.getVisuals();
+  //       const visual = visuals[1]; // 시각적 객체 요소 선택
+
+  //       console.log('비주얼 찍음 ', visual);
+
+  //       await visual.setSlicerState({
+  //         filters: [basicFilter]
+  //       });
   //     }
   //   } catch (error) {
-  //     console.error('파워비아이 연동 중 오류가 발생했습니다.', error);
+  //     console.error('powerbibtn 함수에서 에러가 났습니다', error);
   //   }
   // };
 
+
+  // 파워비아이 시각화 지도 보기
+  const powerbiPage = async (name, pageNumber) => {
+
+    const basicFilter = {
+      $schema: "http://powerbi.com/product/schema#basic",
+      target: {
+        table: "데이터통합",
+        column: "자치구"
+      },
+      operator: "In",
+      values: [`${name}`],
+      filterType: models.FilterType.BasicFilter
+    };
+
+    try {
+      if (window.report) {
+        const pages = await window.report.getPages();
+        // const page = pages[pageNumber - 1]; // 페이지 넘버
+        const page = pages[pageNumber]
+
+        if (page) {
+          await page.setActive();
+          // 테스트할 땐 지우기
+          const visuals = await page.getVisuals();
+          const visual = visuals[1]; // 시각적 객체 요소 선택
+
+          await visual.setSlicerState({
+            filters: [basicFilter]
+          });
+        } else {
+          console.error(`페이지 ${pageNumber}를 찾을 수 없습니다.`);
+        }
+      }
+    } catch (error) {
+      console.error('파워비아이 연동 중 오류가 발생했습니다.', error);
+    }
+  };
+
+
+  // 파워비아이 대시보드 보기
+  const powerbidash = async (name, pageNumber) => {
+
+    try {
+      if (window.report) {
+        const pages = await window.report.getPages();
+        // const page = pages[pageNumber - 1]; // 페이지 넘버
+        const page = pages[pageNumber]
+
+        if (page) {
+          await page.setActive();
+          // 테스트할 땐 지우기
+          const visuals = await page.getVisuals();
+          const visual = visuals[0]; // 시각적 객체 요소 선택
+          console.log('비주얼 찍음 ', visual);
+        } else {
+          console.error(`페이지 ${pageNumber}를 찾을 수 없습니다.`);
+        }
+      }
+    } catch (error) {
+      console.error('파워비아이 연동 중 오류가 발생했습니다.', error);
+    }
+  };
 
   // 관심목록에 지역 저장
   const putHeart = (areas) => {
@@ -238,50 +259,58 @@ function PageEnd() {
 
   //백엔드에서 지역추천 결과 데이터 받아옴 {1 : 지역, 2: 지역, 3: 지역}
 
-  // useEffect(() => {
-  //   if (userName) {
-  //     axios.get(`http://localhost:4000/users/${userName}/locations`)
-  //       .then(response => {
-  //         setData(response.data);
-  //         powerbibtn(response.data.location1);
-  //         console.log('백엔드에서 받은 지역추천 결과 데이터', data);
-  //         setGet(!get);
-  //       })
-  //       .catch(error => {
-  //         console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
-  //       });
-
-  //     // if (refresh) {
-  //     //   // 새로고침 코드 또는 다른 작업
-  //     //   // window.location.reload();
-
-  //     //   // 새로고침 후에는 다시 refresh 상태값을 false로 설정
-  //     //   setRefresh(false);
-  //     //   console.log('새로고침', refresh);
-  //     // }
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
-
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (userName) {
-          const response = await axios.get(`http://localhost:4000/users/${userName}/locations`);
+    if (userName) {
+      axios.get(`http://localhost:4000/users/${userName}/locations`)
+        .then(response => {
+          console.log(response.data)
           setData(response.data);
-          powerbibtn(response.data.location1);
           console.log('백엔드에서 받은 지역추천 결과 데이터', data);
+
+          // powerbibtn(data.location1);
           setGet(!get);
-        }
-      } catch (error) {
-        console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
-      }
-    };
-  
-    fetchData();
+        })
+
+        .catch(error => {
+          console.error('지역추천 결과를 불러오는 중 오류가 났습니다.', error);
+        });
+
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+
+  // 지역추천결과 받기
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       if (userName) {
+  //         const response = await axios.get(`http://localhost:4000/users/${userName}/locations`);
+  //         setData(response.data);
+  //         powerbibtn(response.data.location1);
+  //         console.log('백엔드에서 받은 지역추천 결과 데이터', response.data);
+  //         setGet(!get);
+  //       }
+  //     } catch (error) {
+  //       console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
+  //     }
+
+  //   };
+
+  //   fetchData();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [userName]);
+
+
+
+  // useEffect(() => {
+  //   if (data.location1 && data.location2 && data.location3) {
+  //   }
+  //   console.log("테스트 실행1")
+  // }, [data.location1, data.location2, data.location3]);
+
+
 
 
   ////////////////////////////////////////////////////////////////////////////
@@ -293,29 +322,45 @@ function PageEnd() {
 
 
       <div className='End-powerbi-wrap'>
-        <PowerBI location={data.location1} />
-        {/* <Powerbitest /> */}
-
+        {/* <PowerBI location={data.location1} /> */}
+        <Powerbitest />
+        <div className='End-exaple'>
+          <div>1. 원하는 자치구 클릭</div>
+          <div>2. 오른편의 타일을 클릭하여 해당 지역<BsMap></BsMap>의 다양한 정보 탐색하기</div>
+          <div>3. 개별 지역의 자세한 정보는 <BsClipboardData size={15}/> 대시보드 보기 클릭</div>
+        </div>
       </div>
 
       <div className='End-recommend'>
 
-
         <div className='End-recommend-text'>나에게 딱 맞는 주거지역 순위</div>
         <div className='End-recommend-text-sub'>버튼을 눌러 지역에 대한 다양한 정보를 탐색해보세요!</div>
+        <div className='End-map'
+          onClick={() => { powerbiPage(data.location1, 0) }}>
+          <BsMap size={20} color='gray' /><div className='End-map-text'>지도 보기</div></div>
+
         <div className='End-result'>
+
           {get ?
             <div className='End-recommend-result'>
 
               <div className="End-recomend-text">
 
-                <button className={`End-recommend-btn ${activeButton === 1 ? 'End-active' : ''}`}
-                  onClick={() => { powerbibtn(data.location1); handleButtonClick(1) }}>
+                <button className='End-recommend-btn'
+                  onClick={() => { }}>
 
                   <div className='End-text-btn'>
 
                     <div className='End-rank'>1위</div>
-                    <div className='End-first'>{data.location1}</div>
+                    <div className={`End-first ${activeButton === 1 ? 'End-active' : ''}`}
+                      onClick={() => { powerbiPage(data.location1, 0); handleButtonClick(1); }}>
+                      {data.location1}</div>
+                  </div>
+
+                  <div className='End-dashboard'
+                    onClick={() => { powerbidash(data.location1, 0); console.log("대시보드 보기 1") }}>
+                    <div className='End-dashboard-text'>대시보드</div>
+                    <BsClipboardData color='black' size={"25"} />
                   </div>
 
                   {heartClicked1 ?
@@ -332,21 +377,20 @@ function PageEnd() {
                   #{seoulData[data.location1]}
                 </div>
 
-
-                {/* {button1 && (
-                  <div>
-                    <button onClick={() => powerbibtn2(data.location1,1)}>대시보드 보기</button>
-                    <button onClick={() => powerbibtn2(data.location2,1)}>지도 보기</button>
-                  </div>
-                )} */}
-
-                <button className={`End-recommend-btn ${activeButton === 2 ? 'End-active' : ''}`}
-                  onClick={() => { powerbibtn(data.location2); handleButtonClick(2) }}>
+                <button className={`End-recommend-btn ${activeButton === 2 ? 'End-active' : ''}`}>
 
                   <div className='End-text-btn'>
                     <div className='End-rank'>2위</div>
-                    <div className='End-first'>{data.location2}</div>
+                    <div className='End-first'
+                      onClick={() => { powerbiPage(data.location2, 0); handleButtonClick(2) }}>{data.location2}</div>
                   </div>
+
+                  <div className='End-dashboard'
+                    onClick={() => { powerbidash(data.location2, 1); console.log("대시보드 보기 2") }}>
+                    <div className='End-dashboard-text'>대시보드</div>
+                    <BsClipboardData color='black' size={"25"} />
+                  </div>
+
                   {heartClicked2 ?
                     <div className='End-heart-wrap'>
                       <AiFillHeart onClick={() => deleteHeart(data.location2)} size="30" color="red" className='End-heart' /></div>
@@ -358,20 +402,21 @@ function PageEnd() {
                 <div className='End-location-text'>
                   #{seoulData[data.location2]}
                 </div>
-                {/* 
-                 {button2 && (
-                  <div>
-                    <button >대시보드 보기</button>
-                    <button >지도 보기</button>
-                  </div>
-                )} */}
 
-                <button className={`End-recommend-btn ${activeButton === 3 ? 'End-active' : ''}`}
-                  onClick={() => { powerbibtn(data.location3); handleButtonClick(3); }}>
+
+                <button className={`End-recommend-btn ${activeButton === 3 ? 'End-active' : ''}`}>
                   <div className='End-text-btn'>
                     <div className='End-rank'>3위</div>
-                    <div className='End-first'>{data.location3}</div>
+                    <div className='End-first'
+                      onClick={() => { powerbiPage(data.location3, 0); handleButtonClick(3); }}>{data.location3}</div>
                   </div>
+
+                  <div className='End-dashboard'
+                    onClick={() => { powerbidash(data.location3, 2); console.log("대시보드 보기 3") }}>
+                    <div className='End-dashboard-text'>대시보드</div>
+                    <BsClipboardData color='black' size={"25"} />
+                  </div>
+
                   {heartClicked3 ?
                     <div className='End-heart-wrap'>
                       <AiFillHeart onClick={() => deleteHeart(data.location3)} size="30" color="red" className='End-heart' /></div>

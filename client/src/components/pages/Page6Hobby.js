@@ -40,7 +40,6 @@ function Page6Hobby() {
         navigate('/myhome/pagepriority');
       }
     }
-
   }
 
   // 미술관 공연장 영화관 운동 공원산책 쇼핑 도서관

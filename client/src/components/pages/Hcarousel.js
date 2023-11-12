@@ -38,7 +38,7 @@ function Hcarousel() {
     "서초구": "상업과 주거가 어우러진 도시",
     "강남구": "상업 및 엔터테인먼트 중심지",
     "송파구": "공원과 물이 어우러진 도시",
-    "강동구": "평화로운 주거환경과 많은 산책로"
+    "강동구": "많은 산책로와 평화로운 주거환경"
   };
 
 
@@ -51,13 +51,13 @@ function Hcarousel() {
   const [heartList, setHeartList] = useState([]);
 
   // 관심목록 삭제
-  const handle = (name) => {
-    const confirmed = window.confirm(`${name}을(를) 관심목록에서 삭제하시겠습니까?`);
+  const handle = (area) => {
+    const confirmed = window.confirm(`${area}을(를) 관심목록에서 삭제하시겠습니까?`);
 
     if (confirmed) {
-      axios.delete(`http://localhost:4000/users/${userName}/favorites/${name}`, { data: { favorites: name } })
+      axios.delete(`http://localhost:4000/users/${userName}/favorites/${area}`, { data: { name:userName ,favorites: area } })
         .then(response => {
-          console.log('관심목록에 삭제할 지역', name)
+          console.log('관심목록에 삭제할 지역', area)
           window.location.reload();
         })
         .catch(error => {
@@ -95,7 +95,7 @@ function Hcarousel() {
   const settings = {
     dots: true,
     infinite: false,
-    speed: 1000,
+    speed: 800,
     arrows: false,
     rows: 1,
     slidesToShow: 3,
@@ -175,7 +175,7 @@ function Hcarousel() {
                   </div>
 
                   <div className='H-data-value1'>
-                    100만원
+                    n000만원
                   </div>
 
                 </div>
@@ -183,11 +183,11 @@ function Hcarousel() {
                 <div className='H-data-1'>
 
                   <div className='H-data-name1'>
-                    평균시세
+                    복지
                   </div>
 
                   <div className='H-data-value1'>
-                    100만원
+                    n위
                   </div>
 
                 </div>
@@ -195,11 +195,11 @@ function Hcarousel() {
                 <div className='H-data-1'>
 
                   <div className='H-data-name1'>
-                    평균시세
+                    교통
                   </div>
 
                   <div className='H-data-value1'>
-                    100만원
+                    n위
                   </div>
 
                 </div>

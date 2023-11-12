@@ -33,9 +33,9 @@ marry:"",
 hobby:"",
 sports:"",
 tendency:"",
-location1:"강남구",
-location2:"도봉구",
-location3:"중구",
+location1:"도봉구",
+location2:"서대문구",
+location3:"노원구",
 favorites:["노원구","어쩌구"]
 }]
 

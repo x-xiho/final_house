@@ -28,12 +28,14 @@ const getExcelWorkbook = (name) => {
       {
         "name": "김효정",
         "age": "10대",
+        "marry": "",
+        "family": "",
         "child": JSON.stringify(["없음"]),
         "hobby": JSON.stringify(["운동"]),
         "sex": "남성",
         "sports": JSON.stringify(["축구"]),
-        "tendency": "핫플 도시",
-        "welfare": JSON.stringify(["필요없음"]),
+        "ten": "핫플 도시",
+        "wel": JSON.stringify(["필요없음"]),
         "location1": "",
         "location2": "",
         "location3": ""
@@ -140,23 +142,23 @@ const getExcelWorkbook = (name) => {
 const excelFilePath = 'survey-result.xlsx';
 
 app.post('/users', (req, res) => {
-  const { name, age, child, hobby, sex, sports, tendency, welfare, location1, location2, location3 } = req.body;
-  const workbook = getExcelWorkbook(excelFilePath);
+  const { name, age, marry, family, child, hobby, sex, sports, ten, wel, location1, location2, location3 } = req.body;
+  const workbook = getExcelWorkbook("survey-result.xlsx");
+  const sheetName = workbook.SheetNames[0]; // 첫 번째 시트의 이름
+  const worksheet = workbook.Sheets[sheetName]; // 첫 번째 시트
+  const jsonData = XLSX.utils.sheet_to_json(worksheet);
   const newData1 = [
-    { name, age, child, hobby, sex, sports, tendency, welfare, location1, location2, location3 }
+    { name, age, marry, family, child, hobby, sex, sports, ten, wel, location1, location2, location3 }
   ];
 
-  // 시트 1에 데이터 추가
-  const sheet1 = workbook.Sheets[workbook.SheetNames[0]];
-  XLSX.utils.sheet_add_json(sheet1, newData1, { header: ['name', 'age', 'child', 'hobby', 'sex', 'sports', 'tendency', 'welfare', 'location1', 'location2', 'location3'], skipHeader: false });
+  const updatedData = jsonData.concat(newData1);
 
-  // 변경된 엑셀 파일 저장
-  XLSX.writeFile(workbook, excelFilePath);
+  // // 해당 데이터를 다시 저장하기
+
 
   // Command to run the Python script
-  const command = 'python3 cb_share.py';
+  const command = 'python3 cb_share_1112_1.py';
 
-  // Execute the Python script
   exec(command, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error: ${error.message}`);
@@ -170,8 +172,10 @@ app.post('/users', (req, res) => {
 
     return res.status(201).json({ message: 'Data saved successfully' });
   });
+  const updatedWorksheet = XLSX.utils.json_to_sheet(updatedData);
+  workbook.Sheets[sheetName] = updatedWorksheet;
+  XLSX.writeFile(workbook, 'survey-result.xlsx');
 });
-
 
 
 app.post("/rank", (req, res) => {
@@ -261,6 +265,8 @@ app.get("/users/:name/locations", (req, res) => {
   const worksheet = workbook.Sheets[sheetName]; // 첫 번째 시트
   const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
+
+
   const lastRow = jsonData.length > 0 ? jsonData[jsonData.length - 1] : null;
 
   if (lastRow) {
@@ -274,6 +280,9 @@ app.get("/users/:name/locations", (req, res) => {
     return res.status(404).json({ error: "사용자를 찾을 수 없습니다." });
   }
 });
+
+
+
 
 
 
@@ -316,7 +325,7 @@ app.delete("/users/:name", (req, res) => {
 
 
 // 사용자의 관심 목록을 업데이트하는 라우트
-app.put('/users/:userName/favorites', async (req, res) => {
+app.put('/users/:userName/favorites/:area', async (req, res) => {
   const userName = req.params.userName;
   const favorites = req.body.favorites;
 
