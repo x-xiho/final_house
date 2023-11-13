@@ -30,7 +30,7 @@ const getExcelWorkbook = (name) => {
         "age": "10대",
         "marry": "",
         "family": "",
-        "child": JSON.stringify(["없음"]),
+        "child":JSON.stringify(["없음"]),
         "hobby": JSON.stringify(["운동"]),
         "sex": "남성",
         "sports": JSON.stringify(["축구"]),
@@ -45,26 +45,31 @@ const getExcelWorkbook = (name) => {
     const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
 
     // 첫 번째 시트 (Sheet1) 생성 및 데이터 추가
+    
     const worksheet1 = XLSX.utils.json_to_sheet(data);
     XLSX.utils.book_append_sheet(workbook, worksheet1, "Sheet1");
-
+    
     // 두 번째 시트 (Sheet2) 생성 및 데이터 추가
+    if (!workbook.Sheets["Sheet2"]) {
     const dataSheet2 = [
       {
         'name': "",
         '안전': "",
-        '생활시설': "",
-        '교육': "",
-        '의료': "",
-        '환경': "",
-        '교통': "",
+        '생활시설': "", 
+        '교육': "", 
+        '의료': "", 
+        '환경': "", 
+        '교통': "", 
         '기타': ""
-
+       
       }
     ]
+    const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
+
     const worksheet2 = XLSX.utils.json_to_sheet(dataSheet2);
     XLSX.utils.book_append_sheet(workbook, worksheet2, "Sheet2");
-
+  }
+  if (!workbook.Sheets["Sheet3"]) {
     const dataSheet3 = [
       {
         "name": "",
@@ -76,9 +81,12 @@ const getExcelWorkbook = (name) => {
         "지하철": ""
       }
     ]
+    const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
+
     const worksheet3 = XLSX.utils.json_to_sheet(dataSheet3);
     XLSX.utils.book_append_sheet(workbook, worksheet3, "Sheet3");
-
+  }
+  if (!workbook.Sheets["Sheet4"]) {
     const dataSheet4 = [
       {
         "name": "",
@@ -87,25 +95,30 @@ const getExcelWorkbook = (name) => {
         "소음": "",
         "주택침수": "",
         "풍수해": ""
-
+       
       }
     ]
+    const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
+
     const worksheet4 = XLSX.utils.json_to_sheet(dataSheet4);
     XLSX.utils.book_append_sheet(workbook, worksheet4, "Sheet4");
-
+  }
+  if (!workbook.Sheets["Sheet5"]) {
     const dataSheet5 = [
       {
         "name": "",
         "favorites": ""
       }
     ]
+    const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
+
     const worksheet5 = XLSX.utils.json_to_sheet(dataSheet5);
     XLSX.utils.book_append_sheet(workbook, worksheet5, "Sheet5");
-
-
+  }
+    
     XLSX.writeFile(workbook, name); // Excel 파일로 저장
     return XLSX.readFile(name);
-
+    
   }
 };
 
@@ -139,98 +152,170 @@ const getExcelWorkbook = (name) => {
 //   const worksheet = workbook.Sheets[sheetName]; // 첫 번째 시트
 //   const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-const excelFilePath = 'survey-result.xlsx';
+
 
 app.post('/users', (req, res) => {
   const { name, age, marry, family, child, hobby, sex, sports, ten, wel, location1, location2, location3 } = req.body;
-  const workbook = getExcelWorkbook("survey-result.xlsx");
-  const sheetName = workbook.SheetNames[0]; // 첫 번째 시트의 이름
-  const worksheet = workbook.Sheets[sheetName]; // 첫 번째 시트
-  const jsonData = XLSX.utils.sheet_to_json(worksheet);
+   const workbook = getExcelWorkbook("survey-result.xlsx");
+   const sheetName = workbook.SheetNames[0]; // 첫 번째 시트의 이름
+   const worksheet = workbook.Sheets[sheetName]; // 첫 번째 시트
+   const jsonData = XLSX.utils.sheet_to_json(worksheet);
   const newData1 = [
     { name, age, marry, family, child, hobby, sex, sports, ten, wel, location1, location2, location3 }
   ];
 
-  const updatedData = jsonData.concat(newData1);
+ const updatedData = jsonData.concat(newData1);
 
-  // // 해당 데이터를 다시 저장하기
-
+// // 해당 데이터를 다시 저장하기
+const updatedWorksheet = XLSX.utils.json_to_sheet(updatedData);
+workbook.Sheets[sheetName] = updatedWorksheet;
+XLSX.writeFile(workbook, 'survey-result.xlsx');
 
   // Command to run the Python script
-  const command = 'python3 cb_share_1112_1.py';
+   const command = 'python3 cb_share_1112_1.py';
 
-  exec(command, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error: ${error.message}`);
+   exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error: ${error.message}`);
       return res.status(500).json({ error: 'Python script execution error' });
-    }
-    if (stderr) {
-      console.error(`stderr: ${stderr}`);
-      return res.status(500).json({ error: 'Python script execution error' });
-    }
-    console.log(`Python script output: ${stdout}`);
+     }
+      if (stderr) {
+        console.error(`stderr: ${stderr}`);
+        return res.status(500).json({ error: 'Python script execution error' });
+      }
+      console.log(`Python script output: ${stdout}`);
 
-    return res.status(201).json({ message: 'Data saved successfully' });
-  });
+      return res.status(201).json({ message: 'Data saved successfully' });
+    });
+
+ });
+
+
+ app.post("/rank", (req, res) => {
+  const { name, 안전, 생활시설, 교육, 의료, 환경, 교통, 기타 } = req.body;
+  const workbook = getExcelWorkbook("survey-result.xlsx");
+  const sheetName = "Sheet2";
+
+  // Check if Sheet2 exists in the workbook
+  if (!workbook.Sheets[sheetName]) {
+    // If Sheet2 doesn't exist, create a new sheet with a header row
+    const headerRow = {
+      name: "",
+      안전: "",
+      생활시설: "",
+      교육: "",
+      의료: "",
+      환경: "",
+      교통: "",
+      기타: ""
+    };
+    
+    const newSheetData = [headerRow];
+    const newSheet = XLSX.utils.json_to_sheet(newSheetData);
+    XLSX.utils.book_append_sheet(workbook, newSheet, sheetName);
+  }
+
+  // Read the existing data from Sheet2
+  const worksheet = workbook.Sheets[sheetName];
+  const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+  // Add new data to existing data
+  const newData = [{ name, 안전, 생활시설, 교육, 의료, 환경, 교통, 기타 }];
+  const updatedData = jsonData.concat(newData);
+
+  // Update the workbook with the updated data
   const updatedWorksheet = XLSX.utils.json_to_sheet(updatedData);
   workbook.Sheets[sheetName] = updatedWorksheet;
+
+  // Save the changes to the file
   XLSX.writeFile(workbook, 'survey-result.xlsx');
-});
-
-
-app.post("/rank", (req, res) => {
-  const { name, 안전, 생활시설, 교육, 의료, 환경, 교통, 기타 } = req.body;
-
-  // 예시로 newData1을 정의 (원하는 데이터로 수정 필요)
-  const newData1 = [{ name, 안전, 생활시설, 교육, 의료, 환경, 교통, 기타 }];
-
-  const workbook = XLSX.readFile(excelFilePath);
-  const sheet2 = workbook.Sheets[workbook.SheetNames[1]];
-
-  // sheet_add_json 사용법에 따라 데이터 추가
-  XLSX.utils.sheet_add_json(sheet2, newData1, { header: ['name', '안전', '생활시설', '교육', '의료', '환경', '교통', '기타'], skipHeader: false });
-
-  // 파일에 쓰기
-  XLSX.writeFile(workbook, excelFilePath);
 
   res.send('데이터 저장 완료');
 });
+
 
 app.post("/car", (req, res) => {
   const { name, 광역버스, 기차, 따릉이, 시내버스, 자차, 지하철 } = req.body;
+  const workbook = getExcelWorkbook("survey-result.xlsx");
+  const sheetName = "Sheet3";
 
-  // 예시로 newData1을 정의 (원하는 데이터로 수정 필요)
-  const newData1 = [{ name, 광역버스, 기차, 따릉이, 시내버스, 자차, 지하철 }];
+  // Check if Sheet3 exists in the workbook
+  if (!workbook.Sheets[sheetName]) {
+    // If Sheet3 doesn't exist, create a new sheet with a header row
+    const headerRow = {
+      name: "Name",
+      광역버스: "Intercity Bus",
+      기차: "Train",
+      따릉이: "Bike Sharing",
+      시내버스: "City Bus",
+      자차: "Own Car",
+      지하철: "Subway"
+    };
+    
+    const newSheetData = [headerRow];
+    const newSheet = XLSX.utils.json_to_sheet(newSheetData);
+    XLSX.utils.book_append_sheet(workbook, newSheet, sheetName);
+  }
 
-  const workbook = XLSX.readFile(excelFilePath);
-  const sheet3 = workbook.Sheets[workbook.SheetNames[2]];
+  // Read the existing data from Sheet3
+  const worksheet = workbook.Sheets[sheetName];
+  const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-  // sheet_add_json 사용법에 따라 데이터 추가
-  XLSX.utils.sheet_add_json(sheet3, newData1, { header: ['name', '광역버스', '기차', '따릉이', '시내버스', '자차', '지하철'], skipHeader: false });
+  // Add new data to existing data
+  const newData = [{ name, 광역버스, 기차, 따릉이, 시내버스, 자차, 지하철 }];
+  const updatedData = jsonData.concat(newData);
 
-  // 파일에 쓰기
-  XLSX.writeFile(workbook, excelFilePath);
+  // Update the workbook with the updated data
+  const updatedWorksheet = XLSX.utils.json_to_sheet(updatedData);
+  workbook.Sheets[sheetName] = updatedWorksheet;
+
+  // Save the changes to the file
+  XLSX.writeFile(workbook, 'survey-result.xlsx');
 
   res.send('데이터 저장 완료');
 });
+
 
 app.post("/env", (req, res) => {
   const { name, 공원, 미세먼지, 소음, 주택침수, 풍수해 } = req.body;
+  const workbook = getExcelWorkbook("survey-result.xlsx");
+  const sheetName = "Sheet4";
 
-  // 예시로 newData1을 정의 (원하는 데이터로 수정 필요)
-  const newData1 = [{ name, 공원, 미세먼지, 소음, 주택침수, 풍수해 }];
+  // Check if Sheet4 exists in the workbook
+  if (!workbook.Sheets[sheetName]) {
+    // If Sheet4 doesn't exist, create a new sheet with a header row
+    const headerRow = {
+      name: "Name",
+      공원: "Park",
+      미세먼지: "Fine Dust",
+      소음: "Noise",
+      주택침수: "Flood in Housing",
+      풍수해: "Wind and Water Damage"
+    };
 
-  const workbook = XLSX.readFile(excelFilePath);
-  const sheet4 = workbook.Sheets[workbook.SheetNames[3]];
+    const newSheetData = [headerRow];
+    const newSheet = XLSX.utils.json_to_sheet(newSheetData);
+    XLSX.utils.book_append_sheet(workbook, newSheet, sheetName);
+  }
 
-  // sheet_add_json 사용법에 따라 데이터 추가
-  XLSX.utils.sheet_add_json(sheet4, newData1, { header: ['name', '공원', '미세먼지', '소음', '주택침수', '풍수해'], skipHeader: false });
+  // Read the existing data from Sheet4
+  const worksheet = workbook.Sheets[sheetName];
+  const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-  // 파일에 쓰기
-  XLSX.writeFile(workbook, excelFilePath);
+  // Add new data to existing data
+  const newData = [{ name, 공원, 미세먼지, 소음, 주택침수, 풍수해 }];
+  const updatedData = jsonData.concat(newData);
+
+  // Update the workbook with the updated data
+  const updatedWorksheet = XLSX.utils.json_to_sheet(updatedData);
+  workbook.Sheets[sheetName] = updatedWorksheet;
+
+  // Save the changes to the file
+  XLSX.writeFile(workbook, 'survey-result.xlsx');
 
   res.send('데이터 저장 완료');
 });
+
 
 // app.get("/users/:name/locations", (req, res) => {
 //   const { name } = req.params;
@@ -263,9 +348,7 @@ app.get("/users/:name/locations", (req, res) => {
   const workbook = getExcelWorkbook("survey-result.xlsx");
   const sheetName = workbook.SheetNames[0]; // 첫 번째 시트의 이름
   const worksheet = workbook.Sheets[sheetName]; // 첫 번째 시트
-  const jsonData = XLSX.utils.sheet_to_json(worksheet);
-
-
+  const jsonData = XLSX.utils.sheet_to_json(worksheet);  
 
   const lastRow = jsonData.length > 0 ? jsonData[jsonData.length - 1] : null;
 
@@ -325,32 +408,47 @@ app.delete("/users/:name", (req, res) => {
 
 
 // 사용자의 관심 목록을 업데이트하는 라우트
+
+
 app.put('/users/:userName/favorites/:area', async (req, res) => {
-  const userName = req.params.userName;
-  const favorites = req.body.favorites;
+  // const userName = req.params.userName;
+  // const favorites = req.body.favorites;
+  // const excelFilePath = 'survey-result.xlsx';
+  const { name, favorites } = req.body;
+  const workbook = getExcelWorkbook("survey-result.xlsx");
+  const sheetName = "Sheet5";
 
-  try {
-    // 엑셀 파일 로드
-    const workbook = new ExcelJS.Workbook();
-    await workbook.xlsx.readFile(excelFilePath);
+  // Check if Sheet4 exists in the workbook
+  if (!workbook.Sheets[sheetName]) {
+    // If Sheet4 doesn't exist, create a new sheet with a header row
+    const headerRow = {
+      name: "Name",
+      favorites: ""
+    };
 
-    // 시트 및 행 조회
-    const sheetName = 'Sheet5';
-    const worksheet = workbook.getWorksheet(sheetName);
-
-    // 새로운 행 추가
-    const newRow = [userName, favorites];
-    worksheet.addRow(newRow);
-
-    // 엑셀 파일 저장
-    await workbook.xlsx.writeFile(excelFilePath);
-
-    res.json({ success: true, message: '관심 목록 업데이트 성공' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: '서버 오류' });
+    const newSheetData = [headerRow];
+    const newSheet = XLSX.utils.json_to_sheet(newSheetData);
+    XLSX.utils.book_append_sheet(workbook, newSheet, sheetName);
   }
+
+  // Read the existing data from Sheet4
+  const worksheet = workbook.Sheets[sheetName];
+  const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+  // Add new data to existing data
+  const newData = [{ name, favorites }];
+  const updatedData = jsonData.concat(newData);
+
+  // Update the workbook with the updated data
+  const updatedWorksheet = XLSX.utils.json_to_sheet(updatedData);
+  workbook.Sheets[sheetName] = updatedWorksheet;
+
+  // Save the changes to the file
+  XLSX.writeFile(workbook, 'survey-result.xlsx');
+
+  res.send('데이터 저장 완료');
 });
+
 
 // 사용자의 관심 목록을 삭제하는 라우트
 

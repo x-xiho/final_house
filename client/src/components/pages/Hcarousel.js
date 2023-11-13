@@ -55,7 +55,7 @@ function Hcarousel() {
     const confirmed = window.confirm(`${area}을(를) 관심목록에서 삭제하시겠습니까?`);
 
     if (confirmed) {
-      axios.delete(`http://localhost:4000/users/${userName}/favorites/${area}`, { data: { name:userName ,favorites: area } })
+      axios.delete(`http://localhost:4000/users/${userName}/favorites/${area}`, { data: { name: userName, favorites: area } })
         .then(response => {
           console.log('관심목록에 삭제할 지역', area)
           window.location.reload();
@@ -72,10 +72,10 @@ function Hcarousel() {
 
   // 백엔드로부터 지금까지 저장된 관심목록 받아오기
   useEffect(() => {
-    axios.get(`http://localhost:4000/favorites/${userName}/favorites`)
+    axios.get(`http://localhost:4000/users/${userName}/favorites`)
       .then(response => {
-        // const heartList = response.data.heartList;
-        const heartList = response.data;
+        const heartList = response.data.heartList;
+        //const heartList = response.data;
         setHeartList(heartList);
         console.log('백엔드로부터 받아온 관심목록 리스트', heartList);
 
