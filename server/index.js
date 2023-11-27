@@ -34,9 +34,9 @@ hobby:"",
 sports:"",
 tendency:"",
 location1:"도봉구",
-location2:"서대문구",
+location2:"중랑구",
 location3:"노원구",
-favorites:["노원구","어쩌구"]
+favorites:["노원구","도봉구"]
 }]
 
 
@@ -95,6 +95,8 @@ app.post('/env', (req, res) => {
 
   console.log('환경 데이터 결과:', userpre);
 });
+
+
 
 // 지역추천 알로리즘 결과를 프론트에 보내줌
 app.get('/users/:name/locations', function (req, res) {
@@ -157,9 +159,9 @@ app.delete('/users/:name/favorites/:area', (req, res) => {
 
 
 // 백엔드에 저장된 관심목록 마이페이지에 전송
-app.get('/favorites/:name/favorites', (req, res) => {
+app.get('/users/:name/favorites', (req, res) => {
   const { name } = req.params;
-  res.send(loacationData[name].favorites);
+  res.send(userData[0].favorites);
   console.log('관심지역 목록 데이터전송')
 });
 

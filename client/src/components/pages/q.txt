@@ -1,3 +1,33 @@
+kibwa23_01@kibwaaisw.onmicrosoft.com
+
+애플리케이션 iD
+  fa9f3b70-b0cb-4224-aa36-e55500aa0c8c
+
+  워크스페이션 ID
+f2b70bfb-8415-4d39-9862-0684567bf136
+
+테넌트 아이디
+309ce0af-f6ce-405d-82ef-c58f0e4351af
+
+
+---auzre / App registartions
+Application (client) ID
+4c1198d2-dc4c-4e6e-8778-83b304707b8f
+
+client secerets
+T7d8Q~VJk4A1Tt2d30D6oxBcrN3WGLuBZwrL.cVG
+
+
+azure AD token
+{
+    "token_type": "Bearer",
+    "expires_in": 3599,
+    "ext_expires_in": 3599,
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1OGtyWFMtSSIsImtpZCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1OGtyWFMtSSJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMzA5Y2UwYWYtZjZjZS00MDVkLTgyZWYtYzU4ZjBlNDM1MWFmLyIsImlhdCI6MTcwMDYyNjQ0NiwibmJmIjoxNzAwNjI2NDQ2LCJleHAiOjE3MDA2MzAzNDYsImFpbyI6IkUyVmdZTkRJZXEvbnR1bUVrdlgvRDA0ZGQ5OGVBQUE9IiwiYXBwaWQiOiI0YzExOThkMi1kYzRjLTRlNmUtODc3OC04M2IzMDQ3MDdiOGYiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8zMDljZTBhZi1mNmNlLTQwNWQtODJlZi1jNThmMGU0MzUxYWYvIiwiaWR0eXAiOiJhcHAiLCJvaWQiOiJmNGViOWRlZi03NzZlLTQyYzUtOThlMy1jMmIxOTE1OTBjMDAiLCJyaCI6IjAuQVZZQXItQ2NNTTcyWFVDQzc4V1BEa05ScndrQUFBQUFBQUFBd0FBQUFBQUFBQUNmQUFBLiIsInN1YiI6ImY0ZWI5ZGVmLTc3NmUtNDJjNS05OGUzLWMyYjE5MTU5MGMwMCIsInRpZCI6IjMwOWNlMGFmLWY2Y2UtNDA1ZC04MmVmLWM1OGYwZTQzNTFhZiIsInV0aSI6Ing2R2N0VlVwSVUycmprMDJ4MUFQQVEiLCJ2ZXIiOiIxLjAifQ.XYdSSNQxI4oZrelJZxOACskQOabCQx5Yam_Yu57wKd8QfjS_xLApNlm0oShkYCVqO3-SwCq6ZVaAhu_1lB6V9XR6NVpG4jxjDn-9GOc7nhkZ6zx4Dtl3mboylIpFPobsJslreaR9T3v2aQQtem2moheF730f3MPqPkifFB1WAfMebfBCYM8DLuBiVvnkt2s3aFSnsl3Ch89pVgZrQGMXFjCOaqhrahnwQSsL0k5K_XJ-Zom7wlhy0bGw857fq1yFwhquCn3ZotsWoAssJALSRXs_FO1LDBQv9p-ibqjNG38EYRk4a6zE0aiDWj0aJf8SJjgMr8hq9oZ4RvMTThduHQ"
+}
+
+
+
 모든 데이터값에서 띄어쓰기 삭제
 
 < 질문 목록 >
@@ -15,10 +45,8 @@
 
 8. PagePriority 우선순위 -> 안전, 생활시설, 교육, 의료, 환경, 교통, 기타
 
-애플리케이션 iD
-  fa9f3b70-b0cb-4224-aa36-e55500aa0c8c
-  워크스페이션 ID
-f2b70bfb-8415-4d39-9862-0684567bf136
+
+
 7. PageCar 대중교통(복수선택) 이용 여부 -> 지하철 / 시내버스 / 광역버스 / 기차 / 따릉이
 8. PageEnv 환경 -> 매우 중요 / 중요 / 보통 
 8-1. PageEnv 환경 -> 미세먼지, 소음 ,풍수해, 주택침수

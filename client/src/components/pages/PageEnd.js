@@ -9,6 +9,7 @@ import { MdOutlineReplay } from "react-icons/md"
 import { BsClipboardData, BsMap } from "react-icons/bs"
 
 import PowerBI from './PowerBI';
+import Powerbitest from './Powerbitest';
 // import Powerbitest from './Powerbitest';
 
 function PageEnd() {
@@ -24,12 +25,13 @@ function PageEnd() {
 
 
   // 파워비아이 대시보드용 변수
-  // const seoulData = {
-  //   "종로구": 1, "중구": 2, "용산구": 3, "성동구": 4, "광진구": 5, "동대문구": 6, "중랑구": 7, "성북구": 8,
-  //   "강북구": 9, "도봉구": 10, "노원구": 11, "은평구": 12, "서대문구": 13, "마포구": 14, "양천구": 15, "강서구": 16,
-  //   "구로구": 17, "금천구": 18, "영등포구": 19, "동작구": 20, "관악구": 21, "서초구": 22, "강남구": 23, "송파구": 24,
-  //   "강동구": 25
-  // };
+  
+  const seoulNumData = {
+    "강남구": 1,"강동구": 2,"강북구": 3,"강서구": 4,"관악구": 5,"광진구": 6,"구로구": 7,"금천구": 8,
+    "노원구": 9,"도봉구": 10,"동대문구": 11,"동작구": 12,"마포구": 13,"서대문구": 14,"서초구": 15,
+    "성동구": 16,"성북구": 17,"송파구": 18,"양천구": 19,"영등포구": 20,"용산구": 21,"은평구": 22,
+    "종로구": 23,"중구": 24,"중랑구": 25
+  };
 
   const seoulData = {
     "종로구": "역사와 전통이 어우러진 지역",
@@ -116,6 +118,7 @@ function PageEnd() {
 
   // 파워비아이 시각화 지도 보기
   const powerbiPage = async (name, pageNumber) => {
+    console.log("파워비아이 시각화 지도 보기", name, pageNumber)
 
     const basicFilter = {
       $schema: "http://powerbi.com/product/schema#basic",
@@ -131,7 +134,6 @@ function PageEnd() {
     try {
       if (window.report) {
         const pages = await window.report.getPages();
-        // const page = pages[pageNumber - 1]; // 페이지 넘버
         const page = pages[pageNumber]
 
         if (page) {
@@ -259,56 +261,57 @@ function PageEnd() {
 
   //백엔드에서 지역추천 결과 데이터 받아옴 {1 : 지역, 2: 지역, 3: 지역}
 
-  useEffect(() => {
-    if (userName) {
-      axios.get(`http://localhost:4000/users/${userName}/locations`)
-        .then(response => {
-          console.log(response.data)
-          setData(response.data);
-          console.log('백엔드에서 받은 지역추천 결과 데이터', data);
+  // useEffect(() => {
+  //   if (userName) {
+  //     axios.get(`http://localhost:4000/users/${userName}/locations`)
+  //       .then(response => {
+  //         console.log(response.data)
+  //         setData(response.data);
 
-          // powerbibtn(data.location1);
-          setGet(!get);
-        })
+  //         console.log('백엔드에서 받은 지역추천 결과 데이터', data);
 
-        .catch(error => {
-          console.error('지역추천 결과를 불러오는 중 오류가 났습니다.', error);
-        });
+  //         powerbiPage(data.location1,0);
+  //         setGet(!get);
+  //       })
 
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  //       .catch(error => {
+  //         console.error('지역추천 결과를 불러오는 중 오류가 났습니다.', error);
+  //       });
+
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
 
   // 지역추천결과 받기
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       if (userName) {
-  //         const response = await axios.get(`http://localhost:4000/users/${userName}/locations`);
-  //         setData(response.data);
-  //         powerbibtn(response.data.location1);
-  //         console.log('백엔드에서 받은 지역추천 결과 데이터', response.data);
-  //         setGet(!get);
-  //       }
-  //     } catch (error) {
-  //       console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
-  //     }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (userName) {
+          const response = await axios.get(`http://localhost:4000/users/${userName}/locations`);
+          setData(response.data);
+          powerbiPage(response.data.location1, 0);
+          console.log('백엔드에서 받은 지역추천 결과 데이터', response.data);
+          setGet(!get);
+        }
+      } catch (error) {
+        console.error('데이터를 불러오는 중 오류가 발생했습니다.', error);
+      }
 
-  //   };
+    };
 
-  //   fetchData();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [userName]);
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
 
-  // useEffect(() => {
-  //   if (data.location1 && data.location2 && data.location3) {
-  //   }
-  //   console.log("테스트 실행1")
-  // }, [data.location1, data.location2, data.location3]);
+  useEffect(() => {
+    if (data.location1 && data.location2 && data.location3) {
+    }
+    console.log("테스트 실행1")
+  }, [data.location1, data.location2, data.location3]);
 
 
 
@@ -320,14 +323,15 @@ function PageEnd() {
   return (
     <div className='End-container'>
 
+      {console.log("지역추천 지역 콘솔찍기", data.location1, data.location2, data.location3)}
 
       <div className='End-powerbi-wrap'>
-        <PowerBI location={data.location1} />
-        {/* <Powerbitest /> */}
+        {/* <PowerBI location={data.location1} /> */}
+        <Powerbitest/>
         <div className='End-exaple'>
           <div>1. 원하는 자치구 클릭</div>
           <div>2. 오른편의 타일을 클릭하여 해당 지역<BsMap></BsMap>의 다양한 정보 탐색하기</div>
-          <div>3. 개별 지역의 자세한 정보는 <BsClipboardData size={15}/> 대시보드 보기 클릭</div>
+          <div>3. 개별 지역의 자세한 정보는 <BsClipboardData size={15} /> 대시보드 보기 클릭</div>
         </div>
       </div>
 
@@ -358,7 +362,7 @@ function PageEnd() {
                   </div>
 
                   <div className='End-dashboard'
-                    onClick={() => { powerbidash(data.location1, 1); console.log("대시보드 보기 1") }}>
+                    onClick={() => { powerbidash(data.location1, seoulNumData[data.location1]); console.log("대시보드 보기 1") }}>
                     <div className='End-dashboard-text'>대시보드</div>
                     <BsClipboardData color='black' size={"25"} />
                   </div>
@@ -386,7 +390,7 @@ function PageEnd() {
                   </div>
 
                   <div className='End-dashboard'
-                    onClick={() => { powerbidash(data.location2, 2); console.log("대시보드 보기 2") }}>
+                    onClick={() => { powerbidash(data.location2, seoulNumData[data.location2]); console.log("대시보드 보기 2") }}>
                     <div className='End-dashboard-text'>대시보드</div>
                     <BsClipboardData color='black' size={"25"} />
                   </div>
@@ -412,7 +416,7 @@ function PageEnd() {
                   </div>
 
                   <div className='End-dashboard'
-                    onClick={() => { powerbidash(data.location3, 3); console.log("대시보드 보기 3") }}>
+                    onClick={() => { powerbidash(data.location3, seoulNumData[data.location3]); console.log("대시보드 보기 3") }}>
                     <div className='End-dashboard-text'>대시보드</div>
                     <BsClipboardData color='black' size={"25"} />
                   </div>

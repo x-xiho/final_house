@@ -30,7 +30,7 @@ const getExcelWorkbook = (name) => {
         "age": "10대",
         "marry": "",
         "family": "",
-        "child":JSON.stringify(["없음"]),
+        "child": JSON.stringify(["없음"]),
         "hobby": JSON.stringify(["운동"]),
         "sex": "남성",
         "sports": JSON.stringify(["축구"]),
@@ -45,80 +45,80 @@ const getExcelWorkbook = (name) => {
     const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
 
     // 첫 번째 시트 (Sheet1) 생성 및 데이터 추가
-    
+
     const worksheet1 = XLSX.utils.json_to_sheet(data);
     XLSX.utils.book_append_sheet(workbook, worksheet1, "Sheet1");
-    
+
     // 두 번째 시트 (Sheet2) 생성 및 데이터 추가
     if (!workbook.Sheets["Sheet2"]) {
-    const dataSheet2 = [
-      {
-        'name': "",
-        '안전': "",
-        '생활시설': "", 
-        '교육': "", 
-        '의료': "", 
-        '환경': "", 
-        '교통': "", 
-        '기타': ""
-       
-      }
-    ]
-    const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
+      const dataSheet2 = [
+        {
+          'name': "",
+          '안전': "",
+          '생활시설': "",
+          '교육': "",
+          '의료': "",
+          '환경': "",
+          '교통': "",
+          '기타': ""
 
-    const worksheet2 = XLSX.utils.json_to_sheet(dataSheet2);
-    XLSX.utils.book_append_sheet(workbook, worksheet2, "Sheet2");
-  }
-  if (!workbook.Sheets["Sheet3"]) {
-    const dataSheet3 = [
-      {
-        "name": "",
-        "광역버스": "",
-        "기차": "",
-        "따릉이": "",
-        "시내버스": "",
-        "자차": "",
-        "지하철": ""
-      }
-    ]
-    const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
+        }
+      ]
+      const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
 
-    const worksheet3 = XLSX.utils.json_to_sheet(dataSheet3);
-    XLSX.utils.book_append_sheet(workbook, worksheet3, "Sheet3");
-  }
-  if (!workbook.Sheets["Sheet4"]) {
-    const dataSheet4 = [
-      {
-        "name": "",
-        "공원": "",
-        "미세먼지": "",
-        "소음": "",
-        "주택침수": "",
-        "풍수해": ""
-       
-      }
-    ]
-    const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
+      const worksheet2 = XLSX.utils.json_to_sheet(dataSheet2);
+      XLSX.utils.book_append_sheet(workbook, worksheet2, "Sheet2");
+    }
+    if (!workbook.Sheets["Sheet3"]) {
+      const dataSheet3 = [
+        {
+          "name": "",
+          "광역버스": "",
+          "기차": "",
+          "따릉이": "",
+          "시내버스": "",
+          "자차": "",
+          "지하철": ""
+        }
+      ]
+      const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
 
-    const worksheet4 = XLSX.utils.json_to_sheet(dataSheet4);
-    XLSX.utils.book_append_sheet(workbook, worksheet4, "Sheet4");
-  }
-  if (!workbook.Sheets["Sheet5"]) {
-    const dataSheet5 = [
-      {
-        "name": "",
-        "favorites": ""
-      }
-    ]
-    const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
+      const worksheet3 = XLSX.utils.json_to_sheet(dataSheet3);
+      XLSX.utils.book_append_sheet(workbook, worksheet3, "Sheet3");
+    }
+    if (!workbook.Sheets["Sheet4"]) {
+      const dataSheet4 = [
+        {
+          "name": "",
+          "공원": "",
+          "미세먼지": "",
+          "소음": "",
+          "주택침수": "",
+          "풍수해": ""
 
-    const worksheet5 = XLSX.utils.json_to_sheet(dataSheet5);
-    XLSX.utils.book_append_sheet(workbook, worksheet5, "Sheet5");
-  }
-    
+        }
+      ]
+      const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
+
+      const worksheet4 = XLSX.utils.json_to_sheet(dataSheet4);
+      XLSX.utils.book_append_sheet(workbook, worksheet4, "Sheet4");
+    }
+    if (!workbook.Sheets["Sheet5"]) {
+      const dataSheet5 = [
+        {
+          "name": "",
+          "favorites": ""
+        }
+      ]
+      const workbook = XLSX.utils.book_new(); // 새로운 워크북 생성
+
+      const worksheet5 = XLSX.utils.json_to_sheet(dataSheet5);
+      XLSX.utils.book_append_sheet(workbook, worksheet5, "Sheet5");
+    }
+
     XLSX.writeFile(workbook, name); // Excel 파일로 저장
     return XLSX.readFile(name);
-    
+
   }
 };
 
@@ -156,42 +156,43 @@ const getExcelWorkbook = (name) => {
 
 app.post('/users', (req, res) => {
   const { name, age, marry, family, child, hobby, sex, sports, ten, wel, location1, location2, location3 } = req.body;
-   const workbook = getExcelWorkbook("survey-result.xlsx");
-   const sheetName = workbook.SheetNames[0]; // 첫 번째 시트의 이름
-   const worksheet = workbook.Sheets[sheetName]; // 첫 번째 시트
-   const jsonData = XLSX.utils.sheet_to_json(worksheet);
+  const workbook = getExcelWorkbook("survey-result.xlsx");
+  const sheetName = workbook.SheetNames[0]; // 첫 번째 시트의 이름
+  const worksheet = workbook.Sheets[sheetName]; // 첫 번째 시트
+  const jsonData = XLSX.utils.sheet_to_json(worksheet);
   const newData1 = [
     { name, age, marry, family, child, hobby, sex, sports, ten, wel, location1, location2, location3 }
   ];
 
- const updatedData = jsonData.concat(newData1);
+  const updatedData = jsonData.concat(newData1);
 
-// // 해당 데이터를 다시 저장하기
-const updatedWorksheet = XLSX.utils.json_to_sheet(updatedData);
-workbook.Sheets[sheetName] = updatedWorksheet;
-XLSX.writeFile(workbook, 'survey-result.xlsx');
+  // // 해당 데이터를 다시 저장하기
+  const updatedWorksheet = XLSX.utils.json_to_sheet(updatedData);
+  workbook.Sheets[sheetName] = updatedWorksheet;
+  XLSX.writeFile(workbook, 'survey-result.xlsx');
 
   // Command to run the Python script
-   const command = 'python3 cb_share_1112_1.py';
+  // 바로 리턴 테스트
+  const command = 'python3.11 cb_share_1112_1.py';
 
-   exec(command, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error: ${error.message}`);
+  exec(command, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error: ${error.message}`);
       return res.status(500).json({ error: 'Python script execution error' });
-     }
-      if (stderr) {
-        console.error(`stderr: ${stderr}`);
-        return res.status(500).json({ error: 'Python script execution error' });
-      }
-      console.log(`Python script output: ${stdout}`);
+    }
+    if (stderr) {
+      console.error(`stderr: ${stderr}`);
+      return res.status(500).json({ error: 'Python script execution error' });
+    }
+    console.log(`Python script output: ${stdout}`);
 
-      return res.status(201).json({ message: 'Data saved successfully' });
-    });
+    return res.status(201).json({ message: 'Data saved successfully' });
+  });
 
- });
+});
 
 
- app.post("/rank", (req, res) => {
+app.post("/rank", (req, res) => {
   const { name, 안전, 생활시설, 교육, 의료, 환경, 교통, 기타 } = req.body;
   const workbook = getExcelWorkbook("survey-result.xlsx");
   const sheetName = "Sheet2";
@@ -209,7 +210,7 @@ XLSX.writeFile(workbook, 'survey-result.xlsx');
       교통: "",
       기타: ""
     };
-    
+
     const newSheetData = [headerRow];
     const newSheet = XLSX.utils.json_to_sheet(newSheetData);
     XLSX.utils.book_append_sheet(workbook, newSheet, sheetName);
@@ -251,7 +252,7 @@ app.post("/car", (req, res) => {
       자차: "Own Car",
       지하철: "Subway"
     };
-    
+
     const newSheetData = [headerRow];
     const newSheet = XLSX.utils.json_to_sheet(newSheetData);
     XLSX.utils.book_append_sheet(workbook, newSheet, sheetName);
@@ -348,7 +349,7 @@ app.get("/users/:name/locations", (req, res) => {
   const workbook = getExcelWorkbook("survey-result.xlsx");
   const sheetName = workbook.SheetNames[0]; // 첫 번째 시트의 이름
   const worksheet = workbook.Sheets[sheetName]; // 첫 번째 시트
-  const jsonData = XLSX.utils.sheet_to_json(worksheet);  
+  const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
   const lastRow = jsonData.length > 0 ? jsonData[jsonData.length - 1] : null;
 

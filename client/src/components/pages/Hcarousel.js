@@ -4,7 +4,6 @@ import Slider from "react-slick";
 import '../PagesCss/PageCss.css'
 import axios from 'axios';
 
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -41,6 +40,89 @@ function Hcarousel() {
     "강동구": "많은 산책로와 평화로운 주거환경"
   };
 
+  const carNum = {
+    "강남구": 1,
+    "강동구": 5,
+    "강북구": 15,
+    "강서구": 9,
+    "관악구": 13,
+    "광진구": 7,
+    "구로구": 11,
+    "금천구": 18,
+    "노원구": 8,
+    "도봉구": 14,
+    "동대문구": 12,
+    "동작구": 10,
+    "마포구": 6,
+    "서대문구": 16,
+    "서초구": 2,
+    "성동구": 4,
+    "성북구": 17,
+    "송파구": 3,
+    "양천구": 10,
+    "영등포구": 9,
+    "용산구": 5,
+    "은평구": 19,
+    "종로구": 20,
+    "중구": 21,
+    "중랑구": 16
+  }
+
+  const welNum = {
+    "강남구": 5,
+    "강동구": 12,
+    "강북구": 20,
+    "강서구": 8,
+    "관악구": 17,
+    "광진구": 11,
+    "구로구": 19,
+    "금천구": 23,
+    "노원구": 6,
+    "도봉구": 15,
+    "동대문구": 18,
+    "동작구": 9,
+    "마포구": 7,
+    "서대문구": 16,
+    "서초구": 3,
+    "성동구": 13,
+    "성북구": 14,
+    "송파구": 4,
+    "양천구": 10,
+    "영등포구": 21,
+    "용산구": 2,
+    "은평구": 22,
+    "종로구": 1,
+    "중구": 24,
+    "중랑구": 25
+  }
+
+  const houseNum = {
+    "강남구": 7783,
+    "강동구": 4293,
+    "강북구": 2672,
+    "강서구": 3683,
+    "관악구": 3132,
+    "광진구": 4867,
+    "구로구": 3033,
+    "금천구": 2669,
+    "노원구": 3191,
+    "도봉구": 2655,
+    "동대문구": 3313,
+    "동작구": 4218,
+    "마포구": 4653,
+    "서대문구": 3515,
+    "서초구": 8021,
+    "성동구": 4991,
+    "성북구": 3096,
+    "송파구": 5749,
+    "양천구": 4884,
+    "영등포구": 4214,
+    "용산구": 6519,
+    "은평구": 3010,
+    "종로구": 4089,
+    "중구": 3975,
+    "중랑구": 2826
+  }
 
 
   const userName = localStorage.getItem('name');
@@ -70,12 +152,12 @@ function Hcarousel() {
     }
   };
 
-  // 백엔드로부터 지금까지 저장된 관심목록 받아오기
+  // // 백엔드로부터 지금까지 저장된 관심목록 받아오기
   useEffect(() => {
     axios.get(`http://localhost:4000/users/${userName}/favorites`)
       .then(response => {
-        const heartList = response.data.heartList;
-        //const heartList = response.data;
+        // const heartList = response.data.heartList;
+        const heartList = response.data;
         setHeartList(heartList);
         console.log('백엔드로부터 받아온 관심목록 리스트', heartList);
 
@@ -171,11 +253,11 @@ function Hcarousel() {
                 <div className='H-data-1'>
 
                   <div className='H-data-name1'>
-                    평균시세
+                    평균 매매가
                   </div>
 
                   <div className='H-data-value1'>
-                    n000만원
+                    {houseNum[item]}만원
                   </div>
 
                 </div>
@@ -187,7 +269,7 @@ function Hcarousel() {
                   </div>
 
                   <div className='H-data-value1'>
-                    n위
+                    {welNum[item]}위
                   </div>
 
                 </div>
@@ -199,7 +281,7 @@ function Hcarousel() {
                   </div>
 
                   <div className='H-data-value1'>
-                    n위
+                    {carNum[item]}위
                   </div>
 
                 </div>
