@@ -257,7 +257,7 @@ function Hcarousel() {
                   </div>
 
                   <div className='H-data-value1'>
-                    {houseNum[item]}만원
+                    {houseNum[item]}만원/평
                   </div>
 
                 </div>
